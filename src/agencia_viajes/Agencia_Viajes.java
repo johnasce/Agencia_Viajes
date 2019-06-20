@@ -22,8 +22,8 @@ public class Agencia_Viajes {
         System.out.println("res");
         System.out.println("hola");
         System.out.println("modificacioness locas");
-        System.out.println("ivaneitorrr ya pues men de una ");
-              
+        System.out.println("modificar por john");
+       
     }
     
 }
