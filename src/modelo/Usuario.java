@@ -23,7 +23,7 @@ public class Usuario extends Persona{
     public Usuario(){
     }
     
-    // Constructor de la clase Usuario con los atributos de clase
+    //Sobre carga de  Constructor de la clase Usuario con los atributos de clase
     public Usuario(String usuarioId, String nickName, String password, char rol) {
         this.usuarioId = usuarioId;
         this.nickName = nickName;
