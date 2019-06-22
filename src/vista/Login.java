@@ -10,12 +10,13 @@ package vista;
  * @author i7 MAX GAMER
  */
 public class Login extends javax.swing.JFrame {
-    PrincipalUs p=new PrincipalUs();
+    PrincipalAd p=new PrincipalAd();
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -108,6 +109,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         p.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
