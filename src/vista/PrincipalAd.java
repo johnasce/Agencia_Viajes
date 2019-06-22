@@ -25,6 +25,11 @@ public class PrincipalAd extends javax.swing.JFrame {
         NuevoProveedor.setVisible(false);
         NuevaFactura.setVisible(false);
         AnadirDetalle.setVisible(false);
+        CancelarFactura2.setVisible(false);
+        ModificarCliente.setVisible(false);
+        RegistrarStock.setVisible(false);
+        EditarPerfil.setVisible(false);
+        EditarPerfilFilUs.setVisible(false);
     }
 
     /**
@@ -36,42 +41,196 @@ public class PrincipalAd extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        JPObcionesControl = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        JPBackGroung = new javax.swing.JPanel();
-        mini = new javax.swing.JButton();
-        close = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        AnadirDetalle = new javax.swing.JInternalFrame();
-        jPanel8 = new javax.swing.JPanel();
-        jTextField16 = new javax.swing.JTextField();
+        jDesktopPane3 = new javax.swing.JDesktopPane();
+        JPObcionesControl2 = new javax.swing.JPanel();
+        jLabel85 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        jLabel87 = new javax.swing.JLabel();
+        jLabel88 = new javax.swing.JLabel();
+        jLabel89 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jLabel90 = new javax.swing.JLabel();
+        jLabel91 = new javax.swing.JLabel();
+        jLabel92 = new javax.swing.JLabel();
+        jLabel93 = new javax.swing.JLabel();
+        jLabel94 = new javax.swing.JLabel();
+        jLabel95 = new javax.swing.JLabel();
+        jLabel96 = new javax.swing.JLabel();
+        JPBackGroung2 = new javax.swing.JPanel();
+        mini2 = new javax.swing.JButton();
+        close2 = new javax.swing.JButton();
+        jLabel97 = new javax.swing.JLabel();
+        CancelarFactura2 = new javax.swing.JInternalFrame();
+        jPanel13 = new javax.swing.JPanel();
+        scrollDetallesCancelFac2 = new javax.swing.JScrollPane();
+        detallesCancelFac2 = new javax.swing.JTable();
+        DatosEmpresaCancelFac2 = new javax.swing.JPanel();
+        labelID35 = new javax.swing.JLabel();
+        labelIDIN13 = new javax.swing.JLabel();
+        labelID36 = new javax.swing.JLabel();
+        labelID37 = new javax.swing.JLabel();
+        labelIDIN24 = new javax.swing.JLabel();
+        labelIDIN25 = new javax.swing.JLabel();
+        labelID38 = new javax.swing.JLabel();
+        labelIDIN26 = new javax.swing.JLabel();
+        labelID39 = new javax.swing.JLabel();
+        labelIDIN27 = new javax.swing.JLabel();
+        idCabCancelFac2 = new javax.swing.JTextField();
+        labelID40 = new javax.swing.JLabel();
+        buscarIDCabCancelFac2 = new javax.swing.JLabel();
+        DatosUsuarioCancelFac = new javax.swing.JPanel();
+        labelID20 = new javax.swing.JLabel();
+        labelID21 = new javax.swing.JLabel();
+        labelID22 = new javax.swing.JLabel();
+        nombreCancelFac = new javax.swing.JLabel();
+        direccionCancelFAc = new javax.swing.JLabel();
+        labelID23 = new javax.swing.JLabel();
+        labelID24 = new javax.swing.JLabel();
+        emailCancelFac = new javax.swing.JLabel();
+        telefonoCancelFac = new javax.swing.JLabel();
+        labelID25 = new javax.swing.JLabel();
+        fechaCancelFac = new javax.swing.JLabel();
+        ciCancelFAc = new javax.swing.JLabel();
+        TotalesCancelFac = new javax.swing.JPanel();
+        labelID26 = new javax.swing.JLabel();
+        labelID27 = new javax.swing.JLabel();
+        labelID28 = new javax.swing.JLabel();
+        totalCancelFac = new javax.swing.JLabel();
+        ivaCancelFac = new javax.swing.JLabel();
+        subtotalCancelFac = new javax.swing.JLabel();
+        enterCancelFac = new javax.swing.JButton();
+        EditarPerfilFilUs = new javax.swing.JInternalFrame();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        TFCedulaEditarPerfilUs = new javax.swing.JTextField();
+        jLabel61 = new javax.swing.JLabel();
+        TFNombreEditarPerfilUs = new javax.swing.JTextField();
+        jLabel62 = new javax.swing.JLabel();
+        TFApellifoEditarPerfilUs = new javax.swing.JTextField();
+        jLabel63 = new javax.swing.JLabel();
+        TFCallePrinEditarPerfilUs = new javax.swing.JTextField();
+        jLabel64 = new javax.swing.JLabel();
+        TFCalleSecuEditarPerfilUs = new javax.swing.JTextField();
+        jLabel65 = new javax.swing.JLabel();
+        TFTelefonoEditarPerfilUs = new javax.swing.JTextField();
+        jLabel66 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel67 = new javax.swing.JLabel();
+        TFEmailEditarPerfilUs = new javax.swing.JTextField();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        TFNickNameEditarPerfilUs = new javax.swing.JTextField();
+        enterEditarPerfil1 = new javax.swing.JButton();
+        TFPasswordEditarPerfilUs = new javax.swing.JPasswordField();
+        buscarPerfilCIUMUS = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        EditarPerfil = new javax.swing.JInternalFrame();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        TFCedulaEditarPerfil = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        TFNombreEditarPerfil = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        TFApellifoEditarPerfil = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        TFCallePrinEditarPerfil = new javax.swing.JTextField();
+        jLabel52 = new javax.swing.JLabel();
+        TFCalleSecuEditarPerfil = new javax.swing.JTextField();
+        jLabel53 = new javax.swing.JLabel();
+        TFTelefonoEditarPerfil = new javax.swing.JTextField();
+        jLabel54 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel55 = new javax.swing.JLabel();
+        TFEmailEditarPerfil = new javax.swing.JTextField();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        TFNickNameEditarPerfil = new javax.swing.JTextField();
+        enterEditarPerfil = new javax.swing.JButton();
+        TFPasswordEditarPerfil = new javax.swing.JPasswordField();
+        jLabel58 = new javax.swing.JLabel();
+        RegistrarStock = new javax.swing.JInternalFrame();
+        jPanel10 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel34 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        NuevoProveedor = new javax.swing.JInternalFrame();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        jTable1 = new javax.swing.JTable();
+        jLabel37 = new javax.swing.JLabel();
+        fechaRegistrarStock = new javax.swing.JLabel();
+        proveedorescomboBox = new javax.swing.JComboBox<>();
+        jLabel38 = new javax.swing.JLabel();
+        enterRegistrarStock = new javax.swing.JButton();
+        jLabel39 = new javax.swing.JLabel();
+        TFcantidadRegistrarStock = new javax.swing.JTextField();
+        ModificarCliente = new javax.swing.JInternalFrame();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        TFidentificacionModificarCliente = new javax.swing.JTextField();
+        jLabel45 = new javax.swing.JLabel();
+        TFnombreModificarCliente = new javax.swing.JTextField();
+        jLabel46 = new javax.swing.JLabel();
+        TFapellidoModificarCliente = new javax.swing.JTextField();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        TFTelefonoModificarCliente = new javax.swing.JTextField();
+        TFCalleSecunModificarCliente = new javax.swing.JTextField();
+        TFCallePrinModificarCliente = new javax.swing.JTextField();
+        TFemailModificarCliente = new javax.swing.JTextField();
+        jLabel50 = new javax.swing.JLabel();
+        enterModificarCliente = new javax.swing.JButton();
+        jLabel51 = new javax.swing.JLabel();
+        NuevoCliente = new javax.swing.JInternalFrame();
+        JPNuevoCliente = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        identificacionCrearCliente = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        nombreCrearCliente = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        apellidoCrearCliente = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        telefonoCrearCliente = new javax.swing.JTextField();
+        callesecunCrearCliente = new javax.swing.JTextField();
+        callePrinCrearCliente = new javax.swing.JTextField();
+        emailCrearCliente = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        enterCrearCliente = new javax.swing.JButton();
+        NuevoProducto = new javax.swing.JInternalFrame();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        fechaCrearProducto = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        precioCrearFactura = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        cantidadCrearProducto = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descripcionCrearProducto = new javax.swing.JTextArea();
+        jLabel26 = new javax.swing.JLabel();
+        destinoCrearProducto = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        partidaCrearProducto = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        duracionCrearProducto = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        tipoCrearProducto = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
+        addTipoCrearProducto = new javax.swing.JButton();
+        NuevoTipo = new javax.swing.JInternalFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        JTnombreTipo = new javax.swing.JTextField();
+        enterTipo = new javax.swing.JButton();
         NuevaFactura = new javax.swing.JInternalFrame();
         jPanel4 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel5 = new javax.swing.JPanel();
+        scrollDetallesFac = new javax.swing.JScrollPane();
+        detallesFac = new javax.swing.JTable();
+        datosEmpresaCancelFac = new javax.swing.JPanel();
         labelID1 = new javax.swing.JLabel();
         labelIDIN2 = new javax.swing.JLabel();
         labelID5 = new javax.swing.JLabel();
@@ -82,231 +241,732 @@ public class PrincipalAd extends javax.swing.JFrame {
         labelIDIN9 = new javax.swing.JLabel();
         labelID7 = new javax.swing.JLabel();
         labelIDIN11 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        labelIDIN3 = new javax.swing.JLabel();
+        datosUsuarioCancelFac = new javax.swing.JPanel();
+        buscarCICrearFactura = new javax.swing.JLabel();
         labelID9 = new javax.swing.JLabel();
         labelID10 = new javax.swing.JLabel();
         labelID11 = new javax.swing.JLabel();
-        labelIDIN12 = new javax.swing.JLabel();
-        labelIDIN13 = new javax.swing.JLabel();
+        nombreCrearFactura = new javax.swing.JLabel();
+        direccionCrearFactura = new javax.swing.JLabel();
         labelID12 = new javax.swing.JLabel();
         labelID13 = new javax.swing.JLabel();
-        labelIDIN14 = new javax.swing.JLabel();
-        labelIDIN15 = new javax.swing.JLabel();
+        emailCrearFactura = new javax.swing.JLabel();
+        telefonoCrearFactura = new javax.swing.JLabel();
         labelID = new javax.swing.JLabel();
-        labelIDIN1 = new javax.swing.JLabel();
+        fechaCrearFactura = new javax.swing.JLabel();
+        ciCrearFactura = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         labelID2 = new javax.swing.JLabel();
         labelID3 = new javax.swing.JLabel();
         labelID4 = new javax.swing.JLabel();
-        labelIDIN6 = new javax.swing.JLabel();
-        labelIDIN5 = new javax.swing.JLabel();
-        labelIDIN4 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        NuevoTipo = new javax.swing.JInternalFrame();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        NuevoProducto = new javax.swing.JInternalFrame();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel26 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jLabel27 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
-        jLabel28 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
-        jLabel29 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        NuevoCliente = new javax.swing.JInternalFrame();
-        JPNuevoCliente = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        totalCrearFac = new javax.swing.JLabel();
+        ivaCrearFac = new javax.swing.JLabel();
+        subtotalCrearFac = new javax.swing.JLabel();
+        agregarDetallesFac = new javax.swing.JLabel();
+        enterCrearFac = new javax.swing.JButton();
+        NuevoProveedor = new javax.swing.JInternalFrame();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        TFnombreProv = new javax.swing.JTextField();
+        enterProv = new javax.swing.JButton();
+        AnadirDetalle = new javax.swing.JInternalFrame();
+        jPanel8 = new javax.swing.JPanel();
+        scroollListDetalles = new javax.swing.JScrollPane();
+        ListDetalles = new javax.swing.JTable();
+        jLabel34 = new javax.swing.JLabel();
+        TFcantidadDetalle = new javax.swing.JTextField();
+        enterDetalles = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        JPObcionesControl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        JPObcionesControl2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Next_page_64px_1.png"))); // NOI18N
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Next_page_64px_1.png"))); // NOI18N
+        jLabel85.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
             }
         });
-        JPObcionesControl.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, -1));
+        JPObcionesControl2.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel3.setText("Modificar Cliente");
-        jLabel3.setToolTipText("");
-        JPObcionesControl.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 20));
+        jLabel86.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel86.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel86.setText("Modificar Cliente");
+        jLabel86.setToolTipText("");
+        jLabel86.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        JPObcionesControl2.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 20));
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel5.setText("Editar Perfil");
-        jLabel5.setToolTipText("");
-        JPObcionesControl.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, 20));
+        jLabel87.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel87.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel87.setText("Editar Perfil");
+        jLabel87.setToolTipText("");
+        jLabel87.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        JPObcionesControl2.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, 20));
 
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel6.setText("Cancelar factura");
-        jLabel6.setToolTipText("");
-        JPObcionesControl.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 20));
+        jLabel88.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel88.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel88.setText("Cancelar factura");
+        jLabel88.setToolTipText("");
+        jLabel88.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        JPObcionesControl2.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 20));
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel7.setText("Registrar Cliente");
-        jLabel7.setToolTipText("");
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel89.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel89.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel89.setText("Registrar Cliente");
+        jLabel89.setToolTipText("");
+        jLabel89.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
             }
         });
-        JPObcionesControl.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 20));
+        JPObcionesControl2.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 20));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Sign_Out_32px.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Sign_Out_32px_1.png"))); // NOI18N
-        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Sign_Out_32px_1.png"))); // NOI18N
-        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Sign_Out_32px_1.png"))); // NOI18N
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Sign_Out_32px.png"))); // NOI18N
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setFocusPainted(false);
+        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Sign_Out_32px_1.png"))); // NOI18N
+        jButton4.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Sign_Out_32px_1.png"))); // NOI18N
+        jButton4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Sign_Out_32px_1.png"))); // NOI18N
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
-        JPObcionesControl.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
+        JPObcionesControl2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel10.setText("Crear factura");
-        jLabel10.setToolTipText("");
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel90.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel90.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel90.setText("Crear factura");
+        jLabel90.setToolTipText("");
+        jLabel90.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
             }
         });
-        JPObcionesControl.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 20));
+        JPObcionesControl2.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 20));
 
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel11.setText("Registrar Stock");
-        jLabel11.setToolTipText("");
-        JPObcionesControl.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, 20));
+        jLabel91.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel91.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel91.setText("Registrar Stock");
+        jLabel91.setToolTipText("");
+        jLabel91.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        JPObcionesControl2.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, 20));
 
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel12.setText("Registrar Proveedor");
-        jLabel12.setToolTipText("");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel92.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel92.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel92.setText("Registrar Proveedor");
+        jLabel92.setToolTipText("");
+        jLabel92.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel12MouseClicked(evt);
             }
         });
-        JPObcionesControl.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, 20));
+        JPObcionesControl2.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, 20));
 
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel13.setText("Registrar Producto");
-        jLabel13.setToolTipText("");
-        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel93.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel93.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel93.setText("Crear Producto");
+        jLabel93.setToolTipText("");
+        jLabel93.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel13MouseClicked(evt);
             }
         });
-        JPObcionesControl.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 20));
+        JPObcionesControl2.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 20));
 
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel14.setText("Modificar Producto");
-        jLabel14.setToolTipText("");
-        JPObcionesControl.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, 20));
+        jLabel94.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel94.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel94.setText("Modificar Perfil Usuarios");
+        jLabel94.setToolTipText("");
+        jLabel94.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        JPObcionesControl2.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, 20));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prinladoizq.png"))); // NOI18N
-        JPObcionesControl.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 500));
+        jLabel95.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel95.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel95.setText("Modificar Producto");
+        jLabel95.setToolTipText("");
+        JPObcionesControl2.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, 20));
 
-        jDesktopPane1.add(JPObcionesControl);
-        JPObcionesControl.setBounds(-180, 0, 230, 500);
+        jLabel96.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prinladoizq.png"))); // NOI18N
+        JPObcionesControl2.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 500));
 
-        JPBackGroung.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jDesktopPane3.add(JPObcionesControl2);
+        JPObcionesControl2.setBounds(-180, 0, 230, 500);
 
-        mini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Expand_Arrow_32px.png"))); // NOI18N
-        mini.setBorder(null);
-        mini.setBorderPainted(false);
-        mini.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        mini.addMouseListener(new java.awt.event.MouseAdapter() {
+        JPBackGroung2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        mini2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Expand_Arrow_32px.png"))); // NOI18N
+        mini2.setBorder(null);
+        mini2.setBorderPainted(false);
+        mini2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mini2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 miniMouseClicked(evt);
             }
         });
-        JPBackGroung.add(mini, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 20, 20));
+        JPBackGroung2.add(mini2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 20, 20));
 
-        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Delete_32px.png"))); // NOI18N
-        close.setBorder(null);
-        close.setBorderPainted(false);
-        close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        close.addMouseListener(new java.awt.event.MouseAdapter() {
+        close2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Delete_32px.png"))); // NOI18N
+        close2.setBorder(null);
+        close2.setBorderPainted(false);
+        close2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        close2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeMouseClicked(evt);
             }
         });
-        JPBackGroung.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, 20));
+        JPBackGroung2.add(close2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, 20));
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoprin.png"))); // NOI18N
-        JPBackGroung.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
+        jLabel97.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel97.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel97.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoprin.png"))); // NOI18N
+        JPBackGroung2.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
-        jDesktopPane1.add(JPBackGroung);
-        JPBackGroung.setBounds(0, 0, 1000, 500);
+        jDesktopPane3.add(JPBackGroung2);
+        JPBackGroung2.setBounds(0, 0, 1000, 500);
 
-        AnadirDetalle.setClosable(true);
-        AnadirDetalle.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        AnadirDetalle.setVisible(true);
+        CancelarFactura2.setClosable(true);
+        CancelarFactura2.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        CancelarFactura2.setVisible(true);
 
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
+        detallesCancelFac2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID Producto", "Descripcion", "Precio Unitario", "Cantidad", "Nombre Tipo", "ValorAgregado"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
-        jPanel8.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 70, -1));
+        scrollDetallesCancelFac2.setViewportView(detallesCancelFac2);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel13.add(scrollDetallesCancelFac2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 480, 220));
+
+        DatosEmpresaCancelFac2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Empresa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
+
+        labelID35.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID35.setText("RUC:");
+
+        labelIDIN13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        labelIDIN13.setText("0159756347621");
+
+        labelID36.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID36.setText("Nombre:");
+
+        labelID37.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID37.setText("Direccion:");
+
+        labelIDIN24.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        labelIDIN24.setText("Agencia de viajes inaneitor");
+
+        labelIDIN25.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        labelIDIN25.setText("Av Gil  Ramires Davaloz");
+
+        labelID38.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID38.setText("Email:");
+
+        labelIDIN26.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        labelIDIN26.setText("ivaneitor@ups.edu.ec");
+
+        labelID39.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID39.setText("Telefono:");
+
+        labelIDIN27.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        labelIDIN27.setText("0991039408");
+
+        labelID40.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID40.setText("ID:");
+
+        buscarIDCabCancelFac2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_verde.png"))); // NOI18N
+
+        javax.swing.GroupLayout DatosEmpresaCancelFac2Layout = new javax.swing.GroupLayout(DatosEmpresaCancelFac2);
+        DatosEmpresaCancelFac2.setLayout(DatosEmpresaCancelFac2Layout);
+        DatosEmpresaCancelFac2Layout.setHorizontalGroup(
+            DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DatosEmpresaCancelFac2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(DatosEmpresaCancelFac2Layout.createSequentialGroup()
+                        .addComponent(labelID35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelIDIN13)
+                        .addGap(49, 49, 49)
+                        .addComponent(labelID37)
+                        .addGap(17, 17, 17)
+                        .addComponent(labelIDIN25, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DatosEmpresaCancelFac2Layout.createSequentialGroup()
+                        .addComponent(labelID40)
+                        .addGap(30, 30, 30)
+                        .addComponent(idCabCancelFac2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarIDCabCancelFac2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelID36)
+                        .addGap(27, 27, 27)
+                        .addComponent(labelIDIN24, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelID39)
+                    .addComponent(labelID38))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelIDIN27, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelIDIN26))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+        DatosEmpresaCancelFac2Layout.setVerticalGroup(
+            DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DatosEmpresaCancelFac2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DatosEmpresaCancelFac2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelID36)
+                            .addComponent(labelIDIN24, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(labelID39, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelIDIN27, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelID40)
+                            .addComponent(idCabCancelFac2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(DatosEmpresaCancelFac2Layout.createSequentialGroup()
+                        .addComponent(buscarIDCabCancelFac2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelID37)
+                    .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelIDIN25, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelID38)
+                        .addComponent(labelIDIN26, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelID35)
+                        .addComponent(labelIDIN13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24))
+        );
+
+        jPanel13.add(DatosEmpresaCancelFac2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 700, 110));
+
+        DatosUsuarioCancelFac.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
+
+        labelID20.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID20.setText("C.I:");
+
+        labelID21.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID21.setText("Nombre:");
+
+        labelID22.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID22.setText("Direccion:");
+
+        nombreCancelFac.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
+        direccionCancelFAc.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
+        labelID23.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID23.setText("Telefono:");
+
+        labelID24.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID24.setText("Email:");
+
+        emailCancelFac.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
+        telefonoCancelFac.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
+        labelID25.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID25.setText("Fecha:");
+
+        fechaCancelFac.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
+        ciCancelFAc.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
+        javax.swing.GroupLayout DatosUsuarioCancelFacLayout = new javax.swing.GroupLayout(DatosUsuarioCancelFac);
+        DatosUsuarioCancelFac.setLayout(DatosUsuarioCancelFacLayout);
+        DatosUsuarioCancelFacLayout.setHorizontalGroup(
+            DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DatosUsuarioCancelFacLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(DatosUsuarioCancelFacLayout.createSequentialGroup()
+                        .addComponent(labelID25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fechaCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DatosUsuarioCancelFacLayout.createSequentialGroup()
+                        .addComponent(labelID20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ciCancelFAc, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DatosUsuarioCancelFacLayout.createSequentialGroup()
+                        .addComponent(labelID21)
+                        .addGap(18, 18, 18)
+                        .addComponent(nombreCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelID23)
+                        .addGap(18, 18, 18)
+                        .addComponent(telefonoCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DatosUsuarioCancelFacLayout.createSequentialGroup()
+                        .addComponent(labelID22)
+                        .addGap(17, 17, 17)
+                        .addComponent(direccionCancelFAc, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(labelID24)
+                        .addGap(42, 42, 42)
+                        .addComponent(emailCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(133, Short.MAX_VALUE))
+        );
+        DatosUsuarioCancelFacLayout.setVerticalGroup(
+            DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DatosUsuarioCancelFacLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelID20)
+                    .addComponent(nombreCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelID23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telefonoCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(ciCancelFAc, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelID21)))
+                .addGap(10, 10, 10)
+                .addGroup(DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelID25)
+                    .addComponent(fechaCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelID22)
+                    .addComponent(direccionCancelFAc, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelID24)
+                    .addComponent(emailCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel13.add(DatosUsuarioCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 700, 90));
+
+        TotalesCancelFac.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        labelID26.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID26.setText("Subtotal:");
+
+        labelID27.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID27.setText("IVA:");
+
+        labelID28.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID28.setText("Total:");
+
+        totalCancelFac.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        ivaCancelFac.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        subtotalCancelFac.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        javax.swing.GroupLayout TotalesCancelFacLayout = new javax.swing.GroupLayout(TotalesCancelFac);
+        TotalesCancelFac.setLayout(TotalesCancelFacLayout);
+        TotalesCancelFacLayout.setHorizontalGroup(
+            TotalesCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TotalesCancelFacLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(TotalesCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(TotalesCancelFacLayout.createSequentialGroup()
+                        .addComponent(labelID26)
+                        .addGap(14, 14, 14)
+                        .addComponent(subtotalCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(TotalesCancelFacLayout.createSequentialGroup()
+                        .addComponent(labelID27)
+                        .addGap(45, 45, 45)
+                        .addComponent(ivaCancelFac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(TotalesCancelFacLayout.createSequentialGroup()
+                        .addComponent(labelID28)
+                        .addGap(34, 34, 34)
+                        .addComponent(totalCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
+        TotalesCancelFacLayout.setVerticalGroup(
+            TotalesCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TotalesCancelFacLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(TotalesCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelID26)
+                    .addComponent(subtotalCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(TotalesCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelID27)
+                    .addComponent(ivaCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(TotalesCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelID28)
+                    .addComponent(totalCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jPanel13.add(TotalesCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, 100));
+
+        enterCancelFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterCancelFac.setBorderPainted(false);
+        enterCancelFac.setContentAreaFilled(false);
+        enterCancelFac.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterCancelFac.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterCancelFac.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        jPanel13.add(enterCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 130, 30));
+
+        javax.swing.GroupLayout CancelarFactura2Layout = new javax.swing.GroupLayout(CancelarFactura2.getContentPane());
+        CancelarFactura2.getContentPane().setLayout(CancelarFactura2Layout);
+        CancelarFactura2Layout.setHorizontalGroup(
+            CancelarFactura2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 710, Short.MAX_VALUE)
+            .addGroup(CancelarFactura2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(CancelarFactura2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        CancelarFactura2Layout.setVerticalGroup(
+            CancelarFactura2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+            .addGroup(CancelarFactura2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(CancelarFactura2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jDesktopPane3.add(CancelarFactura2);
+        CancelarFactura2.setBounds(245, 20, 720, 482);
+
+        EditarPerfilFilUs.setClosable(true);
+        EditarPerfilFilUs.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        EditarPerfilFilUs.setVisible(true);
+
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_User_96px_Verde.png"))); // NOI18N
+        jPanel11.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
+
+        jLabel60.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel60.setText("Cedula: ");
+        jPanel11.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 106, -1, -1));
+        jPanel11.add(TFCedulaEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 90, -1));
+
+        jLabel61.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel61.setText("Nombre: ");
+        jPanel11.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        jPanel11.add(TFNombreEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 90, -1));
+
+        jLabel62.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel62.setText("Apellido: ");
+        jPanel11.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        jPanel11.add(TFApellifoEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 90, -1));
+
+        jLabel63.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel63.setText("Calle Pricipal: ");
+        jPanel11.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, 20));
+        jPanel11.add(TFCallePrinEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 130, -1));
+
+        jLabel64.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel64.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel64.setText("Calle Secundaria: ");
+        jPanel11.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, 20));
+        jPanel11.add(TFCalleSecuEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 130, -1));
+
+        jLabel65.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel65.setText("Telefono: ");
+        jPanel11.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, 20));
+        jPanel11.add(TFTelefonoEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 90, -1));
+
+        jLabel66.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel66.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel66.setText("Calle Pricipal: ");
+        jPanel11.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, 20));
+        jPanel11.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 130, -1));
+
+        jLabel67.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel67.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel67.setText("Email: ");
+        jPanel11.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
+        jPanel11.add(TFEmailEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 130, -1));
+
+        jLabel68.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel68.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel68.setText("NickName: ");
+        jPanel11.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        jLabel69.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel69.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel69.setText("Password: ");
+        jPanel11.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        jPanel11.add(TFNickNameEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 90, -1));
+
+        enterEditarPerfil1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterEditarPerfil1.setBorderPainted(false);
+        enterEditarPerfil1.setContentAreaFilled(false);
+        enterEditarPerfil1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterEditarPerfil1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterEditarPerfil1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterEditarPerfil1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enterEditarPerfil1ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(enterEditarPerfil1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 110, 30));
+        jPanel11.add(TFPasswordEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 90, -1));
+
+        buscarPerfilCIUMUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_verde.png"))); // NOI18N
+        jPanel11.add(buscarPerfilCIUMUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
+        jPanel11.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 330));
+
+        javax.swing.GroupLayout EditarPerfilFilUsLayout = new javax.swing.GroupLayout(EditarPerfilFilUs.getContentPane());
+        EditarPerfilFilUs.getContentPane().setLayout(EditarPerfilFilUsLayout);
+        EditarPerfilFilUsLayout.setHorizontalGroup(
+            EditarPerfilFilUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        EditarPerfilFilUsLayout.setVerticalGroup(
+            EditarPerfilFilUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jDesktopPane3.add(EditarPerfilFilUs);
+        EditarPerfilFilUs.setBounds(250, 50, 510, 362);
+
+        EditarPerfil.setClosable(true);
+        EditarPerfil.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        EditarPerfil.setVisible(true);
+
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_User_96px_Verde.png"))); // NOI18N
+        jPanel5.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
+
+        jLabel36.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel36.setText("Cedula: ");
+        jPanel5.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 106, -1, -1));
+        jPanel5.add(TFCedulaEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 90, -1));
+
+        jLabel40.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel40.setText("Nombre: ");
+        jPanel5.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        jPanel5.add(TFNombreEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 90, -1));
+
+        jLabel41.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel41.setText("Apellido: ");
+        jPanel5.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        jPanel5.add(TFApellifoEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 90, -1));
+
+        jLabel42.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel42.setText("Calle Pricipal: ");
+        jPanel5.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, 20));
+        jPanel5.add(TFCallePrinEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 130, -1));
+
+        jLabel52.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel52.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel52.setText("Calle Secundaria: ");
+        jPanel5.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, 20));
+        jPanel5.add(TFCalleSecuEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 130, -1));
+
+        jLabel53.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel53.setText("Telefono: ");
+        jPanel5.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, 20));
+        jPanel5.add(TFTelefonoEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 90, -1));
+
+        jLabel54.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel54.setText("Calle Pricipal: ");
+        jPanel5.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, 20));
+        jPanel5.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 130, -1));
+
+        jLabel55.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel55.setText("Email: ");
+        jPanel5.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
+        jPanel5.add(TFEmailEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 130, -1));
+
+        jLabel56.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel56.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel56.setText("NickName: ");
+        jPanel5.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        jLabel57.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel57.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel57.setText("Password: ");
+        jPanel5.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        jPanel5.add(TFNickNameEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 90, -1));
+
+        enterEditarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterEditarPerfil.setBorderPainted(false);
+        enterEditarPerfil.setContentAreaFilled(false);
+        enterEditarPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterEditarPerfil.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterEditarPerfil.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterEditarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enterEditarPerfilActionPerformed(evt);
+            }
+        });
+        jPanel5.add(enterEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 110, 30));
+        jPanel5.add(TFPasswordEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 90, -1));
+        jPanel5.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 330));
+
+        javax.swing.GroupLayout EditarPerfilLayout = new javax.swing.GroupLayout(EditarPerfil.getContentPane());
+        EditarPerfil.getContentPane().setLayout(EditarPerfilLayout);
+        EditarPerfilLayout.setHorizontalGroup(
+            EditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        EditarPerfilLayout.setVerticalGroup(
+            EditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jDesktopPane3.add(EditarPerfil);
+        EditarPerfil.setBounds(250, 50, 510, 362);
+
+        RegistrarStock.setClosable(true);
+        RegistrarStock.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        RegistrarStock.setVisible(true);
+
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -325,55 +985,372 @@ public class PrincipalAd extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(jTable1);
 
-        jPanel8.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 470, 237));
+        jPanel10.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 470, 180));
 
-        jLabel34.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel34.setText("Cantidad: ");
-        jPanel8.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+        jLabel37.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel37.setText("Proveedor: ");
+        jPanel10.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, -1, -1));
+        jPanel10.add(fechaRegistrarStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 80, 20));
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
-        jButton8.setBorderPainted(false);
-        jButton8.setContentAreaFilled(false);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        jButton8.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        jPanel8.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 130, 30));
+        proveedorescomboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel10.add(proveedorescomboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, -1, -1));
 
-        AnadirDetalle.getContentPane().add(jPanel8, java.awt.BorderLayout.CENTER);
+        jLabel38.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel38.setText("Cantidad: ");
+        jPanel10.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
 
-        jDesktopPane1.add(AnadirDetalle);
-        AnadirDetalle.setBounds(250, 50, 500, 332);
+        enterRegistrarStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
+        enterRegistrarStock.setBorderPainted(false);
+        enterRegistrarStock.setContentAreaFilled(false);
+        enterRegistrarStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterRegistrarStock.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
+        enterRegistrarStock.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
+        jPanel10.add(enterRegistrarStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 120, 30));
 
-        NuevoProveedor.setClosable(true);
-        NuevoProveedor.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        NuevoProveedor.setVisible(true);
+        jLabel39.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel39.setText("Fecha: ");
+        jPanel10.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        jPanel10.add(TFcantidadRegistrarStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 60, -1));
 
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        javax.swing.GroupLayout RegistrarStockLayout = new javax.swing.GroupLayout(RegistrarStock.getContentPane());
+        RegistrarStock.getContentPane().setLayout(RegistrarStockLayout);
+        RegistrarStockLayout.setHorizontalGroup(
+            RegistrarStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 530, Short.MAX_VALUE)
+            .addGroup(RegistrarStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(RegistrarStockLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        RegistrarStockLayout.setVerticalGroup(
+            RegistrarStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 310, Short.MAX_VALUE)
+            .addGroup(RegistrarStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(RegistrarStockLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Handshake_96px.png"))); // NOI18N
-        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+        jDesktopPane3.add(RegistrarStock);
+        RegistrarStock.setBounds(250, 50, 540, 342);
 
-        jLabel33.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel33.setText("Nombre:");
-        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
-        jPanel3.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 100, -1));
+        ModificarCliente.setClosable(true);
+        ModificarCliente.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        ModificarCliente.setVisible(true);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
-        jButton6.setBorderPainted(false);
-        jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        jButton6.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 80, 30));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        NuevoProveedor.getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
+        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_User_96px_Verde.png"))); // NOI18N
+        jPanel6.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
-        jDesktopPane1.add(NuevoProveedor);
-        NuevoProveedor.setBounds(250, 50, 390, 250);
+        jLabel44.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel44.setText("Identificacion: ");
+        jPanel6.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 106, -1, -1));
+        jPanel6.add(TFidentificacionModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 90, -1));
+
+        jLabel45.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel45.setText("Nombre: ");
+        jPanel6.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        jPanel6.add(TFnombreModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 90, -1));
+
+        jLabel46.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel46.setText("Apellido: ");
+        jPanel6.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        jPanel6.add(TFapellidoModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 90, -1));
+
+        jLabel47.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel47.setText("Calle Pricipal: ");
+        jPanel6.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, 20));
+
+        jLabel48.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel48.setText("Calle Secundaria: ");
+        jPanel6.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, 20));
+
+        jLabel49.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel49.setText("Telefono: ");
+        jPanel6.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, 20));
+        jPanel6.add(TFTelefonoModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 90, -1));
+        jPanel6.add(TFCalleSecunModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 130, -1));
+        jPanel6.add(TFCallePrinModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 130, -1));
+        jPanel6.add(TFemailModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 130, -1));
+
+        jLabel50.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel50.setText("Email: ");
+        jPanel6.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        enterModificarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterModificarCliente.setBorderPainted(false);
+        enterModificarCliente.setContentAreaFilled(false);
+        enterModificarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterModificarCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterModificarCliente.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        jPanel6.add(enterModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 130, 30));
+
+        jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_verde.png"))); // NOI18N
+        jPanel6.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
+
+        javax.swing.GroupLayout ModificarClienteLayout = new javax.swing.GroupLayout(ModificarCliente.getContentPane());
+        ModificarCliente.getContentPane().setLayout(ModificarClienteLayout);
+        ModificarClienteLayout.setHorizontalGroup(
+            ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 510, Short.MAX_VALUE)
+            .addGroup(ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE))
+        );
+        ModificarClienteLayout.setVerticalGroup(
+            ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 288, Short.MAX_VALUE)
+            .addGroup(ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+        );
+
+        jDesktopPane3.add(ModificarCliente);
+        ModificarCliente.setBounds(250, 50, 520, 320);
+
+        NuevoCliente.setClosable(true);
+        NuevoCliente.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        NuevoCliente.setVisible(true);
+
+        JPNuevoCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_User_96px_2.png"))); // NOI18N
+        JPNuevoCliente.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel9.setText("Identificacion: ");
+        JPNuevoCliente.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 106, -1, -1));
+        JPNuevoCliente.add(identificacionCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 90, -1));
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel15.setText("Nombre: ");
+        JPNuevoCliente.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        JPNuevoCliente.add(nombreCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 90, -1));
+
+        jLabel16.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel16.setText("Apellido: ");
+        JPNuevoCliente.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        JPNuevoCliente.add(apellidoCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 90, -1));
+
+        jLabel17.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel17.setText("Calle Pricipal: ");
+        JPNuevoCliente.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, 20));
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel18.setText("Calle Secundaria: ");
+        JPNuevoCliente.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, 20));
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel19.setText("Telefono: ");
+        JPNuevoCliente.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, 20));
+        JPNuevoCliente.add(telefonoCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 90, -1));
+        JPNuevoCliente.add(callesecunCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 130, -1));
+        JPNuevoCliente.add(callePrinCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 130, -1));
+        JPNuevoCliente.add(emailCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 130, -1));
+
+        jLabel20.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel20.setText("Email: ");
+        JPNuevoCliente.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        enterCrearCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
+        enterCrearCliente.setBorderPainted(false);
+        enterCrearCliente.setContentAreaFilled(false);
+        enterCrearCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterCrearCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
+        enterCrearCliente.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
+        JPNuevoCliente.add(enterCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 120, 30));
+
+        NuevoCliente.getContentPane().add(JPNuevoCliente, java.awt.BorderLayout.CENTER);
+
+        jDesktopPane3.add(NuevoCliente);
+        NuevoCliente.setBounds(250, 50, 550, 310);
+
+        NuevoProducto.setClosable(true);
+        NuevoProducto.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        NuevoProducto.setVisible(true);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregarPro.png"))); // NOI18N
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 100, 120));
+
+        jLabel22.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel22.setText("Fecha:");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+
+        fechaCrearProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaCrearProductoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(fechaCrearProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 80, -1));
+
+        jLabel23.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel23.setText("Precio:");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        precioCrearFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioCrearFacturaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(precioCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 80, -1));
+
+        jLabel24.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel24.setText("Cantidad:");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+
+        cantidadCrearProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidadCrearProductoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cantidadCrearProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 80, -1));
+
+        jLabel25.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel25.setText("Descripcion:");
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+
+        descripcionCrearProducto.setColumns(20);
+        descripcionCrearProducto.setRows(5);
+        jScrollPane1.setViewportView(descripcionCrearProducto);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 150, 50));
+
+        jLabel26.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel26.setText("Destino:");
+        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, -1));
+
+        destinoCrearProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                destinoCrearProductoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(destinoCrearProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 80, -1));
+
+        jLabel27.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel27.setText("Partida:");
+        jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
+
+        partidaCrearProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                partidaCrearProductoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(partidaCrearProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 80, -1));
+
+        jLabel28.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel28.setText("Tipo:");
+        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
+
+        duracionCrearProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                duracionCrearProductoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(duracionCrearProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 80, -1));
+
+        jLabel29.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel29.setText("Duracion:");
+        jPanel1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
+
+        tipoCrearProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipoCrearProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoCrearProductoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tipoCrearProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 80, -1));
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 80, 30));
+
+        addTipoCrearProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mas(plus).png"))); // NOI18N
+        addTipoCrearProducto.setBorder(null);
+        addTipoCrearProducto.setBorderPainted(false);
+        addTipoCrearProducto.setContentAreaFilled(false);
+        addTipoCrearProducto.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mas(plus)Off.png"))); // NOI18N
+        addTipoCrearProducto.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mas(plus)Off.png"))); // NOI18N
+        addTipoCrearProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addTipoCrearProductoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(addTipoCrearProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 30, 20));
+
+        NuevoProducto.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        jDesktopPane3.add(NuevoProducto);
+        NuevoProducto.setBounds(250, 50, 540, 362);
+
+        NuevoTipo.setClosable(true);
+        NuevoTipo.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        NuevoTipo.setVisible(true);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mas (2).png"))); // NOI18N
+        jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
+
+        jLabel31.setBackground(new java.awt.Color(238, 112, 82));
+        jLabel31.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel31.setText("Nombre:");
+        jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+
+        JTnombreTipo.setToolTipText("");
+        JTnombreTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTnombreTipoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JTnombreTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 130, -1));
+
+        enterTipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
+        enterTipo.setBorderPainted(false);
+        enterTipo.setContentAreaFilled(false);
+        enterTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterTipo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
+        enterTipo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
+        jPanel2.add(enterTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 80, 30));
+
+        NuevoTipo.getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        jDesktopPane3.add(NuevoTipo);
+        NuevoTipo.setBounds(250, 50, 390, 240);
 
         NuevaFactura.setClosable(true);
         NuevaFactura.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -381,7 +1358,7 @@ public class PrincipalAd extends javax.swing.JFrame {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        detallesFac.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null}
             },
@@ -404,11 +1381,11 @@ public class PrincipalAd extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        scrollDetallesFac.setViewportView(detallesFac);
 
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 480, 220));
+        jPanel4.add(scrollDetallesFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 480, 220));
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Empresa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
+        datosEmpresaCancelFac.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Empresa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
 
         labelID1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID1.setText("RUC:");
@@ -440,14 +1417,14 @@ public class PrincipalAd extends javax.swing.JFrame {
         labelIDIN11.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         labelIDIN11.setText("0991039408");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout datosEmpresaCancelFacLayout = new javax.swing.GroupLayout(datosEmpresaCancelFac);
+        datosEmpresaCancelFac.setLayout(datosEmpresaCancelFacLayout);
+        datosEmpresaCancelFacLayout.setHorizontalGroup(
+            datosEmpresaCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(datosEmpresaCancelFacLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(datosEmpresaCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(datosEmpresaCancelFacLayout.createSequentialGroup()
                         .addComponent(labelID1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelIDIN2)
@@ -455,51 +1432,53 @@ public class PrincipalAd extends javax.swing.JFrame {
                         .addComponent(labelID6)
                         .addGap(17, 17, 17)
                         .addComponent(labelIDIN8, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(datosEmpresaCancelFacLayout.createSequentialGroup()
                         .addComponent(labelID5)
                         .addGap(27, 27, 27)
                         .addComponent(labelIDIN7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(datosEmpresaCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelID7)
                     .addComponent(labelID8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(datosEmpresaCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelIDIN11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelIDIN9))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        datosEmpresaCancelFacLayout.setVerticalGroup(
+            datosEmpresaCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datosEmpresaCancelFacLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(datosEmpresaCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelID5)
                     .addComponent(labelIDIN7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(datosEmpresaCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelID7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(labelIDIN11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(datosEmpresaCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelID6)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(datosEmpresaCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelIDIN8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(labelID8)
                         .addComponent(labelIDIN9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(datosEmpresaCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelID1)
                         .addComponent(labelIDIN2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
 
-        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 700, 110));
+        jPanel4.add(datosEmpresaCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 700, 110));
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
+        datosUsuarioCancelFac.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
 
-        labelIDIN3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        buscarCICrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        buscarCICrearFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_2.png"))); // NOI18N
 
         labelID9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID9.setText("ID:");
+        labelID9.setText("C.I:");
+        labelID9.setToolTipText("");
 
         labelID10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID10.setText("Nombre:");
@@ -507,9 +1486,9 @@ public class PrincipalAd extends javax.swing.JFrame {
         labelID11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID11.setText("Direccion:");
 
-        labelIDIN12.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        nombreCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
-        labelIDIN13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        direccionCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         labelID12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID12.setText("Telefono:");
@@ -517,71 +1496,81 @@ public class PrincipalAd extends javax.swing.JFrame {
         labelID13.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID13.setText("Email:");
 
-        labelIDIN14.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        emailCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
-        labelIDIN15.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        telefonoCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         labelID.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID.setText("Fecha:");
 
-        labelIDIN1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        fechaCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout datosUsuarioCancelFacLayout = new javax.swing.GroupLayout(datosUsuarioCancelFac);
+        datosUsuarioCancelFac.setLayout(datosUsuarioCancelFacLayout);
+        datosUsuarioCancelFacLayout.setHorizontalGroup(
+            datosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(datosUsuarioCancelFacLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(datosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(datosUsuarioCancelFacLayout.createSequentialGroup()
                         .addComponent(labelID9)
-                        .addGap(33, 33, 33)
-                        .addComponent(labelIDIN3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
+                        .addGap(2, 2, 2)
+                        .addComponent(ciCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarCICrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelID10)
-                        .addGap(27, 27, 27)
-                        .addComponent(labelIDIN12, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(labelID12)
-                        .addGap(20, 20, 20)
-                        .addComponent(labelIDIN15, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nombreCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(datosUsuarioCancelFacLayout.createSequentialGroup()
                         .addComponent(labelID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelIDIN1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fechaCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(labelID11)
-                        .addGap(17, 17, 17)
-                        .addComponent(labelIDIN13, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(labelID13)
-                        .addGap(42, 42, 42)
-                        .addComponent(labelIDIN14, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(133, Short.MAX_VALUE))
+                        .addGap(5, 5, 5)
+                        .addComponent(direccionCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(datosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelID12)
+                    .addComponent(labelID13))
+                .addGap(20, 20, 20)
+                .addGroup(datosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(telefonoCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        datosUsuarioCancelFacLayout.setVerticalGroup(
+            datosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(datosUsuarioCancelFacLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelID9)
-                    .addComponent(labelIDIN3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelID10)
-                    .addComponent(labelIDIN12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(datosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(datosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelID9)
+                        .addComponent(ciCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(labelID12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelIDIN15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelID)
-                    .addComponent(labelIDIN1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelID11)
-                    .addComponent(labelIDIN13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelID13)
-                    .addComponent(labelIDIN14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telefonoCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarCICrearFactura)
+                    .addGroup(datosUsuarioCancelFacLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(datosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelID10))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(datosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(datosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(labelID)
+                        .addComponent(fechaCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelID11)
+                        .addComponent(direccionCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(datosUsuarioCancelFacLayout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addComponent(labelID13)))
+                    .addComponent(emailCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 700, 90));
+        jPanel4.add(datosUsuarioCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 700, 90));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -594,11 +1583,11 @@ public class PrincipalAd extends javax.swing.JFrame {
         labelID4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID4.setText("Total:");
 
-        labelIDIN6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        totalCrearFac.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        labelIDIN5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        ivaCrearFac.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        labelIDIN4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        subtotalCrearFac.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -610,15 +1599,15 @@ public class PrincipalAd extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(labelID2)
                         .addGap(14, 14, 14)
-                        .addComponent(labelIDIN4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(subtotalCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(labelID3)
                         .addGap(45, 45, 45)
-                        .addComponent(labelIDIN5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(ivaCrearFac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(labelID4)
                         .addGap(34, 34, 34)
-                        .addComponent(labelIDIN6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(totalCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -627,288 +1616,203 @@ public class PrincipalAd extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelID2)
-                    .addComponent(labelIDIN4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(subtotalCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelID3)
-                    .addComponent(labelIDIN5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ivaCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelID4)
-                    .addComponent(labelIDIN6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(totalCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, 100));
 
-        jLabel35.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/CompraGRande.png"))); // NOI18N
-        jLabel35.setText("Agregar Detalle");
-        jLabel35.addMouseListener(new java.awt.event.MouseAdapter() {
+        agregarDetallesFac.setForeground(new java.awt.Color(62, 150, 148));
+        agregarDetallesFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/CompraGRande.png"))); // NOI18N
+        agregarDetallesFac.setText("Agregar Detalle");
+        agregarDetallesFac.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel35MouseClicked(evt);
+                agregarDetallesFacMouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
+        jPanel4.add(agregarDetallesFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
-        jButton7.setBorderPainted(false);
-        jButton7.setContentAreaFilled(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        jButton7.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        jPanel4.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 130, 30));
+        enterCrearFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterCrearFac.setBorderPainted(false);
+        enterCrearFac.setContentAreaFilled(false);
+        enterCrearFac.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterCrearFac.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterCrearFac.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        jPanel4.add(enterCrearFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 130, 30));
 
         NuevaFactura.getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        jDesktopPane1.add(NuevaFactura);
+        jDesktopPane3.add(NuevaFactura);
         NuevaFactura.setBounds(245, 10, 710, 472);
 
-        NuevoTipo.setClosable(true);
-        NuevoTipo.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        NuevoTipo.setVisible(true);
+        NuevoProveedor.setClosable(true);
+        NuevoProveedor.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        NuevoProveedor.setVisible(true);
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mas (2).png"))); // NOI18N
-        jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Handshake_96px.png"))); // NOI18N
+        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
 
-        jLabel31.setBackground(new java.awt.Color(238, 112, 82));
-        jLabel31.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel31.setText("Nombre:");
-        jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+        jLabel33.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel33.setText("Nombre:");
+        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        jPanel3.add(TFnombreProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 100, -1));
 
-        jTextField14.setToolTipText("");
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+        enterProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
+        enterProv.setBorderPainted(false);
+        enterProv.setContentAreaFilled(false);
+        enterProv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterProv.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
+        enterProv.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
+        jPanel3.add(enterProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 80, 30));
+
+        NuevoProveedor.getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        jDesktopPane3.add(NuevoProveedor);
+        NuevoProveedor.setBounds(250, 50, 390, 250);
+
+        AnadirDetalle.setClosable(true);
+        AnadirDetalle.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        AnadirDetalle.setVisible(true);
+
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ListDetalles.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Fecha", "Precio", "Descripcion", "Partida", "Destino", "Duracion", "Cantidad"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        scroollListDetalles.setViewportView(ListDetalles);
+
+        jPanel8.add(scroollListDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 470, 237));
+
+        jLabel34.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel34.setText("Cantidad: ");
+        jPanel8.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+
+        TFcantidadDetalle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
+                TFcantidadDetalleActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 130, -1));
+        jPanel8.add(TFcantidadDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 70, -1));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
-        jButton5.setBorderPainted(false);
-        jButton5.setContentAreaFilled(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        jButton5.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 80, 30));
+        enterDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterDetalles.setBorderPainted(false);
+        enterDetalles.setContentAreaFilled(false);
+        enterDetalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterDetalles.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterDetalles.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        jPanel8.add(enterDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 130, 30));
 
-        NuevoTipo.getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+        AnadirDetalle.getContentPane().add(jPanel8, java.awt.BorderLayout.CENTER);
 
-        jDesktopPane1.add(NuevoTipo);
-        NuevoTipo.setBounds(250, 50, 390, 240);
+        jDesktopPane3.add(AnadirDetalle);
+        AnadirDetalle.setBounds(250, 50, 500, 332);
 
-        NuevoProducto.setClosable(true);
-        NuevoProducto.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        NuevoProducto.setVisible(true);
-
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregarPro.png"))); // NOI18N
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 100, 120));
-
-        jLabel22.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel22.setText("Fecha:");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
-
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 80, -1));
-
-        jLabel23.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel23.setText("Precio:");
-        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
-
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 80, -1));
-
-        jLabel24.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel24.setText("Cantidad:");
-        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
-
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 80, -1));
-
-        jLabel25.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel25.setText("Descripcion:");
-        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 150, 50));
-
-        jLabel26.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel26.setText("Destino:");
-        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, -1));
-
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 80, -1));
-
-        jLabel27.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel27.setText("Partida:");
-        jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
-
-        jTextField12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField12ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 80, -1));
-
-        jLabel28.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel28.setText("Tipo:");
-        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
-
-        jTextField13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField13ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 80, -1));
-
-        jLabel29.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel29.setText("Duracion:");
-        jPanel1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 80, -1));
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 80, 30));
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mas(plus).png"))); // NOI18N
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mas(plus)Off.png"))); // NOI18N
-        jButton4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mas(plus)Off.png"))); // NOI18N
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 30, 20));
-
-        NuevoProducto.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
-
-        jDesktopPane1.add(NuevoProducto);
-        NuevoProducto.setBounds(250, 50, 540, 362);
-
-        NuevoCliente.setClosable(true);
-        NuevoCliente.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        NuevoCliente.setVisible(true);
-
-        JPNuevoCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_User_96px_2.png"))); // NOI18N
-        JPNuevoCliente.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel9.setText("Identificacion: ");
-        JPNuevoCliente.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 106, -1, -1));
-        JPNuevoCliente.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 90, -1));
-
-        jLabel15.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel15.setText("Nombre: ");
-        JPNuevoCliente.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-        JPNuevoCliente.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 90, -1));
-
-        jLabel16.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel16.setText("Apellido: ");
-        JPNuevoCliente.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-        JPNuevoCliente.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 90, -1));
-
-        jLabel17.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel17.setText("Calle Pricipal: ");
-        JPNuevoCliente.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, 20));
-
-        jLabel18.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel18.setText("Calle Secundaria: ");
-        JPNuevoCliente.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, 20));
-
-        jLabel19.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel19.setText("Telefono: ");
-        JPNuevoCliente.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, 20));
-        JPNuevoCliente.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 90, -1));
-        JPNuevoCliente.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 130, -1));
-        JPNuevoCliente.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 130, -1));
-        JPNuevoCliente.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 130, -1));
-
-        jLabel20.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel20.setText("Email: ");
-        JPNuevoCliente.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        jButton2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        JPNuevoCliente.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 120, 30));
-
-        NuevoCliente.getContentPane().add(JPNuevoCliente, java.awt.BorderLayout.CENTER);
-
-        jDesktopPane1.add(NuevoCliente);
-        NuevoCliente.setBounds(250, 50, 550, 310);
-
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
+        getContentPane().add(jDesktopPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void miniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miniMouseClicked
-        setState(PrincipalAd.ICONIFIED);
-    }//GEN-LAST:event_miniMouseClicked
+    private void TFcantidadDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFcantidadDetalleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFcantidadDetalleActionPerformed
+
+    private void agregarDetallesFacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarDetallesFacMouseClicked
+        AnadirDetalle.setVisible(true);
+    }//GEN-LAST:event_agregarDetallesFacMouseClicked
+
+    private void JTnombreTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTnombreTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTnombreTipoActionPerformed
+
+    private void addTipoCrearProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addTipoCrearProductoMouseClicked
+        NuevoTipo.setVisible(true);
+    }//GEN-LAST:event_addTipoCrearProductoMouseClicked
+
+    private void tipoCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoCrearProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoCrearProductoActionPerformed
+
+    private void duracionCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duracionCrearProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_duracionCrearProductoActionPerformed
+
+    private void partidaCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partidaCrearProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_partidaCrearProductoActionPerformed
+
+    private void destinoCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destinoCrearProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_destinoCrearProductoActionPerformed
+
+    private void cantidadCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadCrearProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cantidadCrearProductoActionPerformed
+
+    private void precioCrearFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioCrearFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_precioCrearFacturaActionPerformed
+
+    private void fechaCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaCrearProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaCrearProductoActionPerformed
+
+    private void enterEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterEditarPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_enterEditarPerfilActionPerformed
+
+    private void enterEditarPerfil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterEditarPerfil1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_enterEditarPerfil1ActionPerformed
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         setVisible(false);
         Login log=new Login();
         log.setVisible(true);
     }//GEN-LAST:event_closeMouseClicked
+
+    private void miniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miniMouseClicked
+        setState(PrincipalAd.ICONIFIED);
+    }//GEN-LAST:event_miniMouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        NuevoProducto.setVisible(true);
+    }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        NuevoProveedor.setVisible(true);
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        NuevaFactura.setVisible(true);
+    }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         int op=JOptionPane.showConfirmDialog(null, "Desea cerrar secion");
@@ -919,85 +1823,49 @@ public class PrincipalAd extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        System.out.println("registrarCliente");
+        NuevoCliente.setVisible(true);
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        CancelarFactura2.setVisible(true);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        EditarPerfil.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        ModificarCliente.setVisible(true);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         if(cent==true){
             for(int i=-180;i<=0;i+=1){
-                JPObcionesControl.setBounds(i, 0, 230, 500);
-                jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Next_page_64px_1 - copia (2).png")));
+                JPObcionesControl2.setBounds(i, 0, 230, 500);
+                jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Next_page_64px_1 - copia (2).png")));
                 repaint();
                 cent=false;
             }
         }
         else if(cent==false){
             for(int i=0;i>=-180;i-=1){
-                JPObcionesControl.setBounds(i, 0, 230, 500);
-                jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Next_page_64px_1.png")));
+                JPObcionesControl2.setBounds(i, 0, 230, 500);
+                jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Next_page_64px_1.png")));
                 repaint();
                 cent=true;
             }
         }
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        System.out.println("registrarCliente");
-        NuevoCliente.setVisible(true);
-    }//GEN-LAST:event_jLabel7MouseClicked
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        RegistrarStock.setVisible(true);
+    }//GEN-LAST:event_jLabel11MouseClicked
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
-
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
-
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
-
-    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField12ActionPerformed
-
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        NuevoTipo.setVisible(true);
-    }//GEN-LAST:event_jButton4MouseClicked
-
-    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-        NuevoProducto.setVisible(true);
-    }//GEN-LAST:event_jLabel13MouseClicked
-
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14ActionPerformed
-
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        NuevoProveedor.setVisible(true);
-    }//GEN-LAST:event_jLabel12MouseClicked
-
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        NuevaFactura.setVisible(true);
-    }//GEN-LAST:event_jLabel10MouseClicked
-
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
-
-    private void jLabel35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel35MouseClicked
-        AnadirDetalle.setVisible(true);
-    }//GEN-LAST:event_jLabel35MouseClicked
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        EditarPerfilFilUs.setVisible(true);
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1039,37 +1907,102 @@ public class PrincipalAd extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JInternalFrame AnadirDetalle;
-    private javax.swing.JPanel JPBackGroung;
+    private javax.swing.JInternalFrame CancelarFactura2;
+    private javax.swing.JPanel DatosEmpresaCancelFac2;
+    private javax.swing.JPanel DatosUsuarioCancelFac;
+    private javax.swing.JInternalFrame EditarPerfil;
+    private javax.swing.JInternalFrame EditarPerfilFilUs;
+    private javax.swing.JPanel JPBackGroung2;
     private javax.swing.JPanel JPNuevoCliente;
-    private javax.swing.JPanel JPObcionesControl;
+    private javax.swing.JPanel JPObcionesControl2;
+    private javax.swing.JTextField JTnombreTipo;
+    private javax.swing.JTable ListDetalles;
+    private javax.swing.JInternalFrame ModificarCliente;
     private javax.swing.JInternalFrame NuevaFactura;
     private javax.swing.JInternalFrame NuevoCliente;
     private javax.swing.JInternalFrame NuevoProducto;
     private javax.swing.JInternalFrame NuevoProveedor;
     private javax.swing.JInternalFrame NuevoTipo;
-    private javax.swing.JButton close;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JInternalFrame RegistrarStock;
+    private javax.swing.JTextField TFApellifoEditarPerfil;
+    private javax.swing.JTextField TFApellifoEditarPerfilUs;
+    private javax.swing.JTextField TFCallePrinEditarPerfil;
+    private javax.swing.JTextField TFCallePrinEditarPerfilUs;
+    private javax.swing.JTextField TFCallePrinModificarCliente;
+    private javax.swing.JTextField TFCalleSecuEditarPerfil;
+    private javax.swing.JTextField TFCalleSecuEditarPerfilUs;
+    private javax.swing.JTextField TFCalleSecunModificarCliente;
+    private javax.swing.JTextField TFCedulaEditarPerfil;
+    private javax.swing.JTextField TFCedulaEditarPerfilUs;
+    private javax.swing.JTextField TFEmailEditarPerfil;
+    private javax.swing.JTextField TFEmailEditarPerfilUs;
+    private javax.swing.JTextField TFNickNameEditarPerfil;
+    private javax.swing.JTextField TFNickNameEditarPerfilUs;
+    private javax.swing.JTextField TFNombreEditarPerfil;
+    private javax.swing.JTextField TFNombreEditarPerfilUs;
+    private javax.swing.JPasswordField TFPasswordEditarPerfil;
+    private javax.swing.JPasswordField TFPasswordEditarPerfilUs;
+    private javax.swing.JTextField TFTelefonoEditarPerfil;
+    private javax.swing.JTextField TFTelefonoEditarPerfilUs;
+    private javax.swing.JTextField TFTelefonoModificarCliente;
+    private javax.swing.JTextField TFapellidoModificarCliente;
+    private javax.swing.JTextField TFcantidadDetalle;
+    private javax.swing.JTextField TFcantidadRegistrarStock;
+    private javax.swing.JTextField TFemailModificarCliente;
+    private javax.swing.JTextField TFidentificacionModificarCliente;
+    private javax.swing.JTextField TFnombreModificarCliente;
+    private javax.swing.JTextField TFnombreProv;
+    private javax.swing.JPanel TotalesCancelFac;
+    private javax.swing.JButton addTipoCrearProducto;
+    private javax.swing.JLabel agregarDetallesFac;
+    private javax.swing.JTextField apellidoCrearCliente;
+    private javax.swing.JLabel buscarCICrearFactura;
+    private javax.swing.JLabel buscarIDCabCancelFac2;
+    private javax.swing.JLabel buscarPerfilCIUMUS;
+    private javax.swing.JTextField callePrinCrearCliente;
+    private javax.swing.JTextField callesecunCrearCliente;
+    private javax.swing.JTextField cantidadCrearProducto;
+    private javax.swing.JLabel ciCancelFAc;
+    private javax.swing.JTextField ciCrearFactura;
+    private javax.swing.JButton close2;
+    private javax.swing.JPanel datosEmpresaCancelFac;
+    private javax.swing.JPanel datosUsuarioCancelFac;
+    private javax.swing.JTextArea descripcionCrearProducto;
+    private javax.swing.JTextField destinoCrearProducto;
+    private javax.swing.JTable detallesCancelFac2;
+    private javax.swing.JTable detallesFac;
+    private javax.swing.JLabel direccionCancelFAc;
+    private javax.swing.JLabel direccionCrearFactura;
+    private javax.swing.JTextField duracionCrearProducto;
+    private javax.swing.JLabel emailCancelFac;
+    private javax.swing.JTextField emailCrearCliente;
+    private javax.swing.JLabel emailCrearFactura;
+    private javax.swing.JButton enterCancelFac;
+    private javax.swing.JButton enterCrearCliente;
+    private javax.swing.JButton enterCrearFac;
+    private javax.swing.JButton enterDetalles;
+    private javax.swing.JButton enterEditarPerfil;
+    private javax.swing.JButton enterEditarPerfil1;
+    private javax.swing.JButton enterModificarCliente;
+    private javax.swing.JButton enterProv;
+    private javax.swing.JButton enterRegistrarStock;
+    private javax.swing.JButton enterTipo;
+    private javax.swing.JLabel fechaCancelFac;
+    private javax.swing.JLabel fechaCrearFactura;
+    private javax.swing.JTextField fechaCrearProducto;
+    private javax.swing.JLabel fechaRegistrarStock;
+    private javax.swing.JTextField idCabCancelFac2;
+    private javax.swing.JTextField identificacionCrearCliente;
+    private javax.swing.JLabel ivaCancelFac;
+    private javax.swing.JLabel ivaCrearFac;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JDesktopPane jDesktopPane3;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1080,20 +2013,66 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1102,27 +2081,10 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel labelID;
     private javax.swing.JLabel labelID1;
     private javax.swing.JLabel labelID10;
@@ -1130,27 +2092,55 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JLabel labelID12;
     private javax.swing.JLabel labelID13;
     private javax.swing.JLabel labelID2;
+    private javax.swing.JLabel labelID20;
+    private javax.swing.JLabel labelID21;
+    private javax.swing.JLabel labelID22;
+    private javax.swing.JLabel labelID23;
+    private javax.swing.JLabel labelID24;
+    private javax.swing.JLabel labelID25;
+    private javax.swing.JLabel labelID26;
+    private javax.swing.JLabel labelID27;
+    private javax.swing.JLabel labelID28;
     private javax.swing.JLabel labelID3;
+    private javax.swing.JLabel labelID35;
+    private javax.swing.JLabel labelID36;
+    private javax.swing.JLabel labelID37;
+    private javax.swing.JLabel labelID38;
+    private javax.swing.JLabel labelID39;
     private javax.swing.JLabel labelID4;
+    private javax.swing.JLabel labelID40;
     private javax.swing.JLabel labelID5;
     private javax.swing.JLabel labelID6;
     private javax.swing.JLabel labelID7;
     private javax.swing.JLabel labelID8;
     private javax.swing.JLabel labelID9;
-    private javax.swing.JLabel labelIDIN1;
     private javax.swing.JLabel labelIDIN11;
-    private javax.swing.JLabel labelIDIN12;
     private javax.swing.JLabel labelIDIN13;
-    private javax.swing.JLabel labelIDIN14;
-    private javax.swing.JLabel labelIDIN15;
     private javax.swing.JLabel labelIDIN2;
-    private javax.swing.JLabel labelIDIN3;
-    private javax.swing.JLabel labelIDIN4;
-    private javax.swing.JLabel labelIDIN5;
-    private javax.swing.JLabel labelIDIN6;
+    private javax.swing.JLabel labelIDIN24;
+    private javax.swing.JLabel labelIDIN25;
+    private javax.swing.JLabel labelIDIN26;
+    private javax.swing.JLabel labelIDIN27;
     private javax.swing.JLabel labelIDIN7;
     private javax.swing.JLabel labelIDIN8;
     private javax.swing.JLabel labelIDIN9;
-    private javax.swing.JButton mini;
+    private javax.swing.JButton mini2;
+    private javax.swing.JLabel nombreCancelFac;
+    private javax.swing.JTextField nombreCrearCliente;
+    private javax.swing.JLabel nombreCrearFactura;
+    private javax.swing.JTextField partidaCrearProducto;
+    private javax.swing.JTextField precioCrearFactura;
+    private javax.swing.JComboBox<String> proveedorescomboBox;
+    private javax.swing.JScrollPane scrollDetallesCancelFac2;
+    private javax.swing.JScrollPane scrollDetallesFac;
+    private javax.swing.JScrollPane scroollListDetalles;
+    private javax.swing.JLabel subtotalCancelFac;
+    private javax.swing.JLabel subtotalCrearFac;
+    private javax.swing.JLabel telefonoCancelFac;
+    private javax.swing.JTextField telefonoCrearCliente;
+    private javax.swing.JLabel telefonoCrearFactura;
+    private javax.swing.JComboBox<String> tipoCrearProducto;
+    private javax.swing.JLabel totalCancelFac;
+    private javax.swing.JLabel totalCrearFac;
     // End of variables declaration//GEN-END:variables
 }
