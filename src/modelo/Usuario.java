@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  * @author ZD28 JOHN HENRY CHIQUI
  * @version 1.0
@@ -17,7 +19,7 @@ public class Usuario extends Persona{
     private String nickName;
     private String password;
     private char rol;
-    //private listFactCab ArrrayList<>
+    private ArrayList<FacturaCabecera> listFacCab;
     
     // Constructor de la clase Usuario para una instancia sin paramaetros
     public Usuario(){
@@ -78,8 +80,4 @@ public class Usuario extends Persona{
         return super.toString().concat("Usuario{" + "usuarioId=" + usuarioId + ", nickName=" + nickName + ", password=" + password + ", rol=" + rol + '}');
     }
 
-    
-    
-    
-    
 }
