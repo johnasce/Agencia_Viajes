@@ -128,6 +128,11 @@ class Producto {
     public void setRegistroStock(ArrayList<RegistroStock> registroStock) {
         this.registroStock = registroStock;
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "proID=" + proID + ", proFecha=" + proFecha + ", precio=" + precio + ", cantidad=" + cantidad + ", descripcion=" + descripcion + ", lugDestino=" + lugDestino + ", lugPartida=" + lugPartida + ", duracion=" + duracion + ", tipo=" + tipo + ", registroStock=" + registroStock + '}';
+    }
     
     
     

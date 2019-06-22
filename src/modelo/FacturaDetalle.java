@@ -76,4 +76,10 @@ public class FacturaDetalle {
         this.producto = producto;
     }
 
+    @Override
+    public String toString() {
+        return "FacturaDetalle{" + "faDetalleID=" + faDetalleID + ", cantidad=" + cantidad + ", subtotal=" + subtotal + ", precioServ=" + precioServ + ", producto=" + producto + '}';
+    }
+
+    
 }

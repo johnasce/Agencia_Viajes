@@ -37,5 +37,11 @@ public class Cliente extends Persona{
     public void setClienteId(int clienteId) {
         this.clienteId = clienteId;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "clienteId=" + clienteId + '}';
+    }
+    
     
 }
