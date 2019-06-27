@@ -5,6 +5,8 @@
  */
 package vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author i7 MAX GAMER
@@ -112,11 +114,16 @@ public class Login extends javax.swing.JFrame {
         String nickname=TFUserLogin.getText();
         if(nickname.equalsIgnoreCase("us")){
             pU.setVisible(true);
+            this.setVisible(false);
         }
         else if(nickname.equalsIgnoreCase("admin")){
             pA.setVisible(true);
+            this.setVisible(false);
         }
-        this.setVisible(false);
+        else{
+            JOptionPane.showMessageDialog(null, "El usuario no existe");
+        }
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
