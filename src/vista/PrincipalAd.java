@@ -31,6 +31,11 @@ public class PrincipalAd extends javax.swing.JFrame {
         EditarPerfil.setVisible(false);
         EditarPerfilFilUs.setVisible(false);
         ModificarProducto.setVisible(false);
+        panelProductos.setVisible(false);
+        panelClientes.setVisible(false);
+        panelVentas.setVisible(false);
+        jLabel92.setVisible(false);
+        jLabel94.setVisible(false);
     }
 
     /**
@@ -45,18 +50,31 @@ public class PrincipalAd extends javax.swing.JFrame {
         jDesktopPane3 = new javax.swing.JDesktopPane();
         JPObcionesControl2 = new javax.swing.JPanel();
         jLabel85 = new javax.swing.JLabel();
-        jLabel86 = new javax.swing.JLabel();
         jLabel87 = new javax.swing.JLabel();
-        jLabel88 = new javax.swing.JLabel();
-        jLabel89 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        jLabel90 = new javax.swing.JLabel();
         jLabel91 = new javax.swing.JLabel();
         jLabel92 = new javax.swing.JLabel();
-        jLabel93 = new javax.swing.JLabel();
         jLabel94 = new javax.swing.JLabel();
-        jLabel95 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
         jLabel96 = new javax.swing.JLabel();
+        JPBackGroung2 = new javax.swing.JPanel();
+        mini2 = new javax.swing.JButton();
+        close2 = new javax.swing.JButton();
+        panelVentas = new javax.swing.JPanel();
+        jLabel90 = new javax.swing.JLabel();
+        jLabel88 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        panelClientes = new javax.swing.JPanel();
+        jLabel89 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        jLabel73 = new javax.swing.JLabel();
+        panelProductos = new javax.swing.JPanel();
+        jLabel95 = new javax.swing.JLabel();
+        jLabel93 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel97 = new javax.swing.JLabel();
         EditarPerfilFilUs = new javax.swing.JInternalFrame();
         jPanel11 = new javax.swing.JPanel();
         jLabel59 = new javax.swing.JLabel();
@@ -84,10 +102,6 @@ public class PrincipalAd extends javax.swing.JFrame {
         buscarPerfilCIUMUS = new javax.swing.JLabel();
         btnEliminarModificarProducto2 = new javax.swing.JButton();
         jLabel71 = new javax.swing.JLabel();
-        JPBackGroung2 = new javax.swing.JPanel();
-        mini2 = new javax.swing.JButton();
-        close2 = new javax.swing.JButton();
-        jLabel97 = new javax.swing.JLabel();
         ModificarCliente = new javax.swing.JInternalFrame();
         jPanel6 = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
@@ -322,17 +336,6 @@ public class PrincipalAd extends javax.swing.JFrame {
         });
         JPObcionesControl2.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, -1));
 
-        jLabel86.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel86.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel86.setText("Modificar Cliente");
-        jLabel86.setToolTipText("");
-        jLabel86.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-        JPObcionesControl2.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 20));
-
         jLabel87.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel87.setForeground(new java.awt.Color(255, 51, 0));
         jLabel87.setText("Editar Perfil");
@@ -343,28 +346,6 @@ public class PrincipalAd extends javax.swing.JFrame {
             }
         });
         JPObcionesControl2.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, 20));
-
-        jLabel88.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel88.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel88.setText("Cancelar factura");
-        jLabel88.setToolTipText("");
-        jLabel88.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
-            }
-        });
-        JPObcionesControl2.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 20));
-
-        jLabel89.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel89.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel89.setText("Registrar Cliente");
-        jLabel89.setToolTipText("");
-        jLabel89.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
-            }
-        });
-        JPObcionesControl2.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 20));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Sign_Out_32px.png"))); // NOI18N
         jButton4.setBorder(null);
@@ -382,6 +363,106 @@ public class PrincipalAd extends javax.swing.JFrame {
         });
         JPObcionesControl2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
 
+        jLabel91.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel91.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel91.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/stock.png"))); // NOI18N
+        jLabel91.setText("Registrar Stock");
+        jLabel91.setToolTipText("");
+        jLabel91.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        JPObcionesControl2.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+
+        jLabel92.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel92.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel92.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/provvv.png"))); // NOI18N
+        jLabel92.setText("Registrar Proveedor");
+        jLabel92.setToolTipText("");
+        jLabel92.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        JPObcionesControl2.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, 40));
+
+        jLabel94.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel94.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel94.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracionDef.png"))); // NOI18N
+        jLabel94.setText("Modificar Perfil Usuarios");
+        jLabel94.setToolTipText("");
+        jLabel94.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        JPObcionesControl2.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, 40));
+
+        jLabel28.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/money.png"))); // NOI18N
+        jLabel28.setText("Ventas");
+        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel28MouseClicked(evt);
+            }
+        });
+        JPObcionesControl2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        jLabel74.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel74.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clientesDef.png"))); // NOI18N
+        jLabel74.setText("Clientes");
+        jLabel74.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel74MouseClicked(evt);
+            }
+        });
+        JPObcionesControl2.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        jLabel76.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/compras.png"))); // NOI18N
+        jLabel76.setText("Productos");
+        jLabel76.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel76MouseClicked(evt);
+            }
+        });
+        JPObcionesControl2.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 90, -1));
+
+        jLabel96.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prinladoizq.png"))); // NOI18N
+        JPObcionesControl2.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 500));
+
+        jDesktopPane3.add(JPObcionesControl2);
+        JPObcionesControl2.setBounds(-180, 0, 230, 500);
+
+        JPBackGroung2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        mini2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Expand_Arrow_32px.png"))); // NOI18N
+        mini2.setBorder(null);
+        mini2.setBorderPainted(false);
+        mini2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mini2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miniMouseClicked(evt);
+            }
+        });
+        JPBackGroung2.add(mini2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 20, 20));
+
+        close2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Delete_32px.png"))); // NOI18N
+        close2.setBorder(null);
+        close2.setBorderPainted(false);
+        close2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        close2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeMouseClicked(evt);
+            }
+        });
+        JPBackGroung2.add(close2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, 20));
+
+        panelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel90.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel90.setForeground(new java.awt.Color(255, 51, 0));
         jLabel90.setText("Crear factura");
@@ -391,51 +472,54 @@ public class PrincipalAd extends javax.swing.JFrame {
                 jLabel10MouseClicked(evt);
             }
         });
-        JPObcionesControl2.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 20));
+        panelVentas.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
 
-        jLabel91.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel91.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel91.setText("Registrar Stock");
-        jLabel91.setToolTipText("");
-        jLabel91.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel88.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel88.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel88.setText("Cancelar factura");
+        jLabel88.setToolTipText("");
+        jLabel88.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
+                jLabel6MouseClicked(evt);
             }
         });
-        JPObcionesControl2.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, 20));
+        panelVentas.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 20));
 
-        jLabel92.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel92.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel92.setText("Registrar Proveedor");
-        jLabel92.setToolTipText("");
-        jLabel92.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Capa 2.png"))); // NOI18N
+        panelVentas.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 60));
+
+        JPBackGroung2.add(panelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 150, 60));
+
+        panelClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel89.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel89.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel89.setText("Registrar Cliente");
+        jLabel89.setToolTipText("");
+        jLabel89.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
+                jLabel7MouseClicked(evt);
             }
         });
-        JPObcionesControl2.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, 20));
+        panelClientes.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
 
-        jLabel93.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel93.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel93.setText("Crear Producto");
-        jLabel93.setToolTipText("");
-        jLabel93.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel86.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel86.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel86.setText("Modificar Cliente");
+        jLabel86.setToolTipText("");
+        jLabel86.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel13MouseClicked(evt);
+                jLabel3MouseClicked(evt);
             }
         });
-        JPObcionesControl2.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 20));
+        panelClientes.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 20));
 
-        jLabel94.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel94.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel94.setText("Modificar Perfil Usuarios");
-        jLabel94.setToolTipText("");
-        jLabel94.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
-            }
-        });
-        JPObcionesControl2.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, 20));
+        jLabel73.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Capa 2.png"))); // NOI18N
+        panelClientes.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 60));
+
+        JPBackGroung2.add(panelClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 150, 60));
+
+        panelProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel95.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel95.setForeground(new java.awt.Color(255, 51, 0));
@@ -446,13 +530,31 @@ public class PrincipalAd extends javax.swing.JFrame {
                 jLabel95MouseClicked(evt);
             }
         });
-        JPObcionesControl2.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, 20));
+        panelProductos.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 20));
 
-        jLabel96.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prinladoizq.png"))); // NOI18N
-        JPObcionesControl2.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 500));
+        jLabel93.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel93.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel93.setText("Crear Producto");
+        jLabel93.setToolTipText("");
+        jLabel93.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
+        panelProductos.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
 
-        jDesktopPane3.add(JPObcionesControl2);
-        JPObcionesControl2.setBounds(-180, 0, 230, 500);
+        jLabel75.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Capa 2.png"))); // NOI18N
+        panelProductos.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 60));
+
+        JPBackGroung2.add(panelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, 60));
+
+        jLabel97.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel97.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel97.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoprin.png"))); // NOI18N
+        JPBackGroung2.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
+
+        jDesktopPane3.add(JPBackGroung2);
+        JPBackGroung2.setBounds(0, 0, 1000, 500);
 
         EditarPerfilFilUs.setClosable(true);
         EditarPerfilFilUs.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -562,38 +664,6 @@ public class PrincipalAd extends javax.swing.JFrame {
 
         jDesktopPane3.add(EditarPerfilFilUs);
         EditarPerfilFilUs.setBounds(250, 50, 500, 350);
-
-        JPBackGroung2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        mini2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Expand_Arrow_32px.png"))); // NOI18N
-        mini2.setBorder(null);
-        mini2.setBorderPainted(false);
-        mini2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        mini2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                miniMouseClicked(evt);
-            }
-        });
-        JPBackGroung2.add(mini2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 20, 20));
-
-        close2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Delete_32px.png"))); // NOI18N
-        close2.setBorder(null);
-        close2.setBorderPainted(false);
-        close2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        close2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                closeMouseClicked(evt);
-            }
-        });
-        JPBackGroung2.add(close2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, 20));
-
-        jLabel97.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel97.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel97.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoprin.png"))); // NOI18N
-        JPBackGroung2.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
-
-        jDesktopPane3.add(JPBackGroung2);
-        JPBackGroung2.setBounds(0, 0, 1000, 500);
 
         ModificarCliente.setClosable(true);
         ModificarCliente.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -1895,14 +1965,23 @@ public class PrincipalAd extends javax.swing.JFrame {
     }//GEN-LAST:event_miniMouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         NuevoProducto.setVisible(true);
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         NuevoProveedor.setVisible(true);
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         NuevaFactura.setVisible(true);
     }//GEN-LAST:event_jLabel10MouseClicked
 
@@ -1916,24 +1995,40 @@ public class PrincipalAd extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        System.out.println("registrarCliente");
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         NuevoCliente.setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         CancelarFactura2.setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         EditarPerfil.setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         ModificarCliente.setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         if(cent==true){
+            jLabel92.setVisible(true);
+            jLabel94.setVisible(true);
             for(int i=-180;i<=0;i+=1){
                 JPObcionesControl2.setBounds(i, 0, 230, 500);
                 jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Next_page_64px_1 - copia (2).png")));
@@ -1942,6 +2037,8 @@ public class PrincipalAd extends javax.swing.JFrame {
             }
         }
         else if(cent==false){
+            jLabel92.setVisible(false);
+            jLabel94.setVisible(false);
             for(int i=0;i>=-180;i-=1){
                 JPObcionesControl2.setBounds(i, 0, 230, 500);
                 jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Next_page_64px_1.png")));
@@ -1952,10 +2049,16 @@ public class PrincipalAd extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         RegistrarStock.setVisible(true);
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         EditarPerfilFilUs.setVisible(true);
     }//GEN-LAST:event_jLabel14MouseClicked
 
@@ -2028,8 +2131,29 @@ public class PrincipalAd extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jLabel95MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel95MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         ModificarProducto.setVisible(true);
     }//GEN-LAST:event_jLabel95MouseClicked
+
+    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
+        panelProductos.setVisible(false);
+        panelClientes.setVisible(false);
+        panelVentas.setVisible(true);
+    }//GEN-LAST:event_jLabel28MouseClicked
+
+    private void jLabel74MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel74MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(true);
+    }//GEN-LAST:event_jLabel74MouseClicked
+
+    private void jLabel76MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel76MouseClicked
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
+        panelProductos.setVisible(true);
+    }//GEN-LAST:event_jLabel76MouseClicked
 
     /**
      * @param args the command line arguments
@@ -2198,6 +2322,8 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
@@ -2247,6 +2373,10 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel86;
@@ -2324,6 +2454,9 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JLabel nombreCancelFac;
     private javax.swing.JTextField nombreCrearCliente;
     private javax.swing.JLabel nombreCrearFactura;
+    private javax.swing.JPanel panelClientes;
+    private javax.swing.JPanel panelProductos;
+    private javax.swing.JPanel panelVentas;
     private javax.swing.JComboBox<String> proveedorescomboBox;
     private javax.swing.JScrollPane scrollDetallesCancelFac2;
     private javax.swing.JScrollPane scrollDetallesFac;

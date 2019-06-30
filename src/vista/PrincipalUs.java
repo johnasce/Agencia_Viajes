@@ -30,6 +30,8 @@ public class PrincipalUs extends javax.swing.JFrame {
         RegistrarStock.setVisible(false);
         EditarPerfil.setVisible(false);
         EditarPerfilFilUs.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
     }
 
     /**
@@ -44,16 +46,23 @@ public class PrincipalUs extends javax.swing.JFrame {
         jDesktopPane3 = new javax.swing.JDesktopPane();
         JPObcionesControl2 = new javax.swing.JPanel();
         jLabel85 = new javax.swing.JLabel();
-        jLabel86 = new javax.swing.JLabel();
         jLabel87 = new javax.swing.JLabel();
-        jLabel88 = new javax.swing.JLabel();
-        jLabel89 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        jLabel90 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel96 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         JPBackGroung2 = new javax.swing.JPanel();
         mini2 = new javax.swing.JButton();
         close2 = new javax.swing.JButton();
+        panelVentas = new javax.swing.JPanel();
+        jLabel90 = new javax.swing.JLabel();
+        jLabel88 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        panelClientes = new javax.swing.JPanel();
+        jLabel89 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jLabel97 = new javax.swing.JLabel();
         ModificarCliente = new javax.swing.JInternalFrame();
         jPanel6 = new javax.swing.JPanel();
@@ -289,17 +298,6 @@ public class PrincipalUs extends javax.swing.JFrame {
         });
         JPObcionesControl2.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, -1));
 
-        jLabel86.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel86.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel86.setText("Modificar Cliente");
-        jLabel86.setToolTipText("");
-        jLabel86.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel86jLabel3MouseClicked(evt);
-            }
-        });
-        JPObcionesControl2.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 20));
-
         jLabel87.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel87.setForeground(new java.awt.Color(255, 51, 0));
         jLabel87.setText("Editar Perfil");
@@ -310,28 +308,6 @@ public class PrincipalUs extends javax.swing.JFrame {
             }
         });
         JPObcionesControl2.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, 20));
-
-        jLabel88.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel88.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel88.setText("Cancelar factura");
-        jLabel88.setToolTipText("");
-        jLabel88.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel88jLabel6MouseClicked(evt);
-            }
-        });
-        JPObcionesControl2.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 20));
-
-        jLabel89.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel89.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel89.setText("Registrar Cliente");
-        jLabel89.setToolTipText("");
-        jLabel89.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel89jLabel7MouseClicked(evt);
-            }
-        });
-        JPObcionesControl2.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 20));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Sign_Out_32px.png"))); // NOI18N
         jButton4.setBorder(null);
@@ -349,19 +325,34 @@ public class PrincipalUs extends javax.swing.JFrame {
         });
         JPObcionesControl2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
 
-        jLabel90.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel90.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel90.setText("Crear factura");
-        jLabel90.setToolTipText("");
-        jLabel90.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/money.png"))); // NOI18N
+        jLabel13.setText("Ventas");
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel90jLabel10MouseClicked(evt);
+                jLabel13MouseClicked(evt);
             }
         });
-        JPObcionesControl2.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 20));
+        JPObcionesControl2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clientesDef.png"))); // NOI18N
+        jLabel14.setText("Clientes");
+        jLabel14.setToolTipText("");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        JPObcionesControl2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         jLabel96.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prinladoizq.png"))); // NOI18N
         JPObcionesControl2.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 500));
+
+        jLabel22.setText("jLabel22");
+        JPObcionesControl2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, -1));
 
         jDesktopPane3.add(JPObcionesControl2);
         JPObcionesControl2.setBounds(-180, 0, 230, 500);
@@ -389,6 +380,64 @@ public class PrincipalUs extends javax.swing.JFrame {
             }
         });
         JPBackGroung2.add(close2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, 20));
+
+        panelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel90.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel90.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel90.setText("Crear factura");
+        jLabel90.setToolTipText("");
+        jLabel90.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel90jLabel10MouseClicked(evt);
+            }
+        });
+        panelVentas.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 20));
+
+        jLabel88.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel88.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel88.setText("Cancelar factura");
+        jLabel88.setToolTipText("");
+        jLabel88.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel88jLabel6MouseClicked(evt);
+            }
+        });
+        panelVentas.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 20));
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Capa 2.png"))); // NOI18N
+        panelVentas.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 60));
+
+        JPBackGroung2.add(panelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, 60));
+
+        panelClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel89.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel89.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel89.setText("Registrar Cliente");
+        jLabel89.setToolTipText("");
+        jLabel89.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel89jLabel7MouseClicked(evt);
+            }
+        });
+        panelClientes.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 20));
+
+        jLabel86.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel86.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel86.setText("Modificar Cliente");
+        jLabel86.setToolTipText("");
+        jLabel86.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel86jLabel3MouseClicked(evt);
+            }
+        });
+        panelClientes.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 20));
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Capa 2.png"))); // NOI18N
+        panelClientes.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 60));
+
+        JPBackGroung2.add(panelClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 150, 60));
 
         jLabel97.setBackground(new java.awt.Color(0, 0, 0));
         jLabel97.setForeground(new java.awt.Color(0, 0, 0));
@@ -1655,6 +1704,8 @@ public class PrincipalUs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel85jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel85jLabel4MouseClicked
+        panelClientes.setVisible(false);
+        panelVentas.setVisible(false);
         if(cent==true){
             for(int i=-180;i<=0;i+=1){
                 JPObcionesControl2.setBounds(i, 0, 230, 500);
@@ -1674,6 +1725,7 @@ public class PrincipalUs extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel85jLabel4MouseClicked
 
     private void jLabel86jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel86jLabel3MouseClicked
+        panelClientes.setVisible(false);
         ModificarCliente.setVisible(true);
     }//GEN-LAST:event_jLabel86jLabel3MouseClicked
 
@@ -1682,11 +1734,12 @@ public class PrincipalUs extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel87jLabel5MouseClicked
 
     private void jLabel88jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel88jLabel6MouseClicked
+        panelVentas.setVisible(false);
         CancelarFactura2.setVisible(true);
     }//GEN-LAST:event_jLabel88jLabel6MouseClicked
 
     private void jLabel89jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel89jLabel7MouseClicked
-        System.out.println("registrarCliente");
+        panelClientes.setVisible(false);
         NuevoCliente.setVisible(true);
     }//GEN-LAST:event_jLabel89jLabel7MouseClicked
 
@@ -1700,6 +1753,7 @@ public class PrincipalUs extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4jButton1MouseClicked
 
     private void jLabel90jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel90jLabel10MouseClicked
+        panelVentas.setVisible(false);
         NuevaFactura.setVisible(true);
     }//GEN-LAST:event_jLabel90jLabel10MouseClicked
 
@@ -1764,6 +1818,16 @@ public class PrincipalUs extends javax.swing.JFrame {
     private void agregarTipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarTipoMouseClicked
         NuevoTipo.setVisible(true);
     }//GEN-LAST:event_agregarTipoMouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        panelClientes.setVisible(false);
+        panelVentas.setVisible(true);
+    }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(true);
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1901,6 +1965,8 @@ public class PrincipalUs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1908,6 +1974,9 @@ public class PrincipalUs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -2023,6 +2092,8 @@ public class PrincipalUs extends javax.swing.JFrame {
     private javax.swing.JLabel nombreCancelFac;
     private javax.swing.JTextField nombreCrearCliente;
     private javax.swing.JLabel nombreCrearFactura;
+    private javax.swing.JPanel panelClientes;
+    private javax.swing.JPanel panelVentas;
     private javax.swing.JComboBox<String> proveedorescomboBox;
     private javax.swing.JScrollPane scrollDetallesCancelFac2;
     private javax.swing.JScrollPane scrollDetallesFac;
