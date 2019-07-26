@@ -15,6 +15,7 @@ public class PrincipalUs extends javax.swing.JFrame {
     boolean cent=true;
     /**
      * Creates new form PrincipalUs
+     * 1
      */
     public PrincipalUs() {
         initComponents();
