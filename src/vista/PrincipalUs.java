@@ -16,6 +16,7 @@ public class PrincipalUs extends javax.swing.JFrame {
     /**
      * Creates new form PrincipalUs
      * 1
+     * 2
      */
     public PrincipalUs() {
         initComponents();
