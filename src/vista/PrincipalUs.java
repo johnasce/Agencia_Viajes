@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author i7 MAX GAMER
+ * @author carlos peña
  */
 public class PrincipalUs extends javax.swing.JFrame {
     boolean cent=true;
