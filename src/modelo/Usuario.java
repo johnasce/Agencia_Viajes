@@ -15,18 +15,18 @@ import java.util.ArrayList;
 public class Usuario extends Persona{
     
     // declaracion de atributos de la clase Usuario
-    private String usuarioId;
+    private int usuarioId;
     private String nickName;
     private String password;
     private char rol;
-    private ArrayList<FacturaCabecera> listFacCab;
+    private char estado;
     
     // Constructor de la clase Usuario para una instancia sin paramaetros
     public Usuario(){
     }
     
     //Sobre carga de  Constructor de la clase Usuario con los atributos de clase
-    public Usuario(String usuarioId, String nickName, String password, char rol) {
+    public Usuario(int usuarioId, String nickName, String password, char rol) {
         this.usuarioId = usuarioId;
         this.nickName = nickName;
         this.password = password;
@@ -34,7 +34,7 @@ public class Usuario extends Persona{
     }
     
     // Constructor con los atributos de la superclase (Persona) y atributos e la subclase (Usuario)
-    public Usuario(String usuarioId, String nickName, String password, char rol, String identificacion, String nombre, String apellido, String callePrincipal, String calleSecundaria, String telefono, String emial) {
+    public Usuario(int usuarioId, String nickName, String password, char rol, String identificacion, String nombre, String apellido, String callePrincipal, String calleSecundaria, String telefono, String emial) {
         super(identificacion, nombre, apellido, callePrincipal, calleSecundaria, telefono, emial);
         this.usuarioId = usuarioId;
         this.nickName = nickName;
@@ -43,13 +43,23 @@ public class Usuario extends Persona{
     }
     
     // Setters y Getters para modificacion de atributos de clase
-    public String getUsuarioId() {
-        return usuarioId;
+
+    public void setEstado(char estado) {
+        this.estado = estado;
     }
 
-    public void setUsuarioId(String usuarioId) {
+    public char getEstado() {
+        return estado;
+    }
+
+    public void setUsuarioId(int usuarioId) {
         this.usuarioId = usuarioId;
     }
+
+    public int getUsuarioId() {
+        return usuarioId;
+    }
+    
 
     public String getNickName() {
         return nickName;

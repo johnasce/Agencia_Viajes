@@ -4,8 +4,53 @@
  * and open the template in the editor.
  */
 package vista;
-
+import controlador.Conexion;
+import controlador.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import modelo.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
+import java.net.URL;
+import java.io.IOException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Panel;
+import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 /**
  *
@@ -13,12 +58,39 @@ import javax.swing.JOptionPane;
  */
 public class PrincipalAd extends javax.swing.JFrame {
     boolean cent=true;
+    Conexion con=new Conexion();
+    DefaultTableModel productos=new DefaultTableModel();
+    DefaultTableModel detalles=new DefaultTableModel();
+    String nickName;
     /**
      * Creates new form Principal
      */
-    public PrincipalAd() {
+    public PrincipalAd(Conexion con,String nickname) {
         initComponents();
+        this.con=con;
         this.setLocationRelativeTo(null);
+        this.nickName=nickname;
+        productos.addColumn("ID");
+        productos.addColumn("FECHA");
+        productos.addColumn("PRECIO");
+        productos.addColumn("NOMBRE");
+        productos.addColumn("CANTIDAD");
+        productos.addColumn("DESCRIPCION");
+        productos.addColumn("PARTIDA");
+        productos.addColumn("DESTINO");
+        productos.addColumn("DURACION");
+        productos.addColumn("TIPO");
+        productos.addColumn("TIPOSERV");
+        ListDetalles.setModel(productos);
+        listProStock.setModel(productos);
+        detalles.addColumn("IDPRODUCTO");
+        detalles.addColumn("PRODUCTO");
+        detalles.addColumn("PRECIOUNI");
+        detalles.addColumn("CANTIDAD");
+        detalles.addColumn("PRESIOSERV");
+        detalles.addColumn("SUBTOTAL");
+        detallesFac.setModel(detalles);
+        detallesCancelFac2.setModel(detalles);
         NuevoCliente.setVisible(false);
         NuevoProducto.setVisible(false);
         NuevoTipo.setVisible(false);
@@ -36,6 +108,12 @@ public class PrincipalAd extends javax.swing.JFrame {
         panelVentas.setVisible(false);
         jLabel92.setVisible(false);
         jLabel94.setVisible(false);
+        recuperarTipos();
+        recuperarProveedores();
+    }
+
+    private PrincipalAd() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -75,140 +153,6 @@ public class PrincipalAd extends javax.swing.JFrame {
         jLabel93 = new javax.swing.JLabel();
         jLabel75 = new javax.swing.JLabel();
         jLabel97 = new javax.swing.JLabel();
-        EditarPerfilFilUs = new javax.swing.JInternalFrame();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel59 = new javax.swing.JLabel();
-        jLabel60 = new javax.swing.JLabel();
-        TFCedulaEditarPerfilUs = new javax.swing.JTextField();
-        jLabel61 = new javax.swing.JLabel();
-        TFNombreEditarPerfilUs = new javax.swing.JTextField();
-        jLabel62 = new javax.swing.JLabel();
-        TFApellifoEditarPerfilUs = new javax.swing.JTextField();
-        jLabel63 = new javax.swing.JLabel();
-        TFCallePrinEditarPerfilUs = new javax.swing.JTextField();
-        jLabel64 = new javax.swing.JLabel();
-        TFCalleSecuEditarPerfilUs = new javax.swing.JTextField();
-        jLabel65 = new javax.swing.JLabel();
-        TFTelefonoEditarPerfilUs = new javax.swing.JTextField();
-        jLabel66 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel67 = new javax.swing.JLabel();
-        TFEmailEditarPerfilUs = new javax.swing.JTextField();
-        jLabel68 = new javax.swing.JLabel();
-        jLabel69 = new javax.swing.JLabel();
-        TFNickNameEditarPerfilUs = new javax.swing.JTextField();
-        enterEditarPerfil1 = new javax.swing.JButton();
-        TFPasswordEditarPerfilUs = new javax.swing.JPasswordField();
-        buscarPerfilCIUMUS = new javax.swing.JLabel();
-        btnEliminarModificarProducto2 = new javax.swing.JButton();
-        jLabel71 = new javax.swing.JLabel();
-        ModificarCliente = new javax.swing.JInternalFrame();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        TFidentificacionModificarCliente = new javax.swing.JTextField();
-        jLabel45 = new javax.swing.JLabel();
-        TFnombreModificarCliente = new javax.swing.JTextField();
-        jLabel46 = new javax.swing.JLabel();
-        TFapellidoModificarCliente = new javax.swing.JTextField();
-        jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
-        TFTelefonoModificarCliente = new javax.swing.JTextField();
-        TFCalleSecunModificarCliente = new javax.swing.JTextField();
-        TFCallePrinModificarCliente = new javax.swing.JTextField();
-        TFemailModificarCliente = new javax.swing.JTextField();
-        jLabel50 = new javax.swing.JLabel();
-        enterModificarCliente = new javax.swing.JButton();
-        jLabel51 = new javax.swing.JLabel();
-        btnEliminarModificarProducto1 = new javax.swing.JButton();
-        ModificarProducto = new javax.swing.JInternalFrame();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        TfprecioModificarPro = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        TFcantidadModificarPro = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TADescripcionModificarPro = new javax.swing.JTextArea();
-        jLabel23 = new javax.swing.JLabel();
-        TFDestinoModificarPro = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        TFPartidaModificarPro = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        TFDuracionModificarPro = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        ComboItemsModificarPro = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        BTNAgregarItemModificarPro = new javax.swing.JButton();
-        btnEliminarModificarProducto = new javax.swing.JButton();
-        jLabel29 = new javax.swing.JLabel();
-        TFFechaModificarProducto = new javax.swing.JTextField();
-        jLabel70 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel72 = new javax.swing.JLabel();
-        NuevoProducto = new javax.swing.JInternalFrame();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        TFfechaCrearPro = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        TfprecioCrearPro = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        TFcantidadCrearPro = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TAdescripcionCrearPro = new javax.swing.JTextArea();
-        jLabel7 = new javax.swing.JLabel();
-        TFDestinoCrearPro = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        TFPartidaCrearPro = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        TFDuracionCRearPro = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        ComboTipos = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        agregarTipo = new javax.swing.JButton();
-        CancelarFactura2 = new javax.swing.JInternalFrame();
-        jPanel13 = new javax.swing.JPanel();
-        scrollDetallesCancelFac2 = new javax.swing.JScrollPane();
-        detallesCancelFac2 = new javax.swing.JTable();
-        DatosEmpresaCancelFac2 = new javax.swing.JPanel();
-        labelID35 = new javax.swing.JLabel();
-        labelIDIN13 = new javax.swing.JLabel();
-        labelID36 = new javax.swing.JLabel();
-        labelID37 = new javax.swing.JLabel();
-        labelIDIN24 = new javax.swing.JLabel();
-        labelIDIN25 = new javax.swing.JLabel();
-        labelID38 = new javax.swing.JLabel();
-        labelIDIN26 = new javax.swing.JLabel();
-        labelID39 = new javax.swing.JLabel();
-        labelIDIN27 = new javax.swing.JLabel();
-        idCabCancelFac2 = new javax.swing.JTextField();
-        labelID40 = new javax.swing.JLabel();
-        buscarIDCabCancelFac2 = new javax.swing.JLabel();
-        DatosUsuarioCancelFac = new javax.swing.JPanel();
-        labelID20 = new javax.swing.JLabel();
-        labelID21 = new javax.swing.JLabel();
-        labelID22 = new javax.swing.JLabel();
-        nombreCancelFac = new javax.swing.JLabel();
-        direccionCancelFAc = new javax.swing.JLabel();
-        labelID23 = new javax.swing.JLabel();
-        labelID24 = new javax.swing.JLabel();
-        emailCancelFac = new javax.swing.JLabel();
-        telefonoCancelFac = new javax.swing.JLabel();
-        labelID25 = new javax.swing.JLabel();
-        fechaCancelFac = new javax.swing.JLabel();
-        ciCancelFAc = new javax.swing.JLabel();
-        TotalesCancelFac = new javax.swing.JPanel();
-        labelID26 = new javax.swing.JLabel();
-        labelID27 = new javax.swing.JLabel();
-        labelID28 = new javax.swing.JLabel();
-        totalCancelFac = new javax.swing.JLabel();
-        ivaCancelFac = new javax.swing.JLabel();
-        subtotalCancelFac = new javax.swing.JLabel();
-        enterCancelFac = new javax.swing.JButton();
         NuevaFactura = new javax.swing.JInternalFrame();
         jPanel4 = new javax.swing.JPanel();
         scrollDetallesFac = new javax.swing.JScrollPane();
@@ -248,6 +192,174 @@ public class PrincipalAd extends javax.swing.JFrame {
         subtotalCrearFac = new javax.swing.JLabel();
         agregarDetallesFac = new javax.swing.JLabel();
         enterCrearFac = new javax.swing.JButton();
+        RegistrarStock = new javax.swing.JInternalFrame();
+        jPanel10 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listProStock = new javax.swing.JTable();
+        jLabel37 = new javax.swing.JLabel();
+        fechaRegistrarStock = new javax.swing.JLabel();
+        proveedorescomboBox = new javax.swing.JComboBox<>();
+        jLabel38 = new javax.swing.JLabel();
+        enterRegistrarStock = new javax.swing.JButton();
+        jLabel39 = new javax.swing.JLabel();
+        TFcantidadRegistrarStock = new javax.swing.JTextField();
+        AnadirDetalle = new javax.swing.JInternalFrame();
+        jPanel8 = new javax.swing.JPanel();
+        scroollListDetalles = new javax.swing.JScrollPane();
+        ListDetalles = new javax.swing.JTable();
+        jLabel34 = new javax.swing.JLabel();
+        TFcantidadDetalle = new javax.swing.JTextField();
+        enterDetalles = new javax.swing.JButton();
+        jLabel78 = new javax.swing.JLabel();
+        TFPresioServ = new javax.swing.JTextField();
+        ModificarProducto = new javax.swing.JInternalFrame();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        TfprecioModificarPro = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        TFcantidadModificarPro = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TADescripcionModificarPro = new javax.swing.JTextArea();
+        jLabel23 = new javax.swing.JLabel();
+        TFDestinoModificarPro = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        TFPartidaModificarPro = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        TFDuracionModificarPro = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        ComboItemsModificarPro = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        BTNAgregarItemModificarPro = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
+        TFFechaModificarProducto = new javax.swing.JTextField();
+        jLabel70 = new javax.swing.JLabel();
+        TFidProductoMod = new javax.swing.JTextField();
+        jLabel72 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        TFnombreModificarPro = new javax.swing.JTextField();
+        jLabel82 = new javax.swing.JLabel();
+        ComboTipoServModPro = new javax.swing.JComboBox<>();
+        NuevoProducto = new javax.swing.JInternalFrame();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        TFfechaCrearPro = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        TfprecioCrearPro = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        TFcantidadCrearPro = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TAdescripcionCrearPro = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        TFDestinoCrearPro = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        TFPartidaCrearPro = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        TFDuracionCRearPro = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        ComboTipos = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        agregarTipo = new javax.swing.JButton();
+        jLabel79 = new javax.swing.JLabel();
+        comboTipoServ = new javax.swing.JComboBox<>();
+        jLabel80 = new javax.swing.JLabel();
+        TFNombreNuevoPro = new javax.swing.JTextField();
+        CancelarFactura2 = new javax.swing.JInternalFrame();
+        jPanel13 = new javax.swing.JPanel();
+        scrollDetallesCancelFac2 = new javax.swing.JScrollPane();
+        detallesCancelFac2 = new javax.swing.JTable();
+        DatosEmpresaCancelFac2 = new javax.swing.JPanel();
+        labelID35 = new javax.swing.JLabel();
+        labelIDIN13 = new javax.swing.JLabel();
+        labelID36 = new javax.swing.JLabel();
+        labelID37 = new javax.swing.JLabel();
+        labelIDIN24 = new javax.swing.JLabel();
+        labelIDIN25 = new javax.swing.JLabel();
+        labelID38 = new javax.swing.JLabel();
+        labelIDIN26 = new javax.swing.JLabel();
+        labelID39 = new javax.swing.JLabel();
+        labelIDIN27 = new javax.swing.JLabel();
+        idCabCancelFac2 = new javax.swing.JTextField();
+        labelID40 = new javax.swing.JLabel();
+        buscarIDCabCancelFac2 = new javax.swing.JLabel();
+        DatosUsuarioCancelFac = new javax.swing.JPanel();
+        labelID20 = new javax.swing.JLabel();
+        labelID21 = new javax.swing.JLabel();
+        labelID22 = new javax.swing.JLabel();
+        nombreCancelFac = new javax.swing.JLabel();
+        direccionCancelFAc = new javax.swing.JLabel();
+        labelID23 = new javax.swing.JLabel();
+        labelID24 = new javax.swing.JLabel();
+        emailCancelFac = new javax.swing.JLabel();
+        telefonoCancelFac = new javax.swing.JLabel();
+        labelID25 = new javax.swing.JLabel();
+        fechaCancelFac = new javax.swing.JLabel();
+        ciCancelFAc = new javax.swing.JLabel();
+        TotalesCancelFac = new javax.swing.JPanel();
+        labelID26 = new javax.swing.JLabel();
+        labelID27 = new javax.swing.JLabel();
+        labelID28 = new javax.swing.JLabel();
+        totalCancelFac = new javax.swing.JLabel();
+        ivaCancelFac = new javax.swing.JLabel();
+        subtotalCancelFac = new javax.swing.JLabel();
+        enterCancelFac = new javax.swing.JButton();
+        ModificarCliente = new javax.swing.JInternalFrame();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        TFidentificacionModificarCliente = new javax.swing.JTextField();
+        jLabel45 = new javax.swing.JLabel();
+        TFnombreModificarCliente = new javax.swing.JTextField();
+        jLabel46 = new javax.swing.JLabel();
+        TFapellidoModificarCliente = new javax.swing.JTextField();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        TFTelefonoModificarCliente = new javax.swing.JTextField();
+        TFCalleSecunModificarCliente = new javax.swing.JTextField();
+        TFCallePrinModificarCliente = new javax.swing.JTextField();
+        TFemailModificarCliente = new javax.swing.JTextField();
+        jLabel50 = new javax.swing.JLabel();
+        enterModificarCliente = new javax.swing.JButton();
+        jLabel51 = new javax.swing.JLabel();
+        btnEliminarModificarProducto1 = new javax.swing.JButton();
+        EditarPerfilFilUs = new javax.swing.JInternalFrame();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        TFCedulaEditarPerfilUs = new javax.swing.JTextField();
+        jLabel61 = new javax.swing.JLabel();
+        TFNombreEditarPerfilUs = new javax.swing.JTextField();
+        jLabel62 = new javax.swing.JLabel();
+        TFApellifoEditarPerfilUs = new javax.swing.JTextField();
+        jLabel63 = new javax.swing.JLabel();
+        TFCallePrinEditarPerfilUs = new javax.swing.JTextField();
+        jLabel64 = new javax.swing.JLabel();
+        TFCalleSecuEditarPerfilUs = new javax.swing.JTextField();
+        jLabel65 = new javax.swing.JLabel();
+        TFTelefonoEditarPerfilUs = new javax.swing.JTextField();
+        jLabel66 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel67 = new javax.swing.JLabel();
+        TFEmailEditarPerfilUs = new javax.swing.JTextField();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        TFNickNameEditarPerfilUs = new javax.swing.JTextField();
+        enterEditarPerfil1 = new javax.swing.JButton();
+        TFPasswordEditarPerfilUs = new javax.swing.JPasswordField();
+        buscarPerfilCIUMUS = new javax.swing.JLabel();
+        btnEliminarModificarProducto2 = new javax.swing.JButton();
+        NuevoProveedor = new javax.swing.JInternalFrame();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        TFnombreProv = new javax.swing.JTextField();
+        enterProv = new javax.swing.JButton();
+        jLabel77 = new javax.swing.JLabel();
+        TFRucProveedor = new javax.swing.JTextField();
         EditarPerfil = new javax.swing.JInternalFrame();
         jPanel5 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
@@ -273,17 +385,6 @@ public class PrincipalAd extends javax.swing.JFrame {
         enterEditarPerfil = new javax.swing.JButton();
         TFPasswordEditarPerfil = new javax.swing.JPasswordField();
         jLabel58 = new javax.swing.JLabel();
-        RegistrarStock = new javax.swing.JInternalFrame();
-        jPanel10 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel37 = new javax.swing.JLabel();
-        fechaRegistrarStock = new javax.swing.JLabel();
-        proveedorescomboBox = new javax.swing.JComboBox<>();
-        jLabel38 = new javax.swing.JLabel();
-        enterRegistrarStock = new javax.swing.JButton();
-        jLabel39 = new javax.swing.JLabel();
-        TFcantidadRegistrarStock = new javax.swing.JTextField();
         NuevoCliente = new javax.swing.JInternalFrame();
         JPNuevoCliente = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -306,21 +407,8 @@ public class PrincipalAd extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        JTnombreTipo = new javax.swing.JTextField();
+        TFnombreTipo = new javax.swing.JTextField();
         enterTipo = new javax.swing.JButton();
-        NuevoProveedor = new javax.swing.JInternalFrame();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        TFnombreProv = new javax.swing.JTextField();
-        enterProv = new javax.swing.JButton();
-        AnadirDetalle = new javax.swing.JInternalFrame();
-        jPanel8 = new javax.swing.JPanel();
-        scroollListDetalles = new javax.swing.JScrollPane();
-        ListDetalles = new javax.swing.JTable();
-        jLabel34 = new javax.swing.JLabel();
-        TFcantidadDetalle = new javax.swing.JTextField();
-        enterDetalles = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -432,6 +520,11 @@ public class PrincipalAd extends javax.swing.JFrame {
         JPObcionesControl2.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 90, -1));
 
         jLabel96.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prinladoizq.png"))); // NOI18N
+        jLabel96.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel96MouseClicked(evt);
+            }
+        });
         JPObcionesControl2.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 500));
 
         jDesktopPane3.add(JPObcionesControl2);
@@ -549,211 +642,361 @@ public class PrincipalAd extends javax.swing.JFrame {
         JPBackGroung2.add(panelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, 60));
 
         jLabel97.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel97.setForeground(new java.awt.Color(0, 0, 0));
         jLabel97.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoprin.png"))); // NOI18N
+        jLabel97.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel97MouseDragged(evt);
+            }
+        });
+        jLabel97.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel97MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel97MousePressed(evt);
+            }
+        });
         JPBackGroung2.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         jDesktopPane3.add(JPBackGroung2);
         JPBackGroung2.setBounds(0, 0, 1000, 500);
 
-        EditarPerfilFilUs.setClosable(true);
-        EditarPerfilFilUs.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        EditarPerfilFilUs.setVisible(true);
+        NuevaFactura.setClosable(true);
+        NuevaFactura.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        NuevaFactura.setTitle("NuevaFactura");
+        NuevaFactura.setToolTipText("");
+        NuevaFactura.setVisible(true);
 
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_User_96px_Verde.png"))); // NOI18N
-        jPanel11.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
+        scrollDetallesFac.setViewportView(detallesFac);
 
-        jLabel60.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel60.setText("Cedula: ");
-        jPanel11.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 106, -1, -1));
-        jPanel11.add(TFCedulaEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 90, -1));
+        jPanel4.add(scrollDetallesFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 480, 220));
 
-        jLabel61.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel61.setText("Nombre: ");
-        jPanel11.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-        jPanel11.add(TFNombreEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 90, -1));
+        datosEmpresaCancelFac.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Empresa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
+        datosEmpresaCancelFac.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel62.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel62.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel62.setText("Apellido: ");
-        jPanel11.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-        jPanel11.add(TFApellifoEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 90, -1));
+        labelID1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID1.setText("RUC:");
+        datosEmpresaCancelFac.add(labelID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
-        jLabel63.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel63.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel63.setText("Calle Pricipal: ");
-        jPanel11.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, 20));
-        jPanel11.add(TFCallePrinEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 130, -1));
+        labelIDIN2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        labelIDIN2.setText("0159756347621");
+        datosEmpresaCancelFac.add(labelIDIN2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, 20));
 
-        jLabel64.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel64.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel64.setText("Calle Secundaria: ");
-        jPanel11.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, 20));
-        jPanel11.add(TFCalleSecuEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 130, -1));
+        labelID5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID5.setText("Nombre:");
+        datosEmpresaCancelFac.add(labelID5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, -1, -1));
 
-        jLabel65.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel65.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel65.setText("Telefono: ");
-        jPanel11.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, 20));
-        jPanel11.add(TFTelefonoEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 90, -1));
+        labelID6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID6.setText("Direccion:");
+        datosEmpresaCancelFac.add(labelID6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
 
-        jLabel66.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel66.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel66.setText("Calle Pricipal: ");
-        jPanel11.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, 20));
-        jPanel11.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 130, -1));
+        labelIDIN7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        labelIDIN7.setText("Agencia de viajes UPS");
+        datosEmpresaCancelFac.add(labelIDIN7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 150, 20));
 
-        jLabel67.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel67.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel67.setText("Email: ");
-        jPanel11.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
-        jPanel11.add(TFEmailEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 130, -1));
+        labelIDIN8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        labelIDIN8.setText("Av Gil  Ramires Davaloz");
+        datosEmpresaCancelFac.add(labelIDIN8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 150, 20));
 
-        jLabel68.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel68.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel68.setText("NickName: ");
-        jPanel11.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        labelID8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID8.setText("Email:");
+        datosEmpresaCancelFac.add(labelID8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, -1, -1));
 
-        jLabel69.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel69.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel69.setText("Password: ");
-        jPanel11.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
-        jPanel11.add(TFNickNameEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 90, -1));
+        labelIDIN9.setText("agenciaviajesups@gmail.com");
+        datosEmpresaCancelFac.add(labelIDIN9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, 20));
 
-        enterEditarPerfil1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
-        enterEditarPerfil1.setBorderPainted(false);
-        enterEditarPerfil1.setContentAreaFilled(false);
-        enterEditarPerfil1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterEditarPerfil1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        enterEditarPerfil1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        enterEditarPerfil1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enterEditarPerfil1ActionPerformed(evt);
+        labelID7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID7.setText("Telefono:");
+        datosEmpresaCancelFac.add(labelID7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, 20));
+
+        labelIDIN11.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        labelIDIN11.setText("0991039408");
+        datosEmpresaCancelFac.add(labelIDIN11, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 90, 20));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/loguitopequeño.png"))); // NOI18N
+        datosEmpresaCancelFac.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 150, 60));
+
+        jPanel4.add(datosEmpresaCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 700, 110));
+
+        datosUsuarioCancelFac.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
+        datosUsuarioCancelFac.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        buscarCICrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        buscarCICrearFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_2.png"))); // NOI18N
+        buscarCICrearFactura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarCICrearFacturaMouseClicked(evt);
             }
         });
-        jPanel11.add(enterEditarPerfil1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 110, 30));
-        jPanel11.add(TFPasswordEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 90, -1));
+        datosUsuarioCancelFac.add(buscarCICrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 29, 30, -1));
 
-        buscarPerfilCIUMUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_verde.png"))); // NOI18N
-        jPanel11.add(buscarPerfilCIUMUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
+        labelID9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID9.setText("C.I:");
+        labelID9.setToolTipText("");
+        datosUsuarioCancelFac.add(labelID9, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 29, -1, -1));
 
-        btnEliminarModificarProducto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DELETE_OFF_v.png"))); // NOI18N
-        btnEliminarModificarProducto2.setBorder(null);
-        btnEliminarModificarProducto2.setBorderPainted(false);
-        jPanel11.add(btnEliminarModificarProducto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 110, 30));
-        jPanel11.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 490, 340));
+        labelID10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID10.setText("Nombre:");
+        datosUsuarioCancelFac.add(labelID10, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 30, -1, -1));
 
-        javax.swing.GroupLayout EditarPerfilFilUsLayout = new javax.swing.GroupLayout(EditarPerfilFilUs.getContentPane());
-        EditarPerfilFilUs.getContentPane().setLayout(EditarPerfilFilUsLayout);
-        EditarPerfilFilUsLayout.setHorizontalGroup(
-            EditarPerfilFilUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EditarPerfilFilUsLayout.createSequentialGroup()
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        labelID11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID11.setText("Direccion:");
+        datosUsuarioCancelFac.add(labelID11, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 67, -1, -1));
+
+        nombreCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        datosUsuarioCancelFac.add(nombreCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 30, 160, 20));
+
+        direccionCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        direccionCrearFactura.setAutoscrolls(true);
+        datosUsuarioCancelFac.add(direccionCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 67, 163, 20));
+
+        labelID12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID12.setText("Telefono:");
+        datosUsuarioCancelFac.add(labelID12, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 29, -1, 20));
+
+        labelID13.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID13.setText("Email:");
+        datosUsuarioCancelFac.add(labelID13, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 68, -1, -1));
+
+        emailCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        datosUsuarioCancelFac.add(emailCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 67, 160, 20));
+
+        telefonoCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        datosUsuarioCancelFac.add(telefonoCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 29, 70, 20));
+
+        labelID.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID.setText("Fecha:");
+        datosUsuarioCancelFac.add(labelID, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 67, -1, -1));
+
+        fechaCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        datosUsuarioCancelFac.add(fechaCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 67, 64, 20));
+
+        ciCrearFactura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ciCrearFacturaKeyTyped(evt);
+            }
+        });
+        datosUsuarioCancelFac.add(ciCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 30, 58, -1));
+
+        jPanel4.add(datosUsuarioCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 700, 90));
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        labelID2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID2.setText("Subtotal:");
+
+        labelID3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID3.setText("IVA:");
+
+        labelID4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelID4.setText("Total:");
+
+        totalCrearFac.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        ivaCrearFac.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        subtotalCrearFac.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(labelID2)
+                        .addGap(14, 14, 14)
+                        .addComponent(subtotalCrearFac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(labelID3)
+                        .addGap(45, 45, 45)
+                        .addComponent(ivaCrearFac, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(labelID4)
+                        .addGap(34, 34, 34)
+                        .addComponent(totalCrearFac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        EditarPerfilFilUsLayout.setVerticalGroup(
-            EditarPerfilFilUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EditarPerfilFilUsLayout.createSequentialGroup()
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jDesktopPane3.add(EditarPerfilFilUs);
-        EditarPerfilFilUs.setBounds(250, 50, 500, 350);
-
-        ModificarCliente.setClosable(true);
-        ModificarCliente.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        ModificarCliente.setVisible(true);
-
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_User_96px_Verde.png"))); // NOI18N
-        jPanel6.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
-
-        jLabel44.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel44.setText("Identificacion: ");
-        jPanel6.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 106, -1, -1));
-        jPanel6.add(TFidentificacionModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 90, -1));
-
-        jLabel45.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel45.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel45.setText("Nombre: ");
-        jPanel6.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-        jPanel6.add(TFnombreModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 90, -1));
-
-        jLabel46.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel46.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel46.setText("Apellido: ");
-        jPanel6.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-        jPanel6.add(TFapellidoModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 90, -1));
-
-        jLabel47.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel47.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel47.setText("Calle Pricipal: ");
-        jPanel6.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, 20));
-
-        jLabel48.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel48.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel48.setText("Calle Secundaria: ");
-        jPanel6.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, 20));
-
-        jLabel49.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel49.setText("Telefono: ");
-        jPanel6.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, 20));
-        jPanel6.add(TFTelefonoModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 90, -1));
-        jPanel6.add(TFCalleSecunModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 130, -1));
-        jPanel6.add(TFCallePrinModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 130, -1));
-        jPanel6.add(TFemailModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 130, -1));
-
-        jLabel50.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel50.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel50.setText("Email: ");
-        jPanel6.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
-
-        enterModificarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
-        enterModificarCliente.setBorderPainted(false);
-        enterModificarCliente.setContentAreaFilled(false);
-        enterModificarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterModificarCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        enterModificarCliente.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        jPanel6.add(enterModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 130, 30));
-
-        jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_verde.png"))); // NOI18N
-        jPanel6.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
-
-        btnEliminarModificarProducto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DELETE_OFF_v.png"))); // NOI18N
-        btnEliminarModificarProducto1.setBorder(null);
-        btnEliminarModificarProducto1.setBorderPainted(false);
-        jPanel6.add(btnEliminarModificarProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 130, 30));
-
-        javax.swing.GroupLayout ModificarClienteLayout = new javax.swing.GroupLayout(ModificarCliente.getContentPane());
-        ModificarCliente.getContentPane().setLayout(ModificarClienteLayout);
-        ModificarClienteLayout.setHorizontalGroup(
-            ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
-            .addGroup(ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE))
-        );
-        ModificarClienteLayout.setVerticalGroup(
-            ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
-            .addGroup(ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ModificarClienteLayout.createSequentialGroup()
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelID2)
+                    .addComponent(subtotalCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelID3)
+                    .addComponent(ivaCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelID4)
+                    .addComponent(totalCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
-        jDesktopPane3.add(ModificarCliente);
-        ModificarCliente.setBounds(250, 50, 520, 340);
+        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, 100));
+
+        agregarDetallesFac.setForeground(new java.awt.Color(62, 150, 148));
+        agregarDetallesFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/CompraGRande.png"))); // NOI18N
+        agregarDetallesFac.setText("Agregar Detalle");
+        agregarDetallesFac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarDetallesFacMouseClicked(evt);
+            }
+        });
+        agregarDetallesFac.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                agregarDetallesFacKeyPressed(evt);
+            }
+        });
+        jPanel4.add(agregarDetallesFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
+
+        enterCrearFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Cear_ON_v.png"))); // NOI18N
+        enterCrearFac.setBorderPainted(false);
+        enterCrearFac.setContentAreaFilled(false);
+        enterCrearFac.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterCrearFac.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_OFF_v.png"))); // NOI18N
+        enterCrearFac.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_OFF_v.png"))); // NOI18N
+        enterCrearFac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterCrearFacMouseClicked(evt);
+            }
+        });
+        jPanel4.add(enterCrearFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 130, 30));
+
+        NuevaFactura.getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
+
+        jDesktopPane3.add(NuevaFactura);
+        NuevaFactura.setBounds(245, 10, 716, 474);
+
+        RegistrarStock.setClosable(true);
+        RegistrarStock.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        RegistrarStock.setTitle("RegistrarStock");
+        RegistrarStock.setVisible(true);
+        RegistrarStock.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+        listProStock.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jScrollPane3.setViewportView(listProStock);
+
+        jPanel10.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 510, 180));
+
+        jLabel37.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel37.setText("Proveedor: ");
+        jPanel10.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, -1, -1));
+        jPanel10.add(fechaRegistrarStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 80, 20));
+
+        jPanel10.add(proveedorescomboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 120, -1));
+
+        jLabel38.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel38.setText("Cantidad: ");
+        jPanel10.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
+
+        enterRegistrarStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_OFF.png"))); // NOI18N
+        enterRegistrarStock.setBorderPainted(false);
+        enterRegistrarStock.setContentAreaFilled(false);
+        enterRegistrarStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterRegistrarStock.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_ON.png"))); // NOI18N
+        enterRegistrarStock.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_ON.png"))); // NOI18N
+        enterRegistrarStock.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterRegistrarStockMouseClicked(evt);
+            }
+        });
+        jPanel10.add(enterRegistrarStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 120, 30));
+
+        jLabel39.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel39.setText("Fecha: ");
+        jPanel10.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        jPanel10.add(TFcantidadRegistrarStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 60, -1));
+
+        RegistrarStock.getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 570, 310));
+
+        jDesktopPane3.add(RegistrarStock);
+        RegistrarStock.setBounds(250, 50, 580, 346);
+
+        AnadirDetalle.setClosable(true);
+        AnadirDetalle.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        AnadirDetalle.setTitle("AñadirDetalle");
+        AnadirDetalle.setVisible(true);
+
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        scroollListDetalles.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+        ListDetalles.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        scroollListDetalles.setViewportView(ListDetalles);
+
+        jPanel8.add(scroollListDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 470, 237));
+
+        jLabel34.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel34.setText("Cantidad: ");
+        jPanel8.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        TFcantidadDetalle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFcantidadDetalleActionPerformed(evt);
+            }
+        });
+        TFcantidadDetalle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TFcantidadDetalleKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFcantidadDetalleKeyTyped(evt);
+            }
+        });
+        jPanel8.add(TFcantidadDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 70, -1));
+
+        enterDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Añadir_OFF_v.png"))); // NOI18N
+        enterDetalles.setBorderPainted(false);
+        enterDetalles.setContentAreaFilled(false);
+        enterDetalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterDetalles.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AÑADIR_On_v.png"))); // NOI18N
+        enterDetalles.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AÑADIR_On_v.png"))); // NOI18N
+        enterDetalles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterDetallesMouseClicked(evt);
+            }
+        });
+        jPanel8.add(enterDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 130, 30));
+
+        jLabel78.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel78.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel78.setText("Precio Servicio: ");
+        jPanel8.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 110, 19));
+
+        TFPresioServ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFPresioServActionPerformed(evt);
+            }
+        });
+        TFPresioServ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFPresioServKeyTyped(evt);
+            }
+        });
+        jPanel8.add(TFPresioServ, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 70, -1));
+
+        AnadirDetalle.getContentPane().add(jPanel8, java.awt.BorderLayout.CENTER);
+
+        jDesktopPane3.add(AnadirDetalle);
+        AnadirDetalle.setBounds(250, 50, 506, 324);
 
         ModificarProducto.setClosable(true);
         ModificarProducto.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        ModificarProducto.setTitle("ModificarProducto");
         ModificarProducto.setVisible(true);
 
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -771,6 +1014,11 @@ public class PrincipalAd extends javax.swing.JFrame {
                 TfprecioModificarProActionPerformed(evt);
             }
         });
+        TfprecioModificarPro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TfprecioModificarProKeyTyped(evt);
+            }
+        });
         jPanel9.add(TfprecioModificarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 80, -1));
 
         jLabel21.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -783,18 +1031,23 @@ public class PrincipalAd extends javax.swing.JFrame {
                 TFcantidadModificarProActionPerformed(evt);
             }
         });
+        TFcantidadModificarPro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFcantidadModificarProKeyTyped(evt);
+            }
+        });
         jPanel9.add(TFcantidadModificarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 80, -1));
 
         jLabel22.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(62, 150, 148));
         jLabel22.setText("Descripcion:");
-        jPanel9.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        jPanel9.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
         TADescripcionModificarPro.setColumns(20);
         TADescripcionModificarPro.setRows(5);
         jScrollPane2.setViewportView(TADescripcionModificarPro);
 
-        jPanel9.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 150, 50));
+        jPanel9.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 150, 50));
 
         jLabel23.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(62, 150, 148));
@@ -822,8 +1075,8 @@ public class PrincipalAd extends javax.swing.JFrame {
 
         jLabel25.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel25.setText("Tipo:");
-        jPanel9.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, -1, -1));
+        jLabel25.setText("Tipo Serv:");
+        jPanel9.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, -1, -1));
 
         TFDuracionModificarPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -837,7 +1090,11 @@ public class PrincipalAd extends javax.swing.JFrame {
         jLabel26.setText("Duracion:");
         jPanel9.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, -1));
 
-        ComboItemsModificarPro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboItemsModificarPro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ComboItemsModificarProMouseClicked(evt);
+            }
+        });
         ComboItemsModificarPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboItemsModificarProActionPerformed(evt);
@@ -845,13 +1102,18 @@ public class PrincipalAd extends javax.swing.JFrame {
         });
         jPanel9.add(ComboItemsModificarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 80, -1));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_OFF_v.png"))); // NOI18N
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        jButton2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        jPanel9.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 80, 30));
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
+        jButton2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jPanel9.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 110, 30));
 
         BTNAgregarItemModificarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mas(plus).png"))); // NOI18N
         BTNAgregarItemModificarPro.setBorder(null);
@@ -865,11 +1127,6 @@ public class PrincipalAd extends javax.swing.JFrame {
             }
         });
         jPanel9.add(BTNAgregarItemModificarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 30, 20));
-
-        btnEliminarModificarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DELETE_OFF_v.png"))); // NOI18N
-        btnEliminarModificarProducto.setBorder(null);
-        btnEliminarModificarProducto.setBorderPainted(false);
-        jPanel9.add(btnEliminarModificarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 110, 30));
 
         jLabel29.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(62, 150, 148));
@@ -888,36 +1145,75 @@ public class PrincipalAd extends javax.swing.JFrame {
         jLabel70.setText("ID:");
         jPanel9.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        TFidProductoMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TFidProductoModActionPerformed(evt);
             }
         });
-        jPanel9.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 80, -1));
+        TFidProductoMod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFidProductoModKeyTyped(evt);
+            }
+        });
+        jPanel9.add(TFidProductoMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 80, -1));
 
         jLabel72.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_verde.png"))); // NOI18N
+        jLabel72.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel72MouseClicked(evt);
+            }
+        });
         jPanel9.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, -1, -1));
+
+        jLabel81.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel81.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel81.setText("Nombre:");
+        jPanel9.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        TFnombreModificarPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFnombreModificarProActionPerformed(evt);
+            }
+        });
+        TFnombreModificarPro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFnombreModificarProKeyTyped(evt);
+            }
+        });
+        jPanel9.add(TFnombreModificarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 80, -1));
+
+        jLabel82.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel82.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel82.setText("Tipo:");
+        jPanel9.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, -1, -1));
+
+        ComboTipoServModPro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "P" }));
+        ComboTipoServModPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboTipoServModProActionPerformed(evt);
+            }
+        });
+        jPanel9.add(ComboTipoServModPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 80, -1));
 
         javax.swing.GroupLayout ModificarProductoLayout = new javax.swing.GroupLayout(ModificarProducto.getContentPane());
         ModificarProducto.getContentPane().setLayout(ModificarProductoLayout);
         ModificarProductoLayout.setHorizontalGroup(
             ModificarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
-            .addGroup(ModificarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE))
+            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
         );
         ModificarProductoLayout.setVerticalGroup(
             ModificarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(ModificarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
+            .addGroup(ModificarProductoLayout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jDesktopPane3.add(ModificarProducto);
-        ModificarProducto.setBounds(250, 50, 560, 432);
+        ModificarProducto.setBounds(250, 50, 600, 446);
 
         NuevoProducto.setClosable(true);
         NuevoProducto.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        NuevoProducto.setTitle("NuevoProducto");
         NuevoProducto.setVisible(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -959,18 +1255,23 @@ public class PrincipalAd extends javax.swing.JFrame {
                 TFcantidadCrearProActionPerformed(evt);
             }
         });
+        TFcantidadCrearPro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFcantidadCrearProKeyTyped(evt);
+            }
+        });
         jPanel1.add(TFcantidadCrearPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 80, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(238, 112, 82));
         jLabel6.setText("Descripcion:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
         TAdescripcionCrearPro.setColumns(20);
         TAdescripcionCrearPro.setRows(5);
         jScrollPane1.setViewportView(TAdescripcionCrearPro);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 150, 50));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 150, 50));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(238, 112, 82));
@@ -1013,21 +1314,25 @@ public class PrincipalAd extends javax.swing.JFrame {
         jLabel12.setText("Duracion:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
 
-        ComboTipos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ComboTipos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboTiposActionPerformed(evt);
             }
         });
-        jPanel1.add(ComboTipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 80, -1));
+        jPanel1.add(ComboTipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 80, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_OFF.png"))); // NOI18N
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 80, 30));
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_ON.png"))); // NOI18N
+        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_ON.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked1(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 80, 30));
 
         agregarTipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mas(plus)tomate.png"))); // NOI18N
         agregarTipo.setBorder(null);
@@ -1040,33 +1345,43 @@ public class PrincipalAd extends javax.swing.JFrame {
         });
         jPanel1.add(agregarTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 30, 20));
 
+        jLabel79.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel79.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel79.setText("Tipo Serv:");
+        jPanel1.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
+
+        comboTipoServ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "P" }));
+        jPanel1.add(comboTipoServ, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 80, -1));
+
+        jLabel80.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel80.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel80.setText("Nombre:");
+        jPanel1.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+
+        TFNombreNuevoPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFNombreNuevoProActionPerformed(evt);
+            }
+        });
+        TFNombreNuevoPro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFNombreNuevoProKeyTyped(evt);
+            }
+        });
+        jPanel1.add(TFNombreNuevoPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 80, -1));
+
         NuevoProducto.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jDesktopPane3.add(NuevoProducto);
-        NuevoProducto.setBounds(250, 50, 540, 362);
+        NuevoProducto.setBounds(250, 50, 540, 384);
 
         CancelarFactura2.setClosable(true);
         CancelarFactura2.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        CancelarFactura2.setTitle("CancelarFactura");
         CancelarFactura2.setVisible(true);
 
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        detallesCancelFac2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID Producto", "Descripcion", "Precio Unitario", "Cantidad", "Nombre Tipo", "ValorAgregado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
         scrollDetallesCancelFac2.setViewportView(detallesCancelFac2);
 
         jPanel13.add(scrollDetallesCancelFac2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 480, 220));
@@ -1094,8 +1409,7 @@ public class PrincipalAd extends javax.swing.JFrame {
         labelID38.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID38.setText("Email:");
 
-        labelIDIN26.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        labelIDIN26.setText("ups@ups.edu.ec");
+        labelIDIN26.setText("agenciaviajesups@gmail.com");
 
         labelID39.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID39.setText("Telefono:");
@@ -1103,10 +1417,21 @@ public class PrincipalAd extends javax.swing.JFrame {
         labelIDIN27.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         labelIDIN27.setText("0991039408");
 
+        idCabCancelFac2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                idCabCancelFac2KeyTyped(evt);
+            }
+        });
+
         labelID40.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID40.setText("ID:");
 
         buscarIDCabCancelFac2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_verde.png"))); // NOI18N
+        buscarIDCabCancelFac2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarIDCabCancelFac2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout DatosEmpresaCancelFac2Layout = new javax.swing.GroupLayout(DatosEmpresaCancelFac2);
         DatosEmpresaCancelFac2.setLayout(DatosEmpresaCancelFac2Layout);
@@ -1135,13 +1460,15 @@ public class PrincipalAd extends javax.swing.JFrame {
                         .addComponent(labelIDIN24, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelID39)
-                    .addComponent(labelID38))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelIDIN27, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelIDIN26))
-                .addContainerGap(46, Short.MAX_VALUE))
+                    .addGroup(DatosEmpresaCancelFac2Layout.createSequentialGroup()
+                        .addComponent(labelID39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelIDIN27, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DatosEmpresaCancelFac2Layout.createSequentialGroup()
+                        .addComponent(labelID38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelIDIN26)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         DatosEmpresaCancelFac2Layout.setVerticalGroup(
             DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1226,21 +1553,21 @@ public class PrincipalAd extends javax.swing.JFrame {
                 .addGroup(DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DatosUsuarioCancelFacLayout.createSequentialGroup()
                         .addComponent(labelID21)
-                        .addGap(18, 18, 18)
+                        .addGap(30, 30, 30)
                         .addComponent(nombreCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelID23)
                         .addGap(18, 18, 18)
                         .addComponent(telefonoCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(DatosUsuarioCancelFacLayout.createSequentialGroup()
                         .addComponent(labelID22)
-                        .addGap(17, 17, 17)
+                        .addGap(18, 18, 18)
                         .addComponent(direccionCancelFAc, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addGap(9, 9, 9)
                         .addComponent(labelID24)
                         .addGap(42, 42, 42)
-                        .addComponent(emailCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(133, Short.MAX_VALUE))
+                        .addComponent(emailCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         DatosUsuarioCancelFacLayout.setVerticalGroup(
             DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1254,14 +1581,17 @@ public class PrincipalAd extends javax.swing.JFrame {
                     .addGroup(DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(ciCancelFAc, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(labelID21)))
-                .addGap(10, 10, 10)
-                .addGroup(DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelID25)
-                    .addComponent(fechaCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelID22)
-                    .addComponent(direccionCancelFAc, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelID24)
-                    .addComponent(emailCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(DatosUsuarioCancelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(labelID25)
+                        .addComponent(fechaCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelID22)
+                        .addComponent(labelID24)
+                        .addComponent(emailCancelFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DatosUsuarioCancelFacLayout.createSequentialGroup()
+                        .addComponent(direccionCancelFAc, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1325,24 +1655,29 @@ public class PrincipalAd extends javax.swing.JFrame {
 
         jPanel13.add(TotalesCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, 100));
 
-        enterCancelFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterCancelFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Cancelar_OFF_v.png"))); // NOI18N
         enterCancelFac.setBorderPainted(false);
         enterCancelFac.setContentAreaFilled(false);
         enterCancelFac.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterCancelFac.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        enterCancelFac.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterCancelFac.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/CANCELAR_ON_v.png"))); // NOI18N
+        enterCancelFac.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/CANCELAR_ON_v.png"))); // NOI18N
+        enterCancelFac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterCancelFacMouseClicked(evt);
+            }
+        });
         jPanel13.add(enterCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 130, 30));
 
         javax.swing.GroupLayout CancelarFactura2Layout = new javax.swing.GroupLayout(CancelarFactura2.getContentPane());
         CancelarFactura2.getContentPane().setLayout(CancelarFactura2Layout);
         CancelarFactura2Layout.setHorizontalGroup(
             CancelarFactura2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
+            .addGap(0, 783, Short.MAX_VALUE)
             .addGroup(CancelarFactura2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CancelarFactura2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 36, Short.MAX_VALUE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 37, Short.MAX_VALUE)))
         );
         CancelarFactura2Layout.setVerticalGroup(
             CancelarFactura2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1355,222 +1690,338 @@ public class PrincipalAd extends javax.swing.JFrame {
         );
 
         jDesktopPane3.add(CancelarFactura2);
-        CancelarFactura2.setBounds(245, 20, 720, 482);
+        CancelarFactura2.setBounds(245, 20, 799, 484);
 
-        NuevaFactura.setClosable(true);
-        NuevaFactura.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        NuevaFactura.setVisible(true);
+        ModificarCliente.setClosable(true);
+        ModificarCliente.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        ModificarCliente.setTitle("ModificarCliente");
+        ModificarCliente.setVisible(true);
 
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        detallesFac.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID PRoducto", "Descripcion", "Precio Unitario", "Cantidad", "Nombre Tipo", "ValorAgregado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, true, true, false, true, false
-            };
+        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_User_96px_Verde.png"))); // NOI18N
+        jPanel6.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
+        jLabel44.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel44.setText("Identificacion: ");
+        jPanel6.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 106, -1, -1));
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        TFidentificacionModificarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFidentificacionModificarClienteKeyTyped(evt);
             }
         });
-        scrollDetallesFac.setViewportView(detallesFac);
+        jPanel6.add(TFidentificacionModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 90, -1));
 
-        jPanel4.add(scrollDetallesFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 480, 220));
+        jLabel45.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel45.setText("Nombre: ");
+        jPanel6.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
-        datosEmpresaCancelFac.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Empresa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
-        datosEmpresaCancelFac.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        TFnombreModificarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFnombreModificarClienteKeyTyped(evt);
+            }
+        });
+        jPanel6.add(TFnombreModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 90, -1));
 
-        labelID1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID1.setText("RUC:");
-        datosEmpresaCancelFac.add(labelID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        jLabel46.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel46.setText("Apellido: ");
+        jPanel6.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
-        labelIDIN2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        labelIDIN2.setText("0159756347621");
-        datosEmpresaCancelFac.add(labelIDIN2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, 20));
+        TFapellidoModificarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFapellidoModificarClienteKeyTyped(evt);
+            }
+        });
+        jPanel6.add(TFapellidoModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 90, -1));
 
-        labelID5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID5.setText("Nombre:");
-        datosEmpresaCancelFac.add(labelID5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, -1, -1));
+        jLabel47.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel47.setText("Calle Pricipal: ");
+        jPanel6.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, 20));
 
-        labelID6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID6.setText("Direccion:");
-        datosEmpresaCancelFac.add(labelID6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+        jLabel48.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel48.setText("Calle Secundaria: ");
+        jPanel6.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, 20));
 
-        labelIDIN7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        labelIDIN7.setText("Agencia de viajes UPS");
-        datosEmpresaCancelFac.add(labelIDIN7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 150, 20));
+        jLabel49.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel49.setText("Telefono: ");
+        jPanel6.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, 20));
 
-        labelIDIN8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        labelIDIN8.setText("Av Gil  Ramires Davaloz");
-        datosEmpresaCancelFac.add(labelIDIN8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 150, 20));
+        TFTelefonoModificarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFTelefonoModificarClienteKeyTyped(evt);
+            }
+        });
+        jPanel6.add(TFTelefonoModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 90, -1));
+        jPanel6.add(TFCalleSecunModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 130, -1));
+        jPanel6.add(TFCallePrinModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 130, -1));
+        jPanel6.add(TFemailModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 130, -1));
 
-        labelID8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID8.setText("Email:");
-        datosEmpresaCancelFac.add(labelID8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, -1, -1));
+        jLabel50.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel50.setText("Email: ");
+        jPanel6.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
-        labelIDIN9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        labelIDIN9.setText("ups@ups.edu.ec");
-        datosEmpresaCancelFac.add(labelIDIN9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, -1, 20));
-
-        labelID7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID7.setText("Telefono:");
-        datosEmpresaCancelFac.add(labelID7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, 20));
-
-        labelIDIN11.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        labelIDIN11.setText("0991039408");
-        datosEmpresaCancelFac.add(labelIDIN11, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 90, 20));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/loguitopequeño.png"))); // NOI18N
-        datosEmpresaCancelFac.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 150, 60));
-
-        jPanel4.add(datosEmpresaCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 700, 110));
-
-        datosUsuarioCancelFac.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
-        datosUsuarioCancelFac.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        buscarCICrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        buscarCICrearFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_2.png"))); // NOI18N
-        datosUsuarioCancelFac.add(buscarCICrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 29, 30, -1));
-
-        labelID9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID9.setText("C.I:");
-        labelID9.setToolTipText("");
-        datosUsuarioCancelFac.add(labelID9, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 29, -1, -1));
-
-        labelID10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID10.setText("Nombre:");
-        datosUsuarioCancelFac.add(labelID10, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 30, -1, -1));
-
-        labelID11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID11.setText("Direccion:");
-        datosUsuarioCancelFac.add(labelID11, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 67, -1, -1));
-
-        nombreCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        datosUsuarioCancelFac.add(nombreCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 30, 160, 20));
-
-        direccionCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        datosUsuarioCancelFac.add(direccionCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 67, 163, 20));
-
-        labelID12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID12.setText("Telefono:");
-        datosUsuarioCancelFac.add(labelID12, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 29, -1, 20));
-
-        labelID13.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID13.setText("Email:");
-        datosUsuarioCancelFac.add(labelID13, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 68, -1, -1));
-
-        emailCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        datosUsuarioCancelFac.add(emailCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 67, 123, 20));
-
-        telefonoCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        datosUsuarioCancelFac.add(telefonoCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 29, 70, 20));
-
-        labelID.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID.setText("Fecha:");
-        datosUsuarioCancelFac.add(labelID, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 67, -1, -1));
-
-        fechaCrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        datosUsuarioCancelFac.add(fechaCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 67, 64, 20));
-        datosUsuarioCancelFac.add(ciCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 30, 58, -1));
-
-        jPanel4.add(datosUsuarioCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 700, 90));
-
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        labelID2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID2.setText("Subtotal:");
-
-        labelID3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID3.setText("IVA:");
-
-        labelID4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        labelID4.setText("Total:");
-
-        totalCrearFac.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        ivaCrearFac.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        subtotalCrearFac.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(labelID2)
-                        .addGap(14, 14, 14)
-                        .addComponent(subtotalCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(labelID3)
-                        .addGap(45, 45, 45)
-                        .addComponent(ivaCrearFac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(labelID4)
-                        .addGap(34, 34, 34)
-                        .addComponent(totalCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelID2)
-                    .addComponent(subtotalCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelID3)
-                    .addComponent(ivaCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelID4)
-                    .addComponent(totalCrearFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, 100));
-
-        agregarDetallesFac.setForeground(new java.awt.Color(62, 150, 148));
-        agregarDetallesFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/CompraGRande.png"))); // NOI18N
-        agregarDetallesFac.setText("Agregar Detalle");
-        agregarDetallesFac.addMouseListener(new java.awt.event.MouseAdapter() {
+        enterModificarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_OFF_v.png"))); // NOI18N
+        enterModificarCliente.setBorderPainted(false);
+        enterModificarCliente.setContentAreaFilled(false);
+        enterModificarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterModificarCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
+        enterModificarCliente.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
+        enterModificarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                agregarDetallesFacMouseClicked(evt);
+                enterModificarClienteMouseClicked(evt);
             }
         });
-        jPanel4.add(agregarDetallesFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
+        jPanel6.add(enterModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 130, 30));
 
-        enterCrearFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
-        enterCrearFac.setBorderPainted(false);
-        enterCrearFac.setContentAreaFilled(false);
-        enterCrearFac.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterCrearFac.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        enterCrearFac.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        jPanel4.add(enterCrearFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 130, 30));
+        jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_verde.png"))); // NOI18N
+        jLabel51.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel51MouseClicked(evt);
+            }
+        });
+        jPanel6.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
 
-        NuevaFactura.getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
+        btnEliminarModificarProducto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DELETE_OFF_v.png"))); // NOI18N
+        btnEliminarModificarProducto1.setBorder(null);
+        btnEliminarModificarProducto1.setBorderPainted(false);
+        btnEliminarModificarProducto1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DELETE_ON_v.png"))); // NOI18N
+        btnEliminarModificarProducto1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DELETE_ON_v.png"))); // NOI18N
+        btnEliminarModificarProducto1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarModificarProducto1MouseClicked(evt);
+            }
+        });
+        jPanel6.add(btnEliminarModificarProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 130, 30));
 
-        jDesktopPane3.add(NuevaFactura);
-        NuevaFactura.setBounds(245, 10, 710, 472);
+        javax.swing.GroupLayout ModificarClienteLayout = new javax.swing.GroupLayout(ModificarCliente.getContentPane());
+        ModificarCliente.getContentPane().setLayout(ModificarClienteLayout);
+        ModificarClienteLayout.setHorizontalGroup(
+            ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 564, Short.MAX_VALUE)
+            .addGroup(ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
+        );
+        ModificarClienteLayout.setVerticalGroup(
+            ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 316, Short.MAX_VALUE)
+            .addGroup(ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ModificarClienteLayout.createSequentialGroup()
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jDesktopPane3.add(ModificarCliente);
+        ModificarCliente.setBounds(250, 50, 520, 340);
+
+        EditarPerfilFilUs.setClosable(true);
+        EditarPerfilFilUs.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        EditarPerfilFilUs.setTitle("EditarPerfilUsuarios");
+        EditarPerfilFilUs.setVisible(true);
+
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_User_96px_Verde.png"))); // NOI18N
+        jPanel11.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
+
+        jLabel60.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel60.setText("Cedula: ");
+        jPanel11.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 106, -1, -1));
+
+        TFCedulaEditarPerfilUs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFCedulaEditarPerfilUsKeyTyped(evt);
+            }
+        });
+        jPanel11.add(TFCedulaEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 90, -1));
+
+        jLabel61.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel61.setText("Nombre: ");
+        jPanel11.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        TFNombreEditarPerfilUs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFNombreEditarPerfilUsKeyTyped(evt);
+            }
+        });
+        jPanel11.add(TFNombreEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 90, -1));
+
+        jLabel62.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel62.setText("Apellido: ");
+        jPanel11.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        TFApellifoEditarPerfilUs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFApellifoEditarPerfilUsKeyTyped(evt);
+            }
+        });
+        jPanel11.add(TFApellifoEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 90, -1));
+
+        jLabel63.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel63.setText("Calle Pricipal: ");
+        jPanel11.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, 20));
+        jPanel11.add(TFCallePrinEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 130, -1));
+
+        jLabel64.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel64.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel64.setText("Calle Secundaria: ");
+        jPanel11.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, 20));
+        jPanel11.add(TFCalleSecuEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 130, -1));
+
+        jLabel65.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel65.setText("Telefono: ");
+        jPanel11.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, 20));
+
+        TFTelefonoEditarPerfilUs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFTelefonoEditarPerfilUsKeyTyped(evt);
+            }
+        });
+        jPanel11.add(TFTelefonoEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 90, -1));
+
+        jLabel66.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel66.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel66.setText("Calle Pricipal: ");
+        jPanel11.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, 20));
+        jPanel11.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 130, -1));
+
+        jLabel67.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel67.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel67.setText("Email: ");
+        jPanel11.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
+        jPanel11.add(TFEmailEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 130, -1));
+
+        jLabel68.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel68.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel68.setText("NickName: ");
+        jPanel11.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        jLabel69.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel69.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel69.setText("Password: ");
+        jPanel11.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        jPanel11.add(TFNickNameEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 90, -1));
+
+        enterEditarPerfil1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_OFF_v.png"))); // NOI18N
+        enterEditarPerfil1.setBorderPainted(false);
+        enterEditarPerfil1.setContentAreaFilled(false);
+        enterEditarPerfil1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterEditarPerfil1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
+        enterEditarPerfil1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
+        enterEditarPerfil1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterEditarPerfil1MouseClicked(evt);
+            }
+        });
+        enterEditarPerfil1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enterEditarPerfil1ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(enterEditarPerfil1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 110, 30));
+        jPanel11.add(TFPasswordEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 90, -1));
+
+        buscarPerfilCIUMUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_verde.png"))); // NOI18N
+        buscarPerfilCIUMUS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarPerfilCIUMUSMouseClicked(evt);
+            }
+        });
+        jPanel11.add(buscarPerfilCIUMUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
+
+        btnEliminarModificarProducto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DELETE_OFF_v.png"))); // NOI18N
+        btnEliminarModificarProducto2.setBorder(null);
+        btnEliminarModificarProducto2.setBorderPainted(false);
+        btnEliminarModificarProducto2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DELETE_ON_v.png"))); // NOI18N
+        btnEliminarModificarProducto2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DELETE_ON_v.png"))); // NOI18N
+        btnEliminarModificarProducto2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarModificarProducto2MouseClicked(evt);
+            }
+        });
+        jPanel11.add(btnEliminarModificarProducto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 110, 30));
+
+        javax.swing.GroupLayout EditarPerfilFilUsLayout = new javax.swing.GroupLayout(EditarPerfilFilUs.getContentPane());
+        EditarPerfilFilUs.getContentPane().setLayout(EditarPerfilFilUsLayout);
+        EditarPerfilFilUsLayout.setHorizontalGroup(
+            EditarPerfilFilUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+        );
+        EditarPerfilFilUsLayout.setVerticalGroup(
+            EditarPerfilFilUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jDesktopPane3.add(EditarPerfilFilUs);
+        EditarPerfilFilUs.setBounds(250, 50, 500, 350);
+
+        NuevoProveedor.setClosable(true);
+        NuevoProveedor.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        NuevoProveedor.setTitle("NuevoProveedor");
+        NuevoProveedor.setVisible(true);
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Handshake_96px.png"))); // NOI18N
+        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+
+        jLabel33.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel33.setText("Nombre:");
+        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+
+        TFnombreProv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFnombreProvKeyTyped(evt);
+            }
+        });
+        jPanel3.add(TFnombreProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 100, -1));
+
+        enterProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_OFF.png"))); // NOI18N
+        enterProv.setBorderPainted(false);
+        enterProv.setContentAreaFilled(false);
+        enterProv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterProv.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_ON.png"))); // NOI18N
+        enterProv.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_ON.png"))); // NOI18N
+        enterProv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterProvMouseClicked(evt);
+            }
+        });
+        jPanel3.add(enterProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 80, 30));
+
+        jLabel77.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel77.setForeground(new java.awt.Color(238, 112, 82));
+        jLabel77.setText("Ruc:");
+        jPanel3.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+
+        TFRucProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFRucProveedorKeyTyped(evt);
+            }
+        });
+        jPanel3.add(TFRucProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 100, -1));
+
+        NuevoProveedor.getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        jDesktopPane3.add(NuevoProveedor);
+        NuevoProveedor.setBounds(250, 50, 390, 250);
 
         EditarPerfil.setClosable(true);
         EditarPerfil.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        EditarPerfil.setTitle("EditarPerfil");
         EditarPerfil.setVisible(true);
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1637,12 +2088,17 @@ public class PrincipalAd extends javax.swing.JFrame {
         jPanel5.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
         jPanel5.add(TFNickNameEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 90, -1));
 
-        enterEditarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterEditarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_OFF_v.png"))); // NOI18N
         enterEditarPerfil.setBorderPainted(false);
         enterEditarPerfil.setContentAreaFilled(false);
         enterEditarPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterEditarPerfil.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        enterEditarPerfil.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterEditarPerfil.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
+        enterEditarPerfil.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
+        enterEditarPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterEditarPerfilMouseClicked(evt);
+            }
+        });
         enterEditarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterEditarPerfilActionPerformed(evt);
@@ -1664,91 +2120,11 @@ public class PrincipalAd extends javax.swing.JFrame {
         );
 
         jDesktopPane3.add(EditarPerfil);
-        EditarPerfil.setBounds(250, 50, 510, 362);
-
-        RegistrarStock.setClosable(true);
-        RegistrarStock.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        RegistrarStock.setVisible(true);
-
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Fecha", "Precio", "Descripcion", "Partida", "Destino", "Duracion", "Cantidad"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(jTable1);
-
-        jPanel10.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 470, 180));
-
-        jLabel37.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel37.setText("Proveedor: ");
-        jPanel10.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, -1, -1));
-        jPanel10.add(fechaRegistrarStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 80, 20));
-
-        proveedorescomboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel10.add(proveedorescomboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, -1, -1));
-
-        jLabel38.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel38.setText("Cantidad: ");
-        jPanel10.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
-
-        enterRegistrarStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
-        enterRegistrarStock.setBorderPainted(false);
-        enterRegistrarStock.setContentAreaFilled(false);
-        enterRegistrarStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterRegistrarStock.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        enterRegistrarStock.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        jPanel10.add(enterRegistrarStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 120, 30));
-
-        jLabel39.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel39.setText("Fecha: ");
-        jPanel10.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
-        jPanel10.add(TFcantidadRegistrarStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 60, -1));
-
-        javax.swing.GroupLayout RegistrarStockLayout = new javax.swing.GroupLayout(RegistrarStock.getContentPane());
-        RegistrarStock.getContentPane().setLayout(RegistrarStockLayout);
-        RegistrarStockLayout.setHorizontalGroup(
-            RegistrarStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
-            .addGroup(RegistrarStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(RegistrarStockLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        RegistrarStockLayout.setVerticalGroup(
-            RegistrarStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
-            .addGroup(RegistrarStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(RegistrarStockLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        jDesktopPane3.add(RegistrarStock);
-        RegistrarStock.setBounds(250, 50, 540, 342);
+        EditarPerfil.setBounds(250, 50, 516, 364);
 
         NuevoCliente.setClosable(true);
         NuevoCliente.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        NuevoCliente.setTitle("NuevoCliente");
         NuevoCliente.setVisible(true);
 
         JPNuevoCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1798,12 +2174,17 @@ public class PrincipalAd extends javax.swing.JFrame {
         jLabel20.setText("Email: ");
         JPNuevoCliente.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
-        enterCrearCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
+        enterCrearCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_OFF.png"))); // NOI18N
         enterCrearCliente.setBorderPainted(false);
         enterCrearCliente.setContentAreaFilled(false);
         enterCrearCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterCrearCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        enterCrearCliente.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
+        enterCrearCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_ON.png"))); // NOI18N
+        enterCrearCliente.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_ON.png"))); // NOI18N
+        enterCrearCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterCrearClienteMouseClicked(evt);
+            }
+        });
         JPNuevoCliente.add(enterCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 120, 30));
 
         NuevoCliente.getContentPane().add(JPNuevoCliente, java.awt.BorderLayout.CENTER);
@@ -1813,6 +2194,7 @@ public class PrincipalAd extends javax.swing.JFrame {
 
         NuevoTipo.setClosable(true);
         NuevoTipo.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        NuevoTipo.setTitle("NuevoTipo");
         NuevoTipo.setVisible(true);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1826,108 +2208,31 @@ public class PrincipalAd extends javax.swing.JFrame {
         jLabel31.setText("Nombre:");
         jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
-        JTnombreTipo.setToolTipText("");
-        JTnombreTipo.addActionListener(new java.awt.event.ActionListener() {
+        TFnombreTipo.setToolTipText("");
+        TFnombreTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTnombreTipoActionPerformed(evt);
+                TFnombreTipoActionPerformed(evt);
             }
         });
-        jPanel2.add(JTnombreTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 130, -1));
+        jPanel2.add(TFnombreTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 130, -1));
 
-        enterTipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
+        enterTipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_OFF.png"))); // NOI18N
         enterTipo.setBorderPainted(false);
         enterTipo.setContentAreaFilled(false);
         enterTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterTipo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        enterTipo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
+        enterTipo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_ON.png"))); // NOI18N
+        enterTipo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_ON.png"))); // NOI18N
+        enterTipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterTipoMouseClicked(evt);
+            }
+        });
         jPanel2.add(enterTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 80, 30));
 
         NuevoTipo.getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         jDesktopPane3.add(NuevoTipo);
         NuevoTipo.setBounds(250, 50, 390, 240);
-
-        NuevoProveedor.setClosable(true);
-        NuevoProveedor.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        NuevoProveedor.setVisible(true);
-
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Handshake_96px.png"))); // NOI18N
-        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
-
-        jLabel33.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(238, 112, 82));
-        jLabel33.setText("Nombre:");
-        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
-        jPanel3.add(TFnombreProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 100, -1));
-
-        enterProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
-        enterProv.setBorderPainted(false);
-        enterProv.setContentAreaFilled(false);
-        enterProv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterProv.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        enterProv.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        jPanel3.add(enterProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 80, 30));
-
-        NuevoProveedor.getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
-
-        jDesktopPane3.add(NuevoProveedor);
-        NuevoProveedor.setBounds(250, 50, 390, 250);
-
-        AnadirDetalle.setClosable(true);
-        AnadirDetalle.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        AnadirDetalle.setVisible(true);
-
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        ListDetalles.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Fecha", "Precio", "Descripcion", "Partida", "Destino", "Duracion", "Cantidad"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        scroollListDetalles.setViewportView(ListDetalles);
-
-        jPanel8.add(scroollListDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 470, 237));
-
-        jLabel34.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(62, 150, 148));
-        jLabel34.setText("Cantidad: ");
-        jPanel8.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
-
-        TFcantidadDetalle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFcantidadDetalleActionPerformed(evt);
-            }
-        });
-        jPanel8.add(TFcantidadDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 70, -1));
-
-        enterDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
-        enterDetalles.setBorderPainted(false);
-        enterDetalles.setContentAreaFilled(false);
-        enterDetalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterDetalles.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        enterDetalles.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        jPanel8.add(enterDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 130, 30));
-
-        AnadirDetalle.getContentPane().add(jPanel8, java.awt.BorderLayout.CENTER);
-
-        jDesktopPane3.add(AnadirDetalle);
-        AnadirDetalle.setBounds(250, 50, 500, 332);
 
         getContentPane().add(jDesktopPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
@@ -1939,12 +2244,14 @@ public class PrincipalAd extends javax.swing.JFrame {
     }//GEN-LAST:event_TFcantidadDetalleActionPerformed
 
     private void agregarDetallesFacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarDetallesFacMouseClicked
+        recuperarProductos();
+        actualizarProds();
         AnadirDetalle.setVisible(true);
     }//GEN-LAST:event_agregarDetallesFacMouseClicked
 
-    private void JTnombreTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTnombreTipoActionPerformed
+    private void TFnombreTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFnombreTipoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTnombreTipoActionPerformed
+    }//GEN-LAST:event_TFnombreTipoActionPerformed
 
     private void enterEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterEditarPerfilActionPerformed
         // TODO add your handling code here:
@@ -1955,12 +2262,18 @@ public class PrincipalAd extends javax.swing.JFrame {
     }//GEN-LAST:event_enterEditarPerfil1ActionPerformed
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         setVisible(false);
         Login log=new Login();
         log.setVisible(true);
     }//GEN-LAST:event_closeMouseClicked
 
     private void miniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miniMouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         setState(PrincipalAd.ICONIFIED);
     }//GEN-LAST:event_miniMouseClicked
 
@@ -1968,6 +2281,7 @@ public class PrincipalAd extends javax.swing.JFrame {
         panelProductos.setVisible(false);
         panelVentas.setVisible(false);
         panelClientes.setVisible(false);
+        vaciarCrearProducto();
         NuevoProducto.setVisible(true);
     }//GEN-LAST:event_jLabel13MouseClicked
 
@@ -1982,10 +2296,17 @@ public class PrincipalAd extends javax.swing.JFrame {
         panelProductos.setVisible(false);
         panelVentas.setVisible(false);
         panelClientes.setVisible(false);
+        vaciarCargarDetalleEnFactura();
+        vaciarCrearFacturaCab();
+        vaciarFacturaDet();
+        vaciarbuscarClienteFactura();
         NuevaFactura.setVisible(true);
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         int op=JOptionPane.showConfirmDialog(null, "Desea cerrar secion");
         if(op==0){
             setVisible(false);
@@ -1998,6 +2319,7 @@ public class PrincipalAd extends javax.swing.JFrame {
         panelProductos.setVisible(false);
         panelVentas.setVisible(false);
         panelClientes.setVisible(false);
+        vaciarCrearCliente();
         NuevoCliente.setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
 
@@ -2005,6 +2327,8 @@ public class PrincipalAd extends javax.swing.JFrame {
         panelProductos.setVisible(false);
         panelVentas.setVisible(false);
         panelClientes.setVisible(false);
+        limpiarListPro();
+        vaciarRecuperarFactura();
         CancelarFactura2.setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
 
@@ -2013,12 +2337,14 @@ public class PrincipalAd extends javax.swing.JFrame {
         panelVentas.setVisible(false);
         panelClientes.setVisible(false);
         EditarPerfil.setVisible(true);
+        cargarDatosEditarPerfil();
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         panelProductos.setVisible(false);
         panelVentas.setVisible(false);
         panelClientes.setVisible(false);
+        vaciarModificarCliente();
         ModificarCliente.setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
 
@@ -2049,6 +2375,13 @@ public class PrincipalAd extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        GregorianCalendar c=new GregorianCalendar();
+        String dia = Integer.toString(c.get(Calendar.DATE));
+        String mes = Integer.toString(c.get(Calendar.MONTH)+1);
+        String annio = Integer.toString(c.get(Calendar.YEAR));
+        String fecha=dia+"/"+mes+"/"+annio;
+        fechaRegistrarStock.setText(obtenerFecha());
+        recuperarProductos();
         panelProductos.setVisible(false);
         panelVentas.setVisible(false);
         panelClientes.setVisible(false);
@@ -2059,6 +2392,7 @@ public class PrincipalAd extends javax.swing.JFrame {
         panelProductos.setVisible(false);
         panelVentas.setVisible(false);
         panelClientes.setVisible(false);
+        vaciarcargarDatosEditarPerfilUs();
         EditarPerfilFilUs.setVisible(true);
     }//GEN-LAST:event_jLabel14MouseClicked
 
@@ -2126,14 +2460,15 @@ public class PrincipalAd extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TFFechaModificarProductoActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void TFidProductoModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFidProductoModActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_TFidProductoModActionPerformed
 
     private void jLabel95MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel95MouseClicked
         panelProductos.setVisible(false);
         panelVentas.setVisible(false);
         panelClientes.setVisible(false);
+        vaciarrecuperarProMod();
         ModificarProducto.setVisible(true);
     }//GEN-LAST:event_jLabel95MouseClicked
 
@@ -2154,6 +2489,547 @@ public class PrincipalAd extends javax.swing.JFrame {
         panelClientes.setVisible(false);
         panelProductos.setVisible(true);
     }//GEN-LAST:event_jLabel76MouseClicked
+
+    private void jLabel97MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel97MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
+    }//GEN-LAST:event_jLabel97MouseClicked
+
+    private void jLabel96MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel96MouseClicked
+        panelProductos.setVisible(false);
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
+    }//GEN-LAST:event_jLabel96MouseClicked
+
+    private void jLabel97MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel97MousePressed
+      
+    }//GEN-LAST:event_jLabel97MousePressed
+
+    private void jLabel97MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel97MouseDragged
+        
+    }//GEN-LAST:event_jLabel97MouseDragged
+
+    private void TFnombreProvKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFnombreProvKeyTyped
+        char c=evt.getKeyChar();
+        if((c<'a' || c>'z') && (c<'A' || c>'Z'))evt.consume();
+    }//GEN-LAST:event_TFnombreProvKeyTyped
+
+    private void TFRucProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFRucProveedorKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_TFRucProveedorKeyTyped
+
+    private void TFCedulaEditarPerfilUsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFCedulaEditarPerfilUsKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_TFCedulaEditarPerfilUsKeyTyped
+
+    private void TFNombreEditarPerfilUsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFNombreEditarPerfilUsKeyTyped
+        char c=evt.getKeyChar();
+        if((c<'a' || c>'z') && (c<'A' || c>'Z'))evt.consume();
+    }//GEN-LAST:event_TFNombreEditarPerfilUsKeyTyped
+
+    private void TFApellifoEditarPerfilUsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFApellifoEditarPerfilUsKeyTyped
+        char c=evt.getKeyChar();
+        if((c<'a' || c>'z') && (c<'A' || c>'Z'))evt.consume();
+    }//GEN-LAST:event_TFApellifoEditarPerfilUsKeyTyped
+
+    private void TFTelefonoEditarPerfilUsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFTelefonoEditarPerfilUsKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_TFTelefonoEditarPerfilUsKeyTyped
+
+    private void TFidentificacionModificarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFidentificacionModificarClienteKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_TFidentificacionModificarClienteKeyTyped
+
+    private void TFnombreModificarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFnombreModificarClienteKeyTyped
+        char c=evt.getKeyChar();
+        if((c<'a' || c>'z') && (c<'A' || c>'Z'))evt.consume();
+    }//GEN-LAST:event_TFnombreModificarClienteKeyTyped
+
+    private void TFapellidoModificarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFapellidoModificarClienteKeyTyped
+        char c=evt.getKeyChar();
+        if((c<'a' || c>'z') && (c<'A' || c>'Z'))evt.consume();
+    }//GEN-LAST:event_TFapellidoModificarClienteKeyTyped
+
+    private void TFTelefonoModificarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFTelefonoModificarClienteKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_TFTelefonoModificarClienteKeyTyped
+
+    private void TFidProductoModKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFidProductoModKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_TFidProductoModKeyTyped
+
+    private void TFcantidadModificarProKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFcantidadModificarProKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_TFcantidadModificarProKeyTyped
+
+    private void TfprecioModificarProKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TfprecioModificarProKeyTyped
+
+    }//GEN-LAST:event_TfprecioModificarProKeyTyped
+
+    private void TFcantidadCrearProKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFcantidadCrearProKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_TFcantidadCrearProKeyTyped
+
+    private void idCabCancelFac2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idCabCancelFac2KeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_idCabCancelFac2KeyTyped
+
+    private void ciCrearFacturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ciCrearFacturaKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_ciCrearFacturaKeyTyped
+
+    private void buscarCICrearFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCICrearFacturaMouseClicked
+        try {
+            buscarClienteFactura();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buscarCICrearFacturaMouseClicked
+
+    private void ComboItemsModificarProMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboItemsModificarProMouseClicked
+        
+    }//GEN-LAST:event_ComboItemsModificarProMouseClicked
+
+    private void buscarIDCabCancelFac2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarIDCabCancelFac2MouseClicked
+        try {
+            recuperarFactura();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buscarIDCabCancelFac2MouseClicked
+
+    private void jLabel51MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel51MouseClicked
+        try {
+            buscarClienteEditar();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jLabel51MouseClicked
+
+    private void jLabel72MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel72MouseClicked
+        recuperarProMod();
+    }//GEN-LAST:event_jLabel72MouseClicked
+
+    private void buscarPerfilCIUMUSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarPerfilCIUMUSMouseClicked
+        cargarDatosEditarPerfilUs();
+    }//GEN-LAST:event_buscarPerfilCIUMUSMouseClicked
+
+    private void TFPresioServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFPresioServActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFPresioServActionPerformed
+
+    private void enterDetallesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterDetallesMouseClicked
+        cargarDetalleEnFactura();
+        actualizarProds();
+    }//GEN-LAST:event_enterDetallesMouseClicked
+
+    private void enterCrearFacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterCrearFacMouseClicked
+        try {
+            if(crearFacturaCab()){
+                try {
+                    con.getConeccion().commit();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if(crearFacturaDet()){
+                    try {
+                        con.getConeccion().commit();
+                        JOptionPane.showMessageDialog(null, "Factura creada");
+                        crearPdf();
+                        enviarCorreo();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    vaciarCargarDetalleEnFactura();
+                    vaciarCrearFacturaCab();
+                    vaciarFacturaDet();
+                    vaciarbuscarClienteFactura();
+                    
+                }
+                else{
+                    try {
+                        con.getConeccion().rollback();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            else{
+                try {
+                    con.getConeccion().rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_enterCrearFacMouseClicked
+
+    private void enterModificarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterModificarClienteMouseClicked
+        try {
+            if(modificarCliente()){
+                try {
+                    con.getConeccion().commit();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "Cliente modificado");
+                vaciarModificarCliente();
+            }
+            else{
+                try {
+                    con.getConeccion().rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "El cliente no pudo modificarse");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_enterModificarClienteMouseClicked
+
+    private void enterCrearClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterCrearClienteMouseClicked
+        if(crearCliente()){
+            try {
+                con.getConeccion().commit();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Cliente creado");
+            vaciarCrearCliente();
+        }
+        else{
+            try {
+                    con.getConeccion().rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "El cliente no pudo crearse");
+        }
+    }//GEN-LAST:event_enterCrearClienteMouseClicked
+
+    private void jButton1MouseClicked1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked1
+        if(crearProducto()){
+            try {
+                con.getConeccion().commit();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Producto creado");
+            vaciarCrearProducto();
+        }
+        else{
+            try {
+                 con.getConeccion().rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "El producto no pudo crear");
+        }
+    }//GEN-LAST:event_jButton1MouseClicked1
+
+    private void TFNombreNuevoProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFNombreNuevoProActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFNombreNuevoProActionPerformed
+
+    private void TFNombreNuevoProKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFNombreNuevoProKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFNombreNuevoProKeyTyped
+
+    private void TFnombreModificarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFnombreModificarProActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFnombreModificarProActionPerformed
+
+    private void TFnombreModificarProKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFnombreModificarProKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFnombreModificarProKeyTyped
+
+    private void ComboTipoServModProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboTipoServModProActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboTipoServModProActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        if(modificarProducto()){
+            try {
+                 con.getConeccion().commit();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Producto modificado");
+            vaciarrecuperarProMod();
+        }
+        else{
+            try {
+                 con.getConeccion().rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "El producto no pudo modificar");
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void enterRegistrarStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterRegistrarStockMouseClicked
+        if(realizarRegistro()){
+            recuperarProductos();
+            try {
+                 con.getConeccion().commit();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Registro ingresado");
+            TFcantidadRegistrarStock.setText("");
+        }
+        else{
+            try {
+                 con.getConeccion().rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "No se pudo ingrezar registro");
+        }
+    }//GEN-LAST:event_enterRegistrarStockMouseClicked
+
+    private void enterProvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterProvMouseClicked
+        if(registrarProveedor()){
+            try {
+                 con.getConeccion().commit();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Proveedor ingresado");
+            vaciarregistrarProveedor();
+        }
+        else{
+            try {
+                 con.getConeccion().rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "No se pudo ingrezar proveedor");
+        }
+    }//GEN-LAST:event_enterProvMouseClicked
+
+    private void enterEditarPerfil1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterEditarPerfil1MouseClicked
+        if(modificarUsuario()){
+            try {
+                 con.getConeccion().commit();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Usuario actualizado");
+            vaciarmodificarUsuario();
+        }
+        else{
+            try {
+                 con.getConeccion().rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar el usuario");
+        }     
+    }//GEN-LAST:event_enterEditarPerfil1MouseClicked
+
+    private void enterEditarPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterEditarPerfilMouseClicked
+       if(modificarPerfil()){
+            try {
+                 con.getConeccion().commit();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Perfil actualizado");
+       }
+       else{
+            try {
+                 con.getConeccion().rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar el perfil");
+        }   
+    }//GEN-LAST:event_enterEditarPerfilMouseClicked
+
+    private void enterTipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterTipoMouseClicked
+        if(crearTipo()){
+            try {
+                 con.getConeccion().commit();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Tipo creado");
+            vaciarCrearTipo();
+            recuperarTipos();
+        }
+        else{
+            try {
+                 con.getConeccion().rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "No se pudo crear el tipo");
+        }   
+    }//GEN-LAST:event_enterTipoMouseClicked
+
+    private void btnEliminarModificarProducto1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarModificarProducto1MouseClicked
+        try {
+            int cantidadFac=verifcarCliFac();
+            if(cantidadFac>0){
+                if(cambiarEstadoCli()){
+                    try {
+                        con.getConeccion().commit();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Estado cambiado");
+                    vaciarModificarCliente();
+                    }
+                else{
+                    try {
+                         con.getConeccion().rollback();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "No se pudo cambiar estado");
+                }  
+            }
+            else if(cantidadFac==0){
+                if(eliminarCliente()){
+                    try {
+                        con.getConeccion().commit();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Cliente eliminado");
+                    vaciarModificarCliente();
+                }
+                else{
+                    try {
+                         con.getConeccion().rollback();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "No se pudo eliminar cliente");
+                }  
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarModificarProducto1MouseClicked
+
+    private void enterCancelFacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterCancelFacMouseClicked
+        try {
+            int resEst=cambiarEstadoFac();
+            if(resEst==1){
+                if(actualizarFacturaDet()){
+                    try {
+                        con.getConeccion().commit();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Factura cancelada");
+                    limpiarListPro();
+                    vaciarRecuperarFactura();
+                }
+            }
+            else if(resEst==2){
+                try {
+                     con.getConeccion().rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "La factura ya se encuentra cancelada");
+            }
+            else if(resEst==3){
+                try {
+                     con.getConeccion().rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "No se pudo cancelar la factura");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_enterCancelFacMouseClicked
+
+    private void btnEliminarModificarProducto2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarModificarProducto2MouseClicked
+        int cantidadFac;
+        try {
+            cantidadFac = verifcarUsFac();
+            if(cantidadFac>0){
+                if(cambiarEstadoUs()){
+                    try {
+                        con.getConeccion().commit();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Estado cambiado");
+                    vaciarmodificarUsuario();
+                    }
+                else{
+                    try {
+                         con.getConeccion().rollback();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "No se pudo cambiar estado");
+                }  
+            }
+            else if(cantidadFac==0){
+                if(eliminarUsuario()){
+                    try {
+                        con.getConeccion().commit();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Usuario eliminado");
+                }
+                else{
+                    try {
+                         con.getConeccion().rollback();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "No se pudo eliminar usuario");
+                }  
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarModificarProducto2MouseClicked
+
+    private void agregarDetallesFacKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_agregarDetallesFacKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarDetallesFacKeyPressed
+
+    private void TFcantidadDetalleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFcantidadDetalleKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFcantidadDetalleKeyPressed
+
+    private void TFcantidadDetalleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFcantidadDetalleKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_TFcantidadDetalleKeyTyped
+
+    private void TFPresioServKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFPresioServKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_TFPresioServKeyTyped
 
     /**
      * @param args the command line arguments
@@ -2192,12 +3068,938 @@ public class PrincipalAd extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public void limpiarListPro(){
+        int lo=detalles.getRowCount()-1;
+        for(int i=lo; i>=0; i--){
+            detalles.removeRow(i);
+        }
+    }
+    
+    public void recuperarFactura() throws IOException{
+        FacturaCabecera fC=new FacturaCabecera();
+        ArrayList<FacturaDetalle> listDetalles=new ArrayList<>();
+        if(this.con.getConeccion()!=null){
+            ControladorCabecera cCabecera=new ControladorCabecera();
+            String idCab=idCabCancelFac2.getText();
+            fC=cCabecera.buscarFacCab(con, idCab);
+            if(fC.getFaCabeceraFecha()!=null){
+                String fecha=transformarGregorian(fC.getFaCabeceraFecha());
+                fechaCancelFac.setText(fecha);
+                subtotalCancelFac.setText(fC.getSubtotal()+"");
+                ivaCancelFac.setText(fC.getIva()+"%");
+                totalCancelFac.setText(fC.getTotal()+"");
+                ControladorCliente ccli=new ControladorCliente();
+                String cedula=ccli.buscarCedula(con, fC.getIdCliente()+"");
+                Cliente cli=ccli.buscarDatosCli(con, cedula);
+                ciCancelFAc.setText(cedula);
+                nombreCancelFac.setText(cli.getNombre()+" "+cli.getApellido());
+                telefonoCancelFac.setText(cli.getTelefono());
+                if(cli.getCalleSecundaria()==null){
+                    direccionCancelFAc.setText(cli.getCallePrincipal());
+                }
+                else{
+                    direccionCancelFAc.setText(cli.getCallePrincipal()+" "+cli.getCalleSecundaria());
+                }
+                emailCancelFac.setText(cli.getEmial());   
+                ControladorDetalle cDet=new ControladorDetalle();
+                ControladorProductos cPro=new ControladorProductos();
+                listDetalles=cDet.listDetalles(con, idCab);
+                int lo =detalles.getRowCount()-1;
+                for(int i=lo; i>=0; i--){
+                    detalles.removeRow(i);
+                }
+                for(int i=0;i<listDetalles.size();i++){
+                    String[] tableData = new String[6];
+                    String nombrePro=cPro.buscarNombrePro(con, listDetalles.get(i).getIdProducto()+"");
+                    tableData[0]=listDetalles.get(i).getIdProducto()+"";
+                    tableData[1]=nombrePro;
+                    tableData[2]=listDetalles.get(i).getPrecioUni()+"";
+                    tableData[3]=listDetalles.get(i).getCantidad()+"";
+                    tableData[4]=listDetalles.get(i).getPrecioServ()+"";
+                    tableData[5]=listDetalles.get(i).getSubtotal()+"";
+                    detalles.addRow(tableData);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Factura no encontrada");
+            }
+        }
+    }
+    
+    public void vaciarRecuperarFactura(){
+        int lo =detalles.getRowCount()-1;
+        for(int i=lo; i>=0; i--){
+            detalles.removeRow(i);
+        }
+        emailCancelFac.setText(""); 
+        direccionCancelFAc.setText("");
+        telefonoCancelFac.setText("");
+        nombreCancelFac.setText("");
+        ciCancelFAc.setText("");
+        fechaCancelFac.setText("");
+        subtotalCancelFac.setText("");
+        ivaCancelFac.setText("");
+        totalCancelFac.setText("");
+        idCabCancelFac2.setText("");
+    }
+    
+    public String transformarGregorian(GregorianCalendar f){
+        String fecha=f.get(Calendar.DATE)+"/"+f.get(Calendar.MONTH)+"/"+f.get(Calendar.YEAR);
+        return fecha;
+    }
+    
+    public void  recuperarTipos(){
+        ArrayList<String> tipos=new ArrayList<>();
+        if(this.con.getConeccion()!=null){
+            ControladorTipos ctipo=new ControladorTipos();
+            tipos=ctipo.getTipos(con);
+        }
+        ComboTipos.removeAllItems();
+        ComboItemsModificarPro.removeAllItems();
+        for(int i=0;i<tipos.size();i++){
+            ComboTipos.addItem(tipos.get(i));
+            ComboItemsModificarPro.addItem(tipos.get(i));
+        }
+    }
+    
+    public String obtenerFecha(){
+        GregorianCalendar c=new GregorianCalendar();
+        String dia = Integer.toString(c.get(Calendar.DATE));
+        String mes = Integer.toString(c.get(Calendar.MONTH)+1);
+        String annio = Integer.toString(c.get(Calendar.YEAR));
+        String fecha=dia+"/"+mes+"/"+annio;
+        return fecha;
+    }
+    
+    public String obtenerFechaSql(){
+        GregorianCalendar c=new GregorianCalendar();
+        String dia = Integer.toString(c.get(Calendar.DATE));
+        String mes = Integer.toString(c.get(Calendar.MONTH)+1);
+        String annio = Integer.toString(c.get(Calendar.YEAR));
+        String fecha=dia+"-"+mes+"-"+annio;
+        return fecha;
+    }
+    
+    public void buscarClienteEditar() throws IOException{
+        ControladorCliente ccli=new ControladorCliente();
+        String ci=TFidentificacionModificarCliente.getText();
+        Cliente cli=ccli.buscarDatosCli(con, ci);
+        if(cli.getNombre()!=null){
+            if(cli.getNombre()!=null){
+                TFnombreModificarCliente.setText(cli.getNombre());
+                TFapellidoModificarCliente.setText(cli.getApellido());
+                TFCallePrinModificarCliente.setText(cli.getCallePrincipal());
+                TFCalleSecunModificarCliente.setText(cli.getCalleSecundaria());
+                TFemailModificarCliente.setText(cli.getEmial());   
+                TFTelefonoModificarCliente.setText(cli.getTelefono());
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Cliente no encontrado");
+            }
+        }
+    }
+    
+    public void buscarClienteFactura() throws IOException{
+        ControladorCliente ccli=new ControladorCliente();
+        String ci=ciCrearFactura.getText();
+        Cliente cli=ccli.buscarDatosCli(con, ci);
+        int id=cli.getClienteId();
+        if(cli.getNombre()!=null){
+            if(ccli.estadoAct(con, id)=='I'){
+                JOptionPane.showMessageDialog(null, "El cliente esta inactivo");
+            }
+            else{
+                nombreCrearFactura.setText(cli.getNombre()+" "+cli.getApellido());
+                telefonoCrearFactura.setText(cli.getTelefono());
+                String fecha=obtenerFecha();
+                fechaCrearFactura.setText(fecha);
+                if(cli.getCalleSecundaria()==null){
+                    direccionCrearFactura.setText(cli.getCallePrincipal());
+                }
+                else{
+                    direccionCrearFactura.setText(cli.getCallePrincipal()+" "+cli.getCalleSecundaria());
+                }
+                emailCrearFactura.setText(cli.getEmial());      
+            }            
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Cliente no encontrado");
+        }
+    }
+    
+    public void vaciarbuscarClienteFactura(){
+        ciCrearFactura.setText("");
+        nombreCrearFactura.setText("");
+        telefonoCrearFactura.setText("");
+        direccionCrearFactura.setText("");
+        emailCrearFactura.setText("");   
+    }
+    
+    public void  recuperarProveedores(){
+        ArrayList<String> proveedores=new ArrayList<>();
+        if(this.con.getConeccion()!=null){
+            ControladorProveedor cprov=new ControladorProveedor();
+            proveedores=cprov.getNombreProveedores(con);
+        }
+        for(int i=0;i<proveedores.size();i++){
+            proveedorescomboBox.addItem(proveedores.get(i));
+        }
+    }
+    
+    public void recuperarProductos(){
+        ArrayList<Producto> listPro=new ArrayList<>();
+        if(this.con.getConeccion()!=null){
+            ControladorProductos cprod=new ControladorProductos();
+            listPro=cprod.recuperarProductos(con);
+            String fecha;
+            ControladorTipos tip=new ControladorTipos();
+            int lo=productos.getRowCount()-1;
+            for(int i=lo; i>=0; i--){
+                productos.removeRow(i);
+            }
+            for(int i=0;i<listPro.size();i++){
+                String[] tableData = new String[11];
+                tableData[0]=listPro.get(i).getProID()+"";
+                fecha=transformarGregorian(listPro.get(i).getProFecha());
+                tableData[1]=fecha;
+                tableData[2]=listPro.get(i).getPrecio()+"";
+                tableData[3]=listPro.get(i).getNombre();
+                tableData[4]=listPro.get(i).getCantidad()+"";
+                tableData[5]=listPro.get(i).getDescripcion();
+                tableData[6]=listPro.get(i).getLugPartida();
+                tableData[7]=listPro.get(i).getLugDestino();
+                tableData[8]=listPro.get(i).getDuracion()+"";
+                int idTipo=listPro.get(i).getTipo();
+                tableData[9]=tip.buscarNombreTipos(con, idTipo+"");
+                tableData[10]=listPro.get(i).getTipoServ()+"";
+                productos.addRow(tableData);
+            }
+        }
+        
+    }
+    
+    public boolean crearProducto(){
+         if(this.con.getConeccion()!=null){
+            ControladorProductos cPro=new ControladorProductos();
+            ControladorTipos cTipo=new ControladorTipos();
+            Producto pro=new Producto();
+            Date fecha=StringToDate(TFfechaCrearPro.getText());
+            pro.setProID(cPro.maxIdPro(con)+1);
+            pro.setPrecio(Double.parseDouble(TfprecioCrearPro.getText()));
+            pro.setNombre(TFNombreNuevoPro.getText());
+            pro.setDescripcion(TAdescripcionCrearPro.getText());
+            pro.setLugDestino(TFDestinoCrearPro.getText());
+            String tipoPro=ComboTipos.getSelectedItem().toString();
+            int idTipoPro=cTipo.buscarIdTipos(con, tipoPro);
+            pro.setTipo(idTipoPro);
+            pro.setLugPartida(TFPartidaCrearPro.getText());
+            pro.setDuracion(Integer.parseInt(TFDuracionCRearPro.getText()));
+            pro.setCantidad(Integer.parseInt(TFcantidadCrearPro.getText()));
+            char tipoServ=comboTipoServ.getSelectedItem().toString().charAt(0);
+            pro.setTipoServ(tipoServ);
+            return cPro.crearProducto(con, pro, fecha);
+         }
+         return false;
+    }
+    
+    public void vaciarCrearProducto(){
+        TFfechaCrearPro.setText("");
+        TfprecioCrearPro.setText("");
+        TFNombreNuevoPro.setText("");
+        TAdescripcionCrearPro.setText("");
+        TFDestinoCrearPro.setText("");
+        TFPartidaCrearPro.setText("");
+        TFDuracionCRearPro.setText("");
+        TFcantidadCrearPro.setText("");
+        ControladorTipos tip=new ControladorTipos();
+        ComboTipos.setSelectedItem(tip.buscarNombreTipos(con, 1+""));
+        comboTipoServ.setSelectedItem("A");
+    }
+    
+    public void recuperarProMod(){
+        if(con.getConeccion()!=null){
+            ControladorProductos cPro=new ControladorProductos();
+            String id=TFidProductoMod.getText();
+            Producto pro=cPro.recuperarProductosMod(con, id);
+            if(pro.getNombre()!=null){
+                String fecha=transformarGregorian(pro.getProFecha());
+                TFFechaModificarProducto.setText(fecha);
+                TFnombreModificarPro.setText(pro.getNombre());
+                TfprecioModificarPro.setText(pro.getPrecio()+"");
+                TFcantidadModificarPro.setText(pro.getCantidad()+"");
+                TADescripcionModificarPro.setText((pro.getDescripcion()));
+                TFPartidaModificarPro.setText(pro.getLugPartida());
+                TFDestinoModificarPro.setText(pro.getLugDestino());
+                TFDuracionModificarPro.setText(pro.getDuracion()+"");
+                int idTipo=pro.getTipo();
+                ControladorTipos tip=new ControladorTipos();
+                ComboItemsModificarPro.setSelectedItem(tip.buscarNombreTipos(con, idTipo+""));
+                ComboTipoServModPro.setSelectedItem(pro.getTipoServ()+"");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No se encontro el producto");
+            }
+        }
+    }
+    
+    public boolean modificarProducto(){
+        if(con.getConeccion()!=null){
+            ControladorTipos cTipo=new ControladorTipos();
+            ControladorProductos cPro=new ControladorProductos();
+            Producto pro=new Producto();
+            pro.setProID(Integer.parseInt(TFidProductoMod.getText()));
+            Date fecha=StringToDate(TFFechaModificarProducto.getText());
+            pro.setNombre(TFnombreModificarPro.getText());
+            pro.setPrecio(Double.parseDouble(TfprecioModificarPro.getText()));
+            pro.setCantidad(Integer.parseInt(TFcantidadModificarPro.getText()));
+            pro.setDescripcion(TADescripcionModificarPro.getText());
+            pro.setLugPartida(TFPartidaModificarPro.getText());
+            pro.setLugDestino(TFDestinoModificarPro.getText());
+            pro.setDuracion(Integer.parseInt(TFDuracionModificarPro.getText()));
+            String nombreTipo=ComboItemsModificarPro.getSelectedItem().toString();
+            pro.setTipo(cTipo.buscarIdTipos(con, nombreTipo));
+            pro.setTipoServ(ComboTipoServModPro.getSelectedItem().toString().charAt(0));
+            return cPro.modificarProducto(con, pro, fecha);
+        }        
+        return false;
+    }
+    
+    public void vaciarrecuperarProMod(){
+        TFidProductoMod.setText("");
+        TFnombreModificarPro.setText("");
+        TFFechaModificarProducto.setText("");
+        TfprecioModificarPro.setText("");
+        TFcantidadModificarPro.setText("");
+        TADescripcionModificarPro.setText("");
+        TFPartidaModificarPro.setText("");
+        TFDestinoModificarPro.setText("");
+        TFDuracionModificarPro.setText("");
+        ControladorTipos tip=new ControladorTipos();
+        ComboItemsModificarPro.setSelectedItem(tip.buscarNombreTipos(con, 1+""));
+        ComboTipoServModPro.setSelectedItem("A");
+    }
+    
+    public void cargarDatosEditarPerfil(){
+        if(con.getConeccion()!=null){
+            ControladorUsuario cUsu=new ControladorUsuario();
+            Usuario usu=cUsu.buscarUsuarioNombre(con, nickName);
+            TFCedulaEditarPerfil.setText(usu.getIdentificacion());
+            TFNombreEditarPerfil.setText(usu.getNombre());
+            TFApellifoEditarPerfil.setText(usu.getApellido());
+            TFCallePrinEditarPerfil.setText(usu.getCallePrincipal());
+            TFCalleSecuEditarPerfil.setText(usu.getCalleSecundaria());
+            TFNickNameEditarPerfil.setText(usu.getNickName());
+            TFPasswordEditarPerfil.setText(usu.getPassword());
+            TFEmailEditarPerfil.setText(usu.getEmial());
+            TFTelefonoEditarPerfil.setText(usu.getTelefono());
+        }
+    }
+    
+    public void cargarDatosEditarPerfilUs(){
+        if(con.getConeccion()!=null){
+            ControladorUsuario cUsu=new ControladorUsuario();
+            String ci=TFCedulaEditarPerfilUs.getText();
+            Usuario usu=cUsu.buscarUsuarioCedula(con, ci);
+            System.out.println("nombre: "+usu.getNombre());
+            TFCedulaEditarPerfilUs.setText(usu.getIdentificacion());
+            TFNombreEditarPerfilUs.setText(usu.getNombre());
+            TFApellifoEditarPerfilUs.setText(usu.getApellido());
+            TFCallePrinEditarPerfilUs.setText(usu.getCallePrincipal());
+            TFCalleSecuEditarPerfilUs.setText(usu.getCalleSecundaria());
+            TFNickNameEditarPerfilUs.setText(usu.getNickName());
+            TFPasswordEditarPerfilUs.setText(usu.getPassword());
+            TFEmailEditarPerfilUs.setText(usu.getEmial());
+            TFTelefonoEditarPerfilUs.setText(usu.getTelefono());
+        }
+    }
+    
+    public void vaciarcargarDatosEditarPerfilUs(){
+        TFCedulaEditarPerfilUs.setText("");
+        TFCedulaEditarPerfilUs.setText("");
+        TFNombreEditarPerfilUs.setText("");
+        TFApellifoEditarPerfilUs.setText("");
+        TFCallePrinEditarPerfilUs.setText("");
+        TFCalleSecuEditarPerfilUs.setText("");
+        TFNickNameEditarPerfilUs.setText("");
+        TFPasswordEditarPerfilUs.setText("");
+        TFEmailEditarPerfilUs.setText("");
+        TFTelefonoEditarPerfilUs.setText("");
+    }
+    
+    public void cargarCalculosFac(){
+        Precios pre=calcularPrecios();
+        String subtotal=pre.getSubtotal()+"";
+        String iva=pre.getIva()+"";
+        String total=pre.getTotal()+"";
+        subtotalCrearFac.setText(subtotal);
+        ivaCrearFac.setText(iva);
+        totalCrearFac.setText(total);
+    }
+    
+    public void cargarDetalleEnFactura(){
+        if(con.getConeccion()!=null){
+            String id=(String) productos.getValueAt(ListDetalles.getSelectedRow(), 0);
+            String precioUni=(String) productos.getValueAt(ListDetalles.getSelectedRow(), 2);
+            String cantidad= TFcantidadDetalle.getText();
+            if(cantidad.equals("0")==false){
+                String presioservicio=TFPresioServ.getText();
+                double subtotalD=(Double.parseDouble(precioUni)*Double.parseDouble(cantidad))+Double.parseDouble(presioservicio);
+                String[] tableData=new String [6];
+                ControladorProductos pro=new ControladorProductos();
+                String nombrePro=pro.buscarNombrePro(con, id);
+                tableData[0]=id;
+                tableData[1]=nombrePro;
+                tableData[2]=precioUni;
+                tableData[3]=cantidad;
+                tableData[4]=presioservicio;
+                tableData[5]=subtotalD+"";
+                detalles.addRow(tableData);
+            }
+        }
+    }
+    
+    public void vaciarCargarDetalleEnFactura(){
+        TFcantidadDetalle.setText("");
+        TFPresioServ.setText("");
+    }
+    
+    public Precios calcularPrecios(){
+        int filas=detalles.getRowCount();
+        System.out.println("filas: "+filas);
+        Precios pre=new Precios();
+        double subTotal=0;
+        double iva=0.12;
+        double total;
+        for(int i=0;i<filas;i++){
+            double subTotalDetalle=Double.parseDouble((String)detalles.getValueAt(i, 5));
+            subTotal+=subTotalDetalle;
+        }
+        pre.setSubtotal(subTotal);
+        pre.setIva(iva);
+        total=(iva*subTotal)+subTotal;
+        pre.setTotal(total);
+        return pre;
+    }
+    
+    public boolean crearFacturaCab() throws IOException{
+        if(con.getConeccion()!=null){
+            ControladorCabecera cCabecera=new ControladorCabecera();
+            ControladorCliente cCliente=new ControladorCliente();
+            ControladorUsuario cUsuario=new ControladorUsuario();
+            int idFacCab=cCabecera.idMaxCab(con)+1;
+            String cedulaCli=ciCrearFactura.getText();
+            Cliente cli=cCliente.buscarDatosCli(con, cedulaCli);
+            int idCliente=cli.getClienteId();
+            if(cCliente.estadoAct(con, idCliente)=='I'){
+                JOptionPane.showMessageDialog(null, "El cliente esta inactivo");
+                return false;
+            }
+            else{
+                Usuario us=cUsuario.buscarUsuarioNombre(con, nickName);
+                int idUs=Integer.parseInt(us.getUsuarioId()+"");
+                Date fecha = StringToDate(obtenerFechaSql());
+                double subtotal=Double.parseDouble(subtotalCrearFac.getText());
+                double iva=Double.parseDouble(ivaCrearFac.getText());
+                double total=Double.parseDouble(totalCrearFac.getText());
+                String estado="A";
+                boolean cent=cCabecera.guardarCabeceraEnBD(con,idFacCab,fecha,subtotal,iva, total, estado, idCliente, idUs);
+                return cent;
+            }
+        }
+        return false;
+    }
+    
+    public void vaciarCrearFacturaCab(){
+        ciCrearFactura.setText("");
+        subtotalCrearFac.setText("");
+        ivaCrearFac.setText("");
+        totalCrearFac.setText("");
+    }
+    
+    public boolean crearFacturaDet(){
+        boolean cent=true;
+        if(con.getConeccion()!=null){
+            ControladorCabecera cCabecera=new ControladorCabecera();
+            ControladorDetalle cDetalle=new ControladorDetalle();
+            int idFacCab=cCabecera.idMaxCab(con);
+            int filas=detalles.getRowCount();
+            for(int i=0;i<filas;i++){
+                int idPro=Integer.parseInt((String)detalles.getValueAt(i, 0));
+                int cantidad=Integer.parseInt((String)detalles.getValueAt(i, 3));
+                double precioServ=Integer.parseInt((String)detalles.getValueAt(i, 4));
+                cent=cDetalle.guardarDetalleEnBD(con, idPro, cantidad, precioServ, idFacCab);
+            }
+            return cent;
+        }
+        return cent;
+    }
+    
+    public void crearPdf(){
+        ControladorCabecera cCabecera=new ControladorCabecera();
+        int idFacCab=cCabecera.idMaxCab(con);
+        int lo=detalles.getRowCount();
+        Document document = new Document();
+        
+        try{
+            PdfWriter.getInstance(document, new FileOutputStream("factura"+idFacCab+".pdf"));
+            document.open();
+            Image imagen = Image.getInstance("C:\\Users\\carlo\\Desktop\\java2\\JavaApplication22\\src\\imagenes\\loguitopequeño.png");      
+            //imagen.scaleAbsolute (150f, 150f);
+            imagen.setAbsolutePosition(40f, 740f);
+            document.add(imagen);
+            
+            Paragraph parrafo = new Paragraph("");
+            parrafo.add("Empresa: Agencia de viajes UPS "+"   Telefono: 0991039408");
+            parrafo.setIndentationLeft(160);
+            document.add(parrafo); 
+            
+            Paragraph parraf1 = new Paragraph("");
+            parraf1.add("Direccion: Av Gil Ramires Davaloz"+"  Email:agenciaviajesups@gmail.com");
+            parraf1.setIndentationLeft(160);
+            document.add(parraf1);
+            
+            Paragraph parrafr = new Paragraph("");
+            parrafr.add("RUC: 0159756347621");
+            parrafr.setIndentationLeft(160);
+            document.add(parrafr);
+            
+            Paragraph parrafo1 = new Paragraph("                ");
+            document.add(parrafo1);
+            
+            PdfPCell celdaFinal = new PdfPCell();
+            celdaFinal.addElement(new Paragraph("Nombre: "+nombreCrearFactura.getText()+"   CI: "+ciCrearFactura.getText()+"   Telefono: "+telefonoCrearFactura.getText()));
+            celdaFinal.addElement(new Paragraph("Fecha: "+fechaCrearFactura.getText()+"  Direccion: "+direccionCrearFactura.getText()+"   Email: "+emailCrearFactura.getText()));
+            
+            PdfPTable tableo = new PdfPTable(7);  
+            celdaFinal.setColspan(7);
+            tableo.addCell(celdaFinal);
+            document.add(tableo);
+            
+            Paragraph parrafo2 = new Paragraph("                ");
+            document.add(parrafo2);
+            PdfPTable table = new PdfPTable(6);   
+            table.setWidthPercentage(100);
+            table.addCell("IDPROCTO");
+            table.addCell("PRODUCTO");
+            table.addCell("PRECIOUNI");
+            table.addCell("CANTIDAD");
+            table.addCell("PRESIOSERV");
+            table.addCell("SUBTOTAL");
+            for(int i=0;i<lo;i++){
+                String idPro=(String)detalles.getValueAt(i, 0);
+                String nomPro=(String)detalles.getValueAt(i, 1);
+                String preUnio=(String)detalles.getValueAt(i, 2);
+                String cant=(String)detalles.getValueAt(i, 3);
+                String presioServ=(String)detalles.getValueAt(i, 4);
+                String subtotal=(String)detalles.getValueAt(i, 5);
+                // addCell() agrega una celda a la tabla, el cambio de fila
+                // ocurre automaticamente al llenar la fila
+                table.addCell(idPro);
+                table.addCell(nomPro);
+                table.addCell(preUnio+"$");
+                table.addCell(cant);
+                table.addCell(presioServ+"$");
+                table.addCell(subtotal);
+                // Agregamos la tabla al documento
+            }
+            document.add(table);
+            Paragraph parrafo3 = new Paragraph("                ");
+            document.add(parrafo3);
+            PdfPTable table2 = new PdfPTable(2);   
+            table2.setWidthPercentage(100);
+            table2.addCell("SUBTOTAL:");
+            table2.addCell(subtotalCrearFac.getText());
+            table2.addCell("IVA 12%:");
+            double subtotal=Double.parseDouble(subtotalCrearFac.getText());
+            double iva=subtotal*0.12;
+            table2.addCell(iva+"");
+            table2.addCell("TOTAL:");
+            table2.addCell(totalCrearFac.getText());
+            document.add(table2);
+            document.close();
+        }catch(Exception e)
+        {
+            System.err.println("Ocurrio un error al crear el archivo");
+            System.exit(-1);
+        }
+    }
+    
+    public void enviarCorreo(){
+        ControladorCabecera cCabecera=new ControladorCabecera();
+        int idFacCab=cCabecera.idMaxCab(con);
+        Properties propiedad = new Properties();
+        propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+        propiedad.setProperty("mail.smtp.starttls.enable", "true");
+        propiedad.setProperty("mail.smtp.port", "587");
+        propiedad.setProperty("mail.smtp.auch","true");
+        
+        Session sesion = Session.getDefaultInstance(propiedad);
+        String correoEnvia = "agenciaviajesups@gmail.com";
+        String contrasena = "123abcds";
+        String receptor = emailCrearFactura.getText();
+        
+        MimeMessage mail = new MimeMessage(sesion);
+        try {
+            mail.setFrom(new InternetAddress (correoEnvia));
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress (receptor));
+            
+            BodyPart adjunto = new MimeBodyPart();
+            adjunto.setDataHandler(new DataHandler(new FileDataSource("C:\\Users\\carlo\\Desktop\\java2\\JavaApplication22\\factura"+idFacCab+".pdf")));
+            adjunto.setFileName("factura"+idFacCab+".pdf");
+            
+            MimeMultipart multiParte = new MimeMultipart();
+            multiParte.addBodyPart(adjunto);
+            mail.setContent(multiParte);
+            
+            Transport transportar = sesion.getTransport("smtp");
+            transportar.connect(correoEnvia,contrasena);
+            transportar.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));          
+            transportar.close();
+            
+            JOptionPane.showMessageDialog(null, "Factura enviada");
+            
+            
+        } catch (AddressException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void vaciarFacturaDet(){
+        int lo=detalles.getRowCount()-1;
+        for(int i=lo; i>=0; i--){
+            detalles.removeRow(i);
+        }
+    }
+    
+    public Date StringToDate(String s){
+        java.util.Date result = new java.util.Date();
+        SimpleDateFormat parseador = new SimpleDateFormat("dd/MM/yy");
+        try {
+             result = parseador.parse(obtenerFecha());
+        } catch (ParseException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        java.sql.Date sqlDate = new java.sql.Date(result.getTime());
+        System.out.println("fecha: "+sqlDate);
+        return sqlDate;
+    }
+    
+    public boolean modificarCliente() throws IOException{
+        Cliente cli=new Cliente();
+        ControladorCliente cCliente=new ControladorCliente();
+        String identificacion=TFidentificacionModificarCliente.getText();
+        cli=cCliente.buscarDatosCli(con, identificacion);
+        int id=cli.getClienteId();
+        String nombre=TFnombreModificarCliente.getText();
+        String apellido=TFapellidoModificarCliente.getText();
+        String callePrin=TFCallePrinModificarCliente.getText();
+        String calleSecu=TFCalleSecunModificarCliente.getText();
+        if(calleSecu==null){
+            calleSecu=null;
+        }
+        String telefono=TFTelefonoModificarCliente.getText();
+        String email=TFemailModificarCliente.getText();
+        String estado=cli.getEstado();
+        System.out.println(estado);
+        if(con.getConeccion()!=null){
+            if(nombre!=null){
+                if(apellido!=null){
+                    if(callePrin!=null){
+                        if(telefono!=null){
+                            return cCliente.actualizarCliente(con, id, identificacion, nombre, apellido, callePrin, calleSecu, telefono, email, estado);
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Falta Llenar campo telefono");
+                        }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Falta Llenar campo calle Principal");
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Falta Llenar campo apellido");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Falta Llenar campo nombre");
+            }
+        }
+        return false;
+    }
+    
+    public void vaciarModificarCliente(){
+        TFidentificacionModificarCliente.setText("");
+        TFnombreModificarCliente.setText("");
+        TFapellidoModificarCliente.setText("");
+        TFCallePrinModificarCliente.setText("");
+        TFCalleSecunModificarCliente.setText("");
+        TFTelefonoModificarCliente.setText("");
+        TFemailModificarCliente.setText("");
+    }
+    
+    public boolean crearCliente(){
+         if(con.getConeccion()!=null){
+            ControladorCliente cCliente=new ControladorCliente();
+            int id=cCliente.maxID(con)+1;
+            String identificacion=identificacionCrearCliente.getText();
+            String nombre=nombreCrearCliente.getText();
+            String apellido=apellidoCrearCliente.getText();
+            String callePrin=callePrinCrearCliente.getText();
+            String calleSecu=callesecunCrearCliente.getText();
+            if(calleSecu==null){
+                calleSecu=null;
+            }
+            String telefono=telefonoCrearCliente.getText();
+            String email=emailCrearCliente.getText();
+            String estado="A";
+            return cCliente.crearCliente(con, id, identificacion, nombre, apellido, callePrin, calleSecu, telefono, email, estado);
+         }
+         return false;
+    }
+    
+    public void vaciarCrearCliente(){
+        identificacionCrearCliente.setText("");
+        nombreCrearCliente.setText("");
+        apellidoCrearCliente.setText("");
+        callePrinCrearCliente.setText("");
+        callesecunCrearCliente.setText("");
+        telefonoCrearCliente.setText("");
+        emailCrearCliente.setText("");
+    }
+    
+    
+    public boolean realizarRegistro(){
+        if(con.getConeccion()!=null){
+            ControladorRegistros cREg=new ControladorRegistros();
+            ControladorProductos cPro=new ControladorProductos();
+            ControladorProveedor cProv=new ControladorProveedor();
+            RegistroStock reg=new RegistroStock();
+            reg.setRegID(cREg.maxIdReg(con)+1);
+            reg.setCantidad(Integer.parseInt(TFcantidadRegistrarStock.getText()));
+            int idPro=Integer.parseInt((String)productos.getValueAt(listProStock.getSelectedRow(), 0));
+            reg.setIdProd(idPro);
+            String nombreProv=proveedorescomboBox.getSelectedItem().toString();
+            int idProv=cProv.buscarIDProv(con, nombreProv);
+            reg.setIdProveedor(idProv);
+            int cantidad=reg.getCantidad();
+            int cantidadAc=cPro.cantidadActual(con, idPro);
+            int cantidadActualizada=cantidad+cantidadAc;
+            if(cREg.crearRegistro(con, reg, StringToDate(obtenerFecha()))){
+                return cPro.actualizarStock(con, cantidadActualizada, idPro);
+            }
+        }
+        return false;
+    }
+    
+    public boolean registrarProveedor(){
+        if(con.getConeccion()!=null){
+            ControladorProveedor cProv=new ControladorProveedor();
+            Proveedor prov=new Proveedor();
+            int id=cProv.maxIdProv(con)+1;
+            prov.setProvID(id);
+            prov.setNombre(TFnombreProv.getText());
+            prov.setRuc(TFRucProveedor.getText());
+            return cProv.registrarProveedor(con, prov);
+        }
+        return false;
+    }
+    
+    public void vaciarregistrarProveedor(){
+        TFnombreProv.setText("");
+        TFRucProveedor.setText("");
+    }
+    
+    public boolean modificarUsuario(){
+        if(con.getConeccion()!=null){
+            ControladorUsuario cUs=new ControladorUsuario();
+            Usuario us=new Usuario();
+            us.setUsuarioId(cUs.buscarId(con, TFCedulaEditarPerfilUs.getText()));
+            us.setIdentificacion(TFCedulaEditarPerfilUs.getText());
+            us.setNombre(TFNombreEditarPerfilUs.getText());
+            us.setApellido(TFApellifoEditarPerfilUs.getText());
+            us.setCallePrincipal(TFCallePrinEditarPerfilUs.getText());
+            us.setCalleSecundaria(TFCalleSecuEditarPerfilUs.getText());
+            us.setTelefono(TFTelefonoEditarPerfilUs.getText());
+            us.setNickName(TFNickNameEditarPerfilUs.getText());
+            us.setPassword(TFPasswordEditarPerfilUs.getText());
+            us.setEmial(TFEmailEditarPerfilUs.getText());
+            return cUs.modificarUsuario(con, us);
+        }
+        return false;
+    }
+    public void vaciarmodificarUsuario(){
+        TFCedulaEditarPerfilUs.setText("");
+        TFNombreEditarPerfilUs.setText("");
+        TFApellifoEditarPerfilUs.setText("");
+        TFCallePrinEditarPerfilUs.setText("");
+        TFCalleSecuEditarPerfilUs.setText("");
+        TFTelefonoEditarPerfilUs.setText("");
+        TFNickNameEditarPerfilUs.setText("");
+        TFPasswordEditarPerfilUs.setText("");
+        TFEmailEditarPerfilUs.setText("");
+    }
+    public boolean modificarPerfil(){
+        if(con.getConeccion()!=null){
+            ControladorUsuario cUs=new ControladorUsuario();
+            Usuario us=new Usuario();
+            us.setUsuarioId(cUs.buscarId(con, TFCedulaEditarPerfil.getText()));
+            us.setIdentificacion(TFCedulaEditarPerfil.getText());
+            us.setNombre(TFNombreEditarPerfil.getText());
+            us.setApellido(TFApellifoEditarPerfil.getText());
+            us.setCallePrincipal(TFCallePrinEditarPerfil.getText());
+            us.setCalleSecundaria(TFCalleSecuEditarPerfil.getText());
+            us.setTelefono(TFTelefonoEditarPerfil.getText());
+            us.setNickName(TFNickNameEditarPerfil.getText());
+            us.setPassword(TFPasswordEditarPerfil.getText());
+            us.setEmial(TFEmailEditarPerfil.getText());
+            return cUs.modificarUsuario(con, us);
+        }
+        return false;
+    }
+    
+    public boolean crearTipo(){
+        if(con.getConeccion()!=null){
+            ControladorTipos cTip=new ControladorTipos();
+            Tipo tp=new Tipo();
+            int id=cTip.maxIdTip(con)+1;
+            tp.setTipoID(id);
+            tp.setNombre(TFnombreTipo.getText());
+            return cTip.crearTipos(con, tp);
+        }
+        return false;
+    }
+    
+    public void vaciarCrearTipo(){
+        TFnombreTipo.setText("");
+    }
+    
+    public void actualizarProds(){
+        int lo =detalles.getRowCount()-1;
+        recuperarProductos();
+        for(int i=lo; i>=0; i--){
+            String idString=detalles.getValueAt(i, 0).toString();
+            int id=Integer.parseInt(idString);
+            String cantidadString=detalles.getValueAt(i, 3).toString();
+            int cantidad=Integer.parseInt(cantidadString);
+            String cantidadAntiguaString=productos.getValueAt(id-1, 4).toString();
+            int cantidadAntigua=Integer.parseInt(cantidadAntiguaString);
+            int nuevaCantidad=cantidadAntigua-cantidad;
+            if(nuevaCantidad<0){
+                detalles.removeRow(i);
+                JOptionPane.showMessageDialog(null, "La cantidad supera al stock");
+            }
+            else{
+                Precios pre=calcularPrecios();
+                String subtotal=pre.getSubtotal()+"";
+                String iva=pre.getIva()+"";
+                String total=pre.getTotal()+"";
+                subtotalCrearFac.setText(subtotal);
+                ivaCrearFac.setText(iva);
+                totalCrearFac.setText(total);
+                productos.setValueAt(nuevaCantidad, id-1, 4);
+            }
+        }
+    }
+    
+    public int verifcarCliFac() throws IOException{
+        if(con.getConeccion()!=null){
+            ControladorCliente cCliente=new ControladorCliente();
+            Cliente cli=cCliente.buscarDatosCli(con, TFidentificacionModificarCliente.getText());
+            int id=cli.getClienteId();
+            int cantidadFacturas=cCliente.verificarSiEstaEnFactura(con, id);
+            return cantidadFacturas;
+        }
+        return -1;
+    }
+    public boolean eliminarCliente() throws IOException{
+        if(con.getConeccion()!=null){
+            ControladorCliente cCliente=new ControladorCliente();
+            Cliente cli=cCliente.buscarDatosCli(con, TFidentificacionModificarCliente.getText());
+            int id=cli.getClienteId();
+            return cCliente.eliminarCliente(con, id);
+        }
+        return false;
+    }
+    
+    public boolean cambiarEstadoCli() throws IOException{
+         if(con.getConeccion()!=null){
+             ControladorCliente cCliente=new ControladorCliente();
+             Cliente cli=cCliente.buscarDatosCli(con, TFidentificacionModificarCliente.getText());
+             int id=cli.getClienteId();
+             char estadoAc=cCliente.estadoAct(con, id);
+             return cCliente.cambiarEstado(con, id, estadoAc);
+         }
+         return false;
+    }
+    
+    public int verifcarUsFac() throws IOException{
+        if(con.getConeccion()!=null){
+            ControladorUsuario cUs=new ControladorUsuario();
+            int id=cUs.buscarId(con, TFCedulaEditarPerfilUs.getText());
+            int cantidadFacturas=cUs.verificarSiEstaEnFactura(con, id);
+            return cantidadFacturas;
+        }
+        return -1;
+    }
+    public boolean eliminarUsuario() throws IOException{
+        if(con.getConeccion()!=null){
+            ControladorUsuario cUs=new ControladorUsuario();
+            int id=cUs.buscarId(con, TFCedulaEditarPerfilUs.getText());
+            return cUs.eliminarUsuario(con, id);
+        }
+        return false;
+    }
+    
+    public boolean cambiarEstadoUs() throws IOException{
+         if(con.getConeccion()!=null){
+             ControladorUsuario cUs=new ControladorUsuario();
+             int id=cUs.buscarId(con, TFCedulaEditarPerfilUs.getText());
+             char estadoAc=cUs.estadoAct(con, id);
+             return cUs.cambiarEstado(con, id, estadoAc);
+         }
+         return false;
+    }
+    
+    
+    public int cambiarEstadoFac() throws IOException{
+        if(con.getConeccion()!=null){
+            ControladorCabecera cCab=new ControladorCabecera();
+            int id=Integer.parseInt(idCabCancelFac2.getText());
+            char est=cCab.estadoAct(con, id);
+            return cCab.cambiarEstado(con, id, est);
+        }
+        return 3;
+    }
+    
+    public boolean actualizarFacturaDet(){
+        boolean cent=true;
+        if(con.getConeccion()!=null){
+            ControladorCabecera cCabecera=new ControladorCabecera();
+            ControladorDetalle cDetalle=new ControladorDetalle();
+            ControladorProductos cPro=new ControladorProductos();
+            int idFacCab=Integer.parseInt(idCabCancelFac2.getText());
+            int filas=detalles.getRowCount();
+            for(int i=0;i<filas;i++){
+                int idPro=Integer.parseInt((String)detalles.getValueAt(i, 0));
+                int cantidad=Integer.parseInt((String)detalles.getValueAt(i, 3));
+                int cantidadAc=cPro.cantidadActual(con, idPro);
+                int cantidadActualizada=cantidad+cantidadAc;
+                cent=cPro.actualizarStock(con, cantidadActualizada, idPro);
+            }
+            return cent;
+        }
+        return cent;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JInternalFrame AnadirDetalle;
     private javax.swing.JButton BTNAgregarItemModificarPro;
     private javax.swing.JInternalFrame CancelarFactura2;
     private javax.swing.JComboBox<String> ComboItemsModificarPro;
+    private javax.swing.JComboBox<String> ComboTipoServModPro;
     private javax.swing.JComboBox<String> ComboTipos;
     private javax.swing.JPanel DatosEmpresaCancelFac2;
     private javax.swing.JPanel DatosUsuarioCancelFac;
@@ -2206,7 +4008,6 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JPanel JPBackGroung2;
     private javax.swing.JPanel JPNuevoCliente;
     private javax.swing.JPanel JPObcionesControl2;
-    private javax.swing.JTextField JTnombreTipo;
     private javax.swing.JTable ListDetalles;
     private javax.swing.JInternalFrame ModificarCliente;
     private javax.swing.JInternalFrame ModificarProducto;
@@ -2239,10 +4040,13 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JTextField TFNickNameEditarPerfilUs;
     private javax.swing.JTextField TFNombreEditarPerfil;
     private javax.swing.JTextField TFNombreEditarPerfilUs;
+    private javax.swing.JTextField TFNombreNuevoPro;
     private javax.swing.JTextField TFPartidaCrearPro;
     private javax.swing.JTextField TFPartidaModificarPro;
     private javax.swing.JPasswordField TFPasswordEditarPerfil;
     private javax.swing.JPasswordField TFPasswordEditarPerfilUs;
+    private javax.swing.JTextField TFPresioServ;
+    private javax.swing.JTextField TFRucProveedor;
     private javax.swing.JTextField TFTelefonoEditarPerfil;
     private javax.swing.JTextField TFTelefonoEditarPerfilUs;
     private javax.swing.JTextField TFTelefonoModificarCliente;
@@ -2253,16 +4057,18 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JTextField TFcantidadRegistrarStock;
     private javax.swing.JTextField TFemailModificarCliente;
     private javax.swing.JTextField TFfechaCrearPro;
+    private javax.swing.JTextField TFidProductoMod;
     private javax.swing.JTextField TFidentificacionModificarCliente;
     private javax.swing.JTextField TFnombreModificarCliente;
+    private javax.swing.JTextField TFnombreModificarPro;
     private javax.swing.JTextField TFnombreProv;
+    private javax.swing.JTextField TFnombreTipo;
     private javax.swing.JTextField TfprecioCrearPro;
     private javax.swing.JTextField TfprecioModificarPro;
     private javax.swing.JPanel TotalesCancelFac;
     private javax.swing.JLabel agregarDetallesFac;
     private javax.swing.JButton agregarTipo;
     private javax.swing.JTextField apellidoCrearCliente;
-    private javax.swing.JButton btnEliminarModificarProducto;
     private javax.swing.JButton btnEliminarModificarProducto1;
     private javax.swing.JButton btnEliminarModificarProducto2;
     private javax.swing.JLabel buscarCICrearFactura;
@@ -2273,6 +4079,7 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JLabel ciCancelFAc;
     private javax.swing.JTextField ciCrearFactura;
     private javax.swing.JButton close2;
+    private javax.swing.JComboBox<String> comboTipoServ;
     private javax.swing.JPanel datosEmpresaCancelFac;
     private javax.swing.JPanel datosUsuarioCancelFac;
     private javax.swing.JTable detallesCancelFac2;
@@ -2371,13 +4178,18 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
-    private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel86;
     private javax.swing.JLabel jLabel87;
@@ -2407,8 +4219,6 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel labelID;
@@ -2450,6 +4260,7 @@ public class PrincipalAd extends javax.swing.JFrame {
     private javax.swing.JLabel labelIDIN7;
     private javax.swing.JLabel labelIDIN8;
     private javax.swing.JLabel labelIDIN9;
+    private javax.swing.JTable listProStock;
     private javax.swing.JButton mini2;
     private javax.swing.JLabel nombreCancelFac;
     private javax.swing.JTextField nombreCrearCliente;

@@ -16,6 +16,7 @@ public class Proveedor {
     // Atributos de la clase Proveedor
     private int provID;
     private String nombre;
+    private String ruc;
     
     
     // Constructor de la clase Proveedor sin parametros para una instaciacion
@@ -29,6 +30,15 @@ public class Proveedor {
     }
     
     // Setters and Getters
+    
+    public String getRuc() {
+        return ruc;
+    }
+
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
+    }
+
     public int getProvID() {
         return provID;
     }

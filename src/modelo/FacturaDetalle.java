@@ -18,8 +18,10 @@ public class FacturaDetalle {
     private int faDetalleID;
     private int cantidad;
     private double subtotal;
+    private double precioUni;
     private double precioServ;
-    private Producto producto;
+    private int idProducto;
+    private int idFacCab;
     
     // Constructor FacturaDetalle que iniciliza sin parametros necesario para instanciar sin parametros
     public FacturaDetalle(){
@@ -27,15 +29,40 @@ public class FacturaDetalle {
     
     
     // Constructor FacturaDetalle con los parametros que necesita 
-    public FacturaDetalle(int faDetalleID, int cantidad, double subtotal, double precioServ, Producto producto) {
+    public FacturaDetalle(int faDetalleID, int cantidad, double subtotal, double precioServ, int producto) {
         this.faDetalleID = faDetalleID;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
         this.precioServ = precioServ;
-        this.producto = producto;
+        this.idProducto = producto;
     }
     
     // Setters and Getters
+    
+    public double getPrecioUni() {
+        return precioUni;
+    }
+
+    public void setPrecioUni(double precioUni) {
+        this.precioUni = precioUni;
+    }
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public int getIdFacCab() {
+        return idFacCab;
+    }
+
+    public void setIdFacCab(int idFacCab) {
+        this.idFacCab = idFacCab;
+    }
+
     public int getFaDetalleID() {
         return faDetalleID;
     }
@@ -68,17 +95,10 @@ public class FacturaDetalle {
         this.precioServ = precioServ;
     }
 
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
 
     @Override
     public String toString() {
-        return "FacturaDetalle{" + "faDetalleID=" + faDetalleID + ", cantidad=" + cantidad + ", subtotal=" + subtotal + ", precioServ=" + precioServ + ", producto=" + producto + '}';
+        return "FacturaDetalle{" + "faDetalleID=" + faDetalleID + ", cantidad=" + cantidad + ", subtotal=" + subtotal + ", precioServ=" + precioServ + ", producto=" + idProducto + '}';
     }
 
     

@@ -18,8 +18,9 @@ public class FacturaCabecera {
     private double subtotal;
     private double total;
     private char estado;
-    private Cliente cliente;
-    private Usuario usuario;
+    private double iva;
+    private int idCliente;
+    private int idUsuario;
     private ArrayList<FacturaDetalle> listDetalle;
     
     
@@ -28,18 +29,27 @@ public class FacturaCabecera {
     }
 
     // Constructor de la factura cabecera con soporte de parametros
-    public FacturaCabecera(int faCabeceraID, GregorianCalendar faCabeceraFecha, double subtotal, double total, char estado, Cliente cliente, Usuario usuario, ArrayList<FacturaDetalle> listDetalle) {
+    public FacturaCabecera(int faCabeceraID, GregorianCalendar faCabeceraFecha, double subtotal, double total, char estado, int cliente, int usuario, ArrayList<FacturaDetalle> listDetalle) {
         this.faCabeceraID = faCabeceraID;
         this.faCabeceraFecha = faCabeceraFecha;
         this.subtotal = subtotal;
         this.total = total;
         this.estado = estado;
-        this.cliente = cliente;
-        this.usuario = usuario;
+        this.idCliente = cliente;
+        this.idUsuario = usuario;
         this.listDetalle = listDetalle;
     }
     
     // Setters and Getters
+    
+    public double getIva() {
+        return iva;
+    }
+
+    public void setIva(double iva) {
+        this.iva = iva;
+    }
+
     public int getFaCabeceraID() {
         return faCabeceraID;
     }
@@ -80,21 +90,22 @@ public class FacturaCabecera {
         this.estado = estado;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
+    
 
     public ArrayList<FacturaDetalle> getListDetalle() {
         return listDetalle;
@@ -106,7 +117,7 @@ public class FacturaCabecera {
 
     @Override
     public String toString() {
-        return "FacturaCabecera{" + "faCabeceraID=" + faCabeceraID + ", faCabeceraFecha=" + faCabeceraFecha + ", subtotal=" + subtotal + ", total=" + total + ", estado=" + estado + ", cliente=" + cliente + ", usuario=" + usuario + ", listDetalle=" + listDetalle + '}';
+        return "FacturaCabecera{" + "faCabeceraID=" + faCabeceraID + ", faCabeceraFecha=" + faCabeceraFecha + ", subtotal=" + subtotal + ", total=" + total + ", estado=" + estado + ", cliente=" + idCliente + ", usuario=" + idUsuario + ", listDetalle=" + listDetalle + '}';
     }
 
     

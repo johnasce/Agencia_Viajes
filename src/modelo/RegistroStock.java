@@ -18,17 +18,19 @@ public class RegistroStock {
     // Atributos de la clase RegistroStock
     private int regID;
     private GregorianCalendar fecha;
-    private Proveedor proveedor;
+    private int idProveedor;
+    private int cantidad;
+    private int idProd;
     
     // Constructor de la clase RegistroStock
     public RegistroStock(){
     }
     
     // Sobrecarga del constructor de la clase RegistroStock
-    public RegistroStock(int regID, GregorianCalendar fecha, Proveedor proveedor) {
+    public RegistroStock(int regID, GregorianCalendar fecha, int proveedor) {
         this.regID = regID;
         this.fecha = fecha;
-        this.proveedor = proveedor;
+        this.idProveedor = proveedor;
     }
     
     // Setter and Getters
@@ -48,17 +50,33 @@ public class RegistroStock {
         this.fecha = fecha;
     }
 
-    public Proveedor getProveedor() {
-        return proveedor;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
-    public void setProveedor(Proveedor proveedor) {
-        this.proveedor = proveedor;
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setIdProd(int idProd) {
+        this.idProd = idProd;
+    }
+
+    public int getIdProd() {
+        return idProd;
+    }
+
+    public void setIdProveedor(int idProveedor) {
+        this.idProveedor = idProveedor;
+    }
+
+    public int getIdProveedor() {
+        return idProveedor;
     }
 
     @Override
     public String toString() {
-        return "RegistroStock{" + "regID=" + regID + ", fecha=" + fecha + ", proveedor=" + proveedor + '}';
+        return "RegistroStock{" + "regID=" + regID + ", fecha=" + fecha + ", proveedor=" + idProveedor + '}';
     }
     
     

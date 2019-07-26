@@ -11,6 +11,7 @@ public class Cliente extends Persona{
     
     // Declaracion de atributos para la clase Cliente
     private int clienteId;
+    private String estado;
     
     // Constructor de la Clase Cliente para inicializar sin ningun parametro
     public Cliente(){
@@ -30,6 +31,16 @@ public class Cliente extends Persona{
     
     // Getter and Setters para modificacion de atributos de la clase Cliente
 
+    public String getEstado() {
+        return estado;
+    }
+
+    
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    
     public int getClienteId() {
         return clienteId;
     }

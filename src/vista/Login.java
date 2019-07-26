@@ -1,19 +1,39 @@
 /*
- * To changqe this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package vista;
 
+import controlador.BD;
+import controlador.Conexion;
+import controlador.ControladorUsuario;
 import javax.swing.JOptionPane;
+import modelo.Usuario;
 
 /**
  *
  * @author i7 MAX GAMER
  */
 public class Login extends javax.swing.JFrame {
-    PrincipalAd pA=new PrincipalAd();
-    PrincipalUs pU=new PrincipalUs();
+    
+    
+    BD bd=new BD();
+    Conexion con=bd.getCon();
+    
+    
+    public Conexion getCon() {
+        return con;
+    }
+
+    public void setBd(BD bd) {
+        this.bd = bd;
+    }
+    
+    public BD getBd() {
+        return bd;
+    }
+    
     /**
      * Creates new form Login
      */
@@ -112,16 +132,31 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         String nickname=TFUserLogin.getText();
-        if(nickname.equalsIgnoreCase("us")){
+        String password=TFPasswordLogin.getText();
+        
+        bd.conectar();
+        char tipo='x';
+        char est='x';
+        if(con.getConeccion()!=null){
+            ControladorUsuario cus=new ControladorUsuario();
+            tipo=cus.tipoUs(con, nickname, password);
+            est=cus.estUs(con, nickname, password);
+        }
+        if(tipo=='N' && est=='A'){
+            PrincipalUs pU=new PrincipalUs(con,nickname);
             pU.setVisible(true);
             this.setVisible(false);
         }
-        else if(nickname.equalsIgnoreCase("admin")){
+        else if(tipo=='A' && est=='A'){
+            PrincipalAd pA=new PrincipalAd(con,nickname);
             pA.setVisible(true);
             this.setVisible(false);
         }
+        else if(est=='I'){
+            JOptionPane.showMessageDialog(null, "El usuario esta incactivo");
+        }
         else{
-            JOptionPane.showMessageDialog(null, "El usuario no existe");
+            JOptionPane.showMessageDialog(null, "El usuario o contraseña invalidos");
         }
         
     }//GEN-LAST:event_jButton1MouseClicked

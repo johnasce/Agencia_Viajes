@@ -5,6 +5,58 @@
  */
 package vista;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import controlador.Conexion;
+import controlador.ControladorCabecera;
+import controlador.ControladorCliente;
+import controlador.ControladorDetalle;
+import controlador.ControladorProductos;
+import controlador.ControladorTipos;
+import controlador.ControladorUsuario;
+import java.awt.Panel;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Cliente;
+import modelo.FacturaCabecera;
+import modelo.FacturaDetalle;
+import modelo.Precios;
+import modelo.Producto;
+import modelo.Usuario;
+import java.awt.Panel;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,12 +65,36 @@ import javax.swing.JOptionPane;
  */
 public class PrincipalUs extends javax.swing.JFrame {
     boolean cent=true;
-    /**
-     * Creates new form PrincipalUs
-     */
-    public PrincipalUs() {
+    Conexion con=new Conexion();
+    DefaultTableModel productos=new DefaultTableModel();
+    DefaultTableModel detalles=new DefaultTableModel();
+    String nickName;
+    public PrincipalUs(Conexion con,String nickname) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.con=con;
+        this.setLocationRelativeTo(null);
+        this.nickName=nickname;
+        productos.addColumn("ID");
+        productos.addColumn("FECHA");
+        productos.addColumn("PRECIO");
+        productos.addColumn("NOMBRE");
+        productos.addColumn("CANTIDAD");
+        productos.addColumn("DESCRIPCION");
+        productos.addColumn("PARTIDA");
+        productos.addColumn("DESTINO");
+        productos.addColumn("DURACION");
+        productos.addColumn("TIPO");
+        productos.addColumn("TIPOSERV");
+        ListDetalles.setModel(productos);
+        detalles.addColumn("IDPRODUCTO");
+        detalles.addColumn("PRODUCTO");
+        detalles.addColumn("PRECIOUNI");
+        detalles.addColumn("CANTIDAD");
+        detalles.addColumn("PRESIOSERV");
+        detalles.addColumn("SUBTOTAL");
+        detallesFac.setModel(detalles);
+        detallesCancelFac2.setModel(detalles);
         NuevoCliente.setVisible(false);
         NuevoProducto.setVisible(false);
         NuevoTipo.setVisible(false);
@@ -32,6 +108,10 @@ public class PrincipalUs extends javax.swing.JFrame {
         EditarPerfilFilUs.setVisible(false);
         panelVentas.setVisible(false);
         panelClientes.setVisible(false);
+    }
+
+    private PrincipalUs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -283,6 +363,8 @@ public class PrincipalUs extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         TFcantidadDetalle = new javax.swing.JTextField();
         enterDetalles = new javax.swing.JButton();
+        jLabel78 = new javax.swing.JLabel();
+        TFPresioServ = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -349,6 +431,19 @@ public class PrincipalUs extends javax.swing.JFrame {
         JPObcionesControl2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         jLabel96.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prinladoizq.png"))); // NOI18N
+        jLabel96.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel96MouseDragged(evt);
+            }
+        });
+        jLabel96.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel96MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel96MousePressed(evt);
+            }
+        });
         JPObcionesControl2.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 500));
 
         jLabel22.setText("jLabel22");
@@ -440,8 +535,12 @@ public class PrincipalUs extends javax.swing.JFrame {
         JPBackGroung2.add(panelClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 150, 60));
 
         jLabel97.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel97.setForeground(new java.awt.Color(0, 0, 0));
         jLabel97.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoprin.png"))); // NOI18N
+        jLabel97.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel97MouseClicked(evt);
+            }
+        });
         JPBackGroung2.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         jDesktopPane3.add(JPBackGroung2);
@@ -498,29 +597,51 @@ public class PrincipalUs extends javax.swing.JFrame {
         jLabel50.setText("Email: ");
         jPanel6.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
-        enterModificarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterModificarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_OFF_v.png"))); // NOI18N
         enterModificarCliente.setBorderPainted(false);
         enterModificarCliente.setContentAreaFilled(false);
         enterModificarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterModificarCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterModificarCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
         enterModificarCliente.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterModificarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterModificarClienteMouseClicked(evt);
+            }
+        });
         jPanel6.add(enterModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 130, 30));
 
         btnEliminarModificarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DELETE_OFF_v.png"))); // NOI18N
         btnEliminarModificarProducto.setBorder(null);
         btnEliminarModificarProducto.setBorderPainted(false);
+        btnEliminarModificarProducto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DELETE_ON_v.png"))); // NOI18N
+        btnEliminarModificarProducto.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DELETE_ON_v.png"))); // NOI18N
+        btnEliminarModificarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarModificarProductoMouseClicked(evt);
+            }
+        });
+        btnEliminarModificarProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnEliminarModificarProductoKeyPressed(evt);
+            }
+        });
         jPanel6.add(btnEliminarModificarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 130, 30));
 
         jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_verde.png"))); // NOI18N
+        jLabel51.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel51MouseClicked(evt);
+            }
+        });
         jPanel6.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
 
         javax.swing.GroupLayout ModificarClienteLayout = new javax.swing.GroupLayout(ModificarCliente.getContentPane());
         ModificarCliente.getContentPane().setLayout(ModificarClienteLayout);
         ModificarClienteLayout.setHorizontalGroup(
             ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGap(0, 541, Short.MAX_VALUE)
             .addGroup(ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE))
         );
         ModificarClienteLayout.setVerticalGroup(
             ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -661,7 +782,7 @@ public class PrincipalUs extends javax.swing.JFrame {
         NuevoProducto.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jDesktopPane3.add(NuevoProducto);
-        NuevoProducto.setBounds(250, 50, 540, 362);
+        NuevoProducto.setBounds(250, 50, 540, 364);
 
         NuevaFactura.setClosable(true);
         NuevaFactura.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -669,29 +790,6 @@ public class PrincipalUs extends javax.swing.JFrame {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        detallesFac.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID PRoducto", "Descripcion", "Precio Unitario", "Cantidad", "Nombre Tipo", "ValorAgregado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, true, true, false, true, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
         scrollDetallesFac.setViewportView(detallesFac);
 
         jPanel4.add(scrollDetallesFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 480, 220));
@@ -727,9 +825,8 @@ public class PrincipalUs extends javax.swing.JFrame {
         labelID8.setText("Email:");
         datosEmpresaCancelFac.add(labelID8, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 62, -1, -1));
 
-        labelIDIN9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        labelIDIN9.setText("ups@ups.edu.ec");
-        datosEmpresaCancelFac.add(labelIDIN9, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 62, -1, 20));
+        labelIDIN9.setText("agenciaviajesups@gmail.com");
+        datosEmpresaCancelFac.add(labelIDIN9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, 20));
 
         labelID7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID7.setText("Telefono:");
@@ -748,6 +845,16 @@ public class PrincipalUs extends javax.swing.JFrame {
 
         buscarCICrearFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         buscarCICrearFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_2.png"))); // NOI18N
+        buscarCICrearFactura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarCICrearFacturaMouseClicked(evt);
+            }
+        });
+        buscarCICrearFactura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buscarCICrearFacturaKeyPressed(evt);
+            }
+        });
 
         labelID9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID9.setText("C.I:");
@@ -913,18 +1020,23 @@ public class PrincipalUs extends javax.swing.JFrame {
         });
         jPanel4.add(agregarDetallesFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
 
-        enterCrearFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterCrearFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_OFF_v.png"))); // NOI18N
         enterCrearFac.setBorderPainted(false);
         enterCrearFac.setContentAreaFilled(false);
         enterCrearFac.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterCrearFac.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        enterCrearFac.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterCrearFac.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Cear_ON_v.png"))); // NOI18N
+        enterCrearFac.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Cear_ON_v.png"))); // NOI18N
+        enterCrearFac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterCrearFacMouseClicked(evt);
+            }
+        });
         jPanel4.add(enterCrearFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 130, 30));
 
         NuevaFactura.getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
         jDesktopPane3.add(NuevaFactura);
-        NuevaFactura.setBounds(245, 10, 710, 472);
+        NuevaFactura.setBounds(245, 10, 716, 474);
 
         CancelarFactura2.setClosable(true);
         CancelarFactura2.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -932,22 +1044,6 @@ public class PrincipalUs extends javax.swing.JFrame {
 
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        detallesCancelFac2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID Producto", "Descripcion", "Precio Unitario", "Cantidad", "Nombre Tipo", "ValorAgregado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
         scrollDetallesCancelFac2.setViewportView(detallesCancelFac2);
 
         jPanel13.add(scrollDetallesCancelFac2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 480, 220));
@@ -975,8 +1071,7 @@ public class PrincipalUs extends javax.swing.JFrame {
         labelID38.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID38.setText("Email:");
 
-        labelIDIN26.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        labelIDIN26.setText("ivaneitor@ups.edu.ec");
+        labelIDIN26.setText("agenciaviajesups@gmail.com");
 
         labelID39.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelID39.setText("Telefono:");
@@ -988,6 +1083,11 @@ public class PrincipalUs extends javax.swing.JFrame {
         labelID40.setText("ID:");
 
         buscarIDCabCancelFac2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Search_32px_verde.png"))); // NOI18N
+        buscarIDCabCancelFac2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarIDCabCancelFac2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout DatosEmpresaCancelFac2Layout = new javax.swing.GroupLayout(DatosEmpresaCancelFac2);
         DatosEmpresaCancelFac2.setLayout(DatosEmpresaCancelFac2Layout);
@@ -1016,13 +1116,15 @@ public class PrincipalUs extends javax.swing.JFrame {
                         .addComponent(labelIDIN24, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelID39)
-                    .addComponent(labelID38))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelIDIN27, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelIDIN26))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(DatosEmpresaCancelFac2Layout.createSequentialGroup()
+                        .addComponent(labelID39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelIDIN27, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DatosEmpresaCancelFac2Layout.createSequentialGroup()
+                        .addComponent(labelID38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelIDIN26)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         DatosEmpresaCancelFac2Layout.setVerticalGroup(
             DatosEmpresaCancelFac2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1206,12 +1308,17 @@ public class PrincipalUs extends javax.swing.JFrame {
 
         jPanel13.add(TotalesCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, 100));
 
-        enterCancelFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterCancelFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Cancelar_OFF_v.png"))); // NOI18N
         enterCancelFac.setBorderPainted(false);
         enterCancelFac.setContentAreaFilled(false);
         enterCancelFac.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterCancelFac.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        enterCancelFac.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterCancelFac.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/CANCELAR_ON_v.png"))); // NOI18N
+        enterCancelFac.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/CANCELAR_ON_v.png"))); // NOI18N
+        enterCancelFac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterCancelFacMouseClicked(evt);
+            }
+        });
         jPanel13.add(enterCancelFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 130, 30));
 
         javax.swing.GroupLayout CancelarFactura2Layout = new javax.swing.GroupLayout(CancelarFactura2.getContentPane());
@@ -1236,7 +1343,7 @@ public class PrincipalUs extends javax.swing.JFrame {
         );
 
         jDesktopPane3.add(CancelarFactura2);
-        CancelarFactura2.setBounds(245, 20, 720, 482);
+        CancelarFactura2.setBounds(245, 20, 726, 484);
 
         EditarPerfilFilUs.setClosable(true);
         EditarPerfilFilUs.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -1306,12 +1413,12 @@ public class PrincipalUs extends javax.swing.JFrame {
         jPanel11.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
         jPanel11.add(TFNickNameEditarPerfilUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 90, -1));
 
-        enterEditarPerfil1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterEditarPerfil1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_OFF_v.png"))); // NOI18N
         enterEditarPerfil1.setBorderPainted(false);
         enterEditarPerfil1.setContentAreaFilled(false);
         enterEditarPerfil1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterEditarPerfil1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        enterEditarPerfil1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterEditarPerfil1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
+        enterEditarPerfil1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
         enterEditarPerfil1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterEditarPerfil1ActionPerformed(evt);
@@ -1336,7 +1443,7 @@ public class PrincipalUs extends javax.swing.JFrame {
         );
 
         jDesktopPane3.add(EditarPerfilFilUs);
-        EditarPerfilFilUs.setBounds(250, 50, 510, 362);
+        EditarPerfilFilUs.setBounds(250, 50, 516, 364);
 
         EditarPerfil.setClosable(true);
         EditarPerfil.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -1406,12 +1513,17 @@ public class PrincipalUs extends javax.swing.JFrame {
         jPanel5.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
         jPanel5.add(TFNickNameEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 90, -1));
 
-        enterEditarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
+        enterEditarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_OFF_v.png"))); // NOI18N
         enterEditarPerfil.setBorderPainted(false);
         enterEditarPerfil.setContentAreaFilled(false);
         enterEditarPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterEditarPerfil.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        enterEditarPerfil.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
+        enterEditarPerfil.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
+        enterEditarPerfil.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Modificar_ON_v.png"))); // NOI18N
+        enterEditarPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterEditarPerfilMouseClicked(evt);
+            }
+        });
         enterEditarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterEditarPerfilActionPerformed(evt);
@@ -1433,7 +1545,7 @@ public class PrincipalUs extends javax.swing.JFrame {
         );
 
         jDesktopPane3.add(EditarPerfil);
-        EditarPerfil.setBounds(250, 50, 510, 362);
+        EditarPerfil.setBounds(250, 50, 516, 364);
 
         RegistrarStock.setClosable(true);
         RegistrarStock.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -1514,7 +1626,7 @@ public class PrincipalUs extends javax.swing.JFrame {
         );
 
         jDesktopPane3.add(RegistrarStock);
-        RegistrarStock.setBounds(250, 50, 540, 342);
+        RegistrarStock.setBounds(250, 50, 546, 344);
 
         NuevoCliente.setClosable(true);
         NuevoCliente.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -1567,12 +1679,17 @@ public class PrincipalUs extends javax.swing.JFrame {
         jLabel20.setText("Email: ");
         JPNuevoCliente.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
-        enterCrearCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF.png"))); // NOI18N
+        enterCrearCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_OFF.png"))); // NOI18N
         enterCrearCliente.setBorderPainted(false);
         enterCrearCliente.setContentAreaFilled(false);
         enterCrearCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterCrearCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
-        enterCrearCliente.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON.png"))); // NOI18N
+        enterCrearCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_ON.png"))); // NOI18N
+        enterCrearCliente.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Crear_ON.png"))); // NOI18N
+        enterCrearCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterCrearClienteMouseClicked(evt);
+            }
+        });
         JPNuevoCliente.add(enterCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 120, 30));
 
         NuevoCliente.getContentPane().add(JPNuevoCliente, java.awt.BorderLayout.CENTER);
@@ -1650,40 +1767,29 @@ public class PrincipalUs extends javax.swing.JFrame {
 
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ListDetalles.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Fecha", "Precio", "Descripcion", "Partida", "Destino", "Duracion", "Cantidad"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
+        scroollListDetalles.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ListDetalles.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         scroollListDetalles.setViewportView(ListDetalles);
 
-        jPanel8.add(scroollListDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 470, 237));
+        jPanel8.add(scroollListDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 470, 237));
 
         jLabel34.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(62, 150, 148));
         jLabel34.setText("Cantidad: ");
-        jPanel8.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+        jPanel8.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         TFcantidadDetalle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TFcantidadDetalleActionPerformed(evt);
             }
         });
-        jPanel8.add(TFcantidadDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 70, -1));
+        TFcantidadDetalle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFcantidadDetalleKeyTyped(evt);
+            }
+        });
+        jPanel8.add(TFcantidadDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 70, -1));
 
         enterDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_OFF_v.png"))); // NOI18N
         enterDetalles.setBorderPainted(false);
@@ -1691,12 +1797,34 @@ public class PrincipalUs extends javax.swing.JFrame {
         enterDetalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enterDetalles.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
         enterDetalles.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enter_ON_v.png"))); // NOI18N
-        jPanel8.add(enterDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 130, 30));
+        enterDetalles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterDetallesMouseClicked(evt);
+            }
+        });
+        jPanel8.add(enterDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 130, 30));
+
+        jLabel78.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel78.setForeground(new java.awt.Color(62, 150, 148));
+        jLabel78.setText("Precio Serviso: ");
+        jPanel8.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 99, 19));
+
+        TFPresioServ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFPresioServActionPerformed(evt);
+            }
+        });
+        TFPresioServ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFPresioServKeyTyped(evt);
+            }
+        });
+        jPanel8.add(TFPresioServ, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 70, -1));
 
         AnadirDetalle.getContentPane().add(jPanel8, java.awt.BorderLayout.CENTER);
 
         jDesktopPane3.add(AnadirDetalle);
-        AnadirDetalle.setBounds(250, 50, 500, 332);
+        AnadirDetalle.setBounds(250, 50, 496, 324);
 
         getContentPane().add(jDesktopPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
@@ -1726,24 +1854,30 @@ public class PrincipalUs extends javax.swing.JFrame {
 
     private void jLabel86jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel86jLabel3MouseClicked
         panelClientes.setVisible(false);
+        vaciarModificarCliente();
         ModificarCliente.setVisible(true);
     }//GEN-LAST:event_jLabel86jLabel3MouseClicked
 
     private void jLabel87jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel87jLabel5MouseClicked
+        cargarDatosEditarPerfil();
         EditarPerfil.setVisible(true);
     }//GEN-LAST:event_jLabel87jLabel5MouseClicked
 
     private void jLabel88jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel88jLabel6MouseClicked
         panelVentas.setVisible(false);
+        vaciarRecuperarFactura();
         CancelarFactura2.setVisible(true);
     }//GEN-LAST:event_jLabel88jLabel6MouseClicked
 
     private void jLabel89jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel89jLabel7MouseClicked
         panelClientes.setVisible(false);
+        vaciarCrearCliente();
         NuevoCliente.setVisible(true);
     }//GEN-LAST:event_jLabel89jLabel7MouseClicked
 
     private void jButton4jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4jButton1MouseClicked
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
         int op=JOptionPane.showConfirmDialog(null, "Desea cerrar secion");
         if(op==0){
             setVisible(false);
@@ -1754,6 +1888,9 @@ public class PrincipalUs extends javax.swing.JFrame {
 
     private void jLabel90jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel90jLabel10MouseClicked
         panelVentas.setVisible(false);
+        vaciarCrearFacturaCab();
+        vaciarFacturaDet();
+        vaciarbuscarClienteFactura();
         NuevaFactura.setVisible(true);
     }//GEN-LAST:event_jLabel90jLabel10MouseClicked
 
@@ -1780,6 +1917,9 @@ public class PrincipalUs extends javax.swing.JFrame {
     }//GEN-LAST:event_JTnombreTipoActionPerformed
 
     private void agregarDetallesFacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarDetallesFacMouseClicked
+        recuperarProductos();
+        actualizarProds();
+        AnadirDetalle.setVisible(true);
         AnadirDetalle.setVisible(true);
     }//GEN-LAST:event_agregarDetallesFacMouseClicked
 
@@ -1829,9 +1969,913 @@ public class PrincipalUs extends javax.swing.JFrame {
         panelClientes.setVisible(true);
     }//GEN-LAST:event_jLabel14MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jLabel97MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel97MouseClicked
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
+    }//GEN-LAST:event_jLabel97MouseClicked
+
+    private void jLabel96MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel96MouseClicked
+        panelVentas.setVisible(false);
+        panelClientes.setVisible(false);
+    }//GEN-LAST:event_jLabel96MouseClicked
+
+    private void jLabel96MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel96MousePressed
+
+    }//GEN-LAST:event_jLabel96MousePressed
+
+    private void jLabel96MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel96MouseDragged
+
+    }//GEN-LAST:event_jLabel96MouseDragged
+
+    private void enterModificarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterModificarClienteMouseClicked
+        try {
+            if(modificarCliente()){
+                try {
+                    con.getConeccion().commit();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "Cliente modificado");
+            }
+            else{
+                try {
+                    con.getConeccion().rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "El cliente no pudo modificarse");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_enterModificarClienteMouseClicked
+
+    private void enterCrearClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterCrearClienteMouseClicked
+        if(crearCliente()){
+            try {
+                con.getConeccion().commit();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Cliente creado");
+            vaciarCrearCliente();
+        }
+        else{
+            try {
+                    con.getConeccion().rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "El cliente no pudo crearse");
+        }
+    }//GEN-LAST:event_enterCrearClienteMouseClicked
+
+    private void btnEliminarModificarProductoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEliminarModificarProductoKeyPressed
+        
+    }//GEN-LAST:event_btnEliminarModificarProductoKeyPressed
+
+    private void buscarCICrearFacturaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarCICrearFacturaKeyPressed
+        
+    }//GEN-LAST:event_buscarCICrearFacturaKeyPressed
+
+    private void enterCrearFacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterCrearFacMouseClicked
+        try {
+            if(crearFacturaCab()){
+                try {
+                    con.getConeccion().commit();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if(crearFacturaDet()){
+                    try {
+                        con.getConeccion().commit();
+                        JOptionPane.showMessageDialog(null, "Factura creada");
+                        crearPdf();
+                        enviarCorreo();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    vaciarCargarDetalleEnFactura();
+                    vaciarCrearFacturaCab();
+                    vaciarFacturaDet();
+                    vaciarbuscarClienteFactura();
+                    
+                }
+                else{
+                    try {
+                        con.getConeccion().rollback();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            else{
+                try {
+                    con.getConeccion().rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_enterCrearFacMouseClicked
+
+    private void TFPresioServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFPresioServActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFPresioServActionPerformed
+
+    private void enterDetallesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterDetallesMouseClicked
+        cargarDetalleEnFactura();
+        actualizarProds();
+    }//GEN-LAST:event_enterDetallesMouseClicked
+
+    private void buscarIDCabCancelFac2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarIDCabCancelFac2MouseClicked
+        try {
+            recuperarFactura();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buscarIDCabCancelFac2MouseClicked
+
+    private void enterCancelFacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterCancelFacMouseClicked
+       try {
+            int resEst=cambiarEstadoFac();
+            if(resEst==1){
+                if(actualizarFacturaDet()){
+                    try {
+                        con.getConeccion().commit();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Factura cancelada");
+                    limpiarListPro();
+                    vaciarRecuperarFactura();
+                }
+            }
+            else if(resEst==2){
+                try {
+                     con.getConeccion().rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "La factura ya se encuentra cancelada");
+            }
+            else if(resEst==3){
+                try {
+                     con.getConeccion().rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "No se pudo cancelar la factura");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_enterCancelFacMouseClicked
+
+    private void buscarCICrearFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarCICrearFacturaMouseClicked
+        try {
+            buscarClienteFactura();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buscarCICrearFacturaMouseClicked
+
+    private void jLabel51MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel51MouseClicked
+        try {
+            buscarClienteEditar();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jLabel51MouseClicked
+
+    private void btnEliminarModificarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarModificarProductoMouseClicked
+        try {
+            int cantidadFac=verifcarCliFac();
+            if(cantidadFac>0){
+                if(cambiarEstadoCli()){
+                    try {
+                        con.getConeccion().commit();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Estado cambiado");
+                    vaciarModificarCliente();
+                    }
+                else{
+                    try {
+                         con.getConeccion().rollback();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "No se pudo cambiar estado");
+                }  
+            }
+            else if(cantidadFac==0){
+                if(eliminarCliente()){
+                    try {
+                        con.getConeccion().commit();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Cliente eliminado");
+                    vaciarModificarCliente();
+                }
+                else{
+                    try {
+                         con.getConeccion().rollback();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "No se pudo eliminar cliente");
+                }  
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarModificarProductoMouseClicked
+
+    private void enterEditarPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterEditarPerfilMouseClicked
+        if(modificarPerfil()){
+            try {
+                 con.getConeccion().commit();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Perfil actualizado");
+       }
+       else{
+            try {
+                 con.getConeccion().rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar el perfil");
+        }   
+    }//GEN-LAST:event_enterEditarPerfilMouseClicked
+
+    private void TFcantidadDetalleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFcantidadDetalleKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_TFcantidadDetalleKeyTyped
+
+    private void TFPresioServKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFPresioServKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_TFPresioServKeyTyped
+    
+    public boolean modificarPerfil(){
+        if(con.getConeccion()!=null){
+            ControladorUsuario cUs=new ControladorUsuario();
+            Usuario us=new Usuario();
+            us.setUsuarioId(cUs.buscarId(con, TFCedulaEditarPerfil.getText()));
+            us.setIdentificacion(TFCedulaEditarPerfil.getText());
+            us.setNombre(TFNombreEditarPerfil.getText());
+            us.setApellido(TFApellifoEditarPerfil.getText());
+            us.setCallePrincipal(TFCallePrinEditarPerfil.getText());
+            us.setCalleSecundaria(TFCalleSecuEditarPerfil.getText());
+            us.setTelefono(TFTelefonoEditarPerfil.getText());
+            us.setNickName(TFNickNameEditarPerfil.getText());
+            us.setPassword(TFPasswordEditarPerfil.getText());
+            us.setEmial(TFEmailEditarPerfil.getText());
+            return cUs.modificarUsuario(con, us);
+        }
+        return false;
+    }
+    
+    
+    public void buscarClienteEditar() throws IOException{
+        ControladorCliente ccli=new ControladorCliente();
+        String ci=TFidentificacionModificarCliente.getText();
+        Cliente cli=ccli.buscarDatosCli(con, ci);
+        if(cli.getNombre()!=null){
+            if(cli.getNombre()!=null){
+                TFnombreModificarCliente.setText(cli.getNombre());
+                TFapellidoModificarCliente.setText(cli.getApellido());
+                TFCallePrinModificarCliente.setText(cli.getCallePrincipal());
+                TFCalleSecunModificarCliente.setText(cli.getCalleSecundaria());
+                TFemailModificarCliente.setText(cli.getEmial());   
+                TFTelefonoModificarCliente.setText(cli.getTelefono());
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Cliente no encontrado");
+            }
+        }
+    }
+    public void limpiarListPro(){
+        int lo=detalles.getRowCount()-1;
+        for(int i=lo; i>=0; i--){
+            detalles.removeRow(i);
+        }
+    }
+    
+    public int cambiarEstadoFac() throws IOException{
+        if(con.getConeccion()!=null){
+            ControladorCabecera cCab=new ControladorCabecera();
+            int id=Integer.parseInt(idCabCancelFac2.getText());
+            char est=cCab.estadoAct(con, id);
+            return cCab.cambiarEstado(con, id, est);
+        }
+        return 3;
+    }
+    
+    public boolean actualizarFacturaDet(){
+        boolean cent=true;
+        if(con.getConeccion()!=null){
+            ControladorCabecera cCabecera=new ControladorCabecera();
+            ControladorDetalle cDetalle=new ControladorDetalle();
+            ControladorProductos cPro=new ControladorProductos();
+            int idFacCab=Integer.parseInt(idCabCancelFac2.getText());
+            int filas=detalles.getRowCount();
+            for(int i=0;i<filas;i++){
+                int idPro=Integer.parseInt((String)detalles.getValueAt(i, 0));
+                int cantidad=Integer.parseInt((String)detalles.getValueAt(i, 3));
+                int cantidadAc=cPro.cantidadActual(con, idPro);
+                int cantidadActualizada=cantidad+cantidadAc;
+                cent=cPro.actualizarStock(con, cantidadActualizada, idPro);
+            }
+            return cent;
+        }
+        return cent;
+    }
+    
+    public void recuperarFactura() throws IOException{
+        FacturaCabecera fC=new FacturaCabecera();
+        ArrayList<FacturaDetalle> listDetalles=new ArrayList<>();
+        if(this.con.getConeccion()!=null){
+            ControladorCabecera cCabecera=new ControladorCabecera();
+            String idCab=idCabCancelFac2.getText();
+            fC=cCabecera.buscarFacCab(con, idCab);
+            if(fC.getFaCabeceraFecha()!=null){
+                String fecha=transformarGregorian(fC.getFaCabeceraFecha());
+                fechaCancelFac.setText(fecha);
+                subtotalCancelFac.setText(fC.getSubtotal()+"");
+                ivaCancelFac.setText(fC.getIva()+"%");
+                totalCancelFac.setText(fC.getTotal()+"");
+                ControladorCliente ccli=new ControladorCliente();
+                String cedula=ccli.buscarCedula(con, fC.getIdCliente()+"");
+                Cliente cli=ccli.buscarDatosCli(con, cedula);
+                ciCancelFAc.setText(cedula);
+                nombreCancelFac.setText(cli.getNombre()+" "+cli.getApellido());
+                telefonoCancelFac.setText(cli.getTelefono());
+                if(cli.getCalleSecundaria()==null){
+                    direccionCancelFAc.setText(cli.getCallePrincipal());
+                }
+                else{
+                    direccionCancelFAc.setText(cli.getCallePrincipal()+" "+cli.getCalleSecundaria());
+                }
+                emailCancelFac.setText(cli.getEmial());   
+                ControladorDetalle cDet=new ControladorDetalle();
+                ControladorProductos cPro=new ControladorProductos();
+                listDetalles=cDet.listDetalles(con, idCab);
+                int lo =detalles.getRowCount()-1;
+                for(int i=lo; i>=0; i--){
+                    detalles.removeRow(i);
+                }
+                for(int i=0;i<listDetalles.size();i++){
+                    String[] tableData = new String[6];
+                    String nombrePro=cPro.buscarNombrePro(con, listDetalles.get(i).getIdProducto()+"");
+                    tableData[0]=listDetalles.get(i).getIdProducto()+"";
+                    tableData[1]=nombrePro;
+                    tableData[2]=listDetalles.get(i).getPrecioUni()+"";
+                    tableData[3]=listDetalles.get(i).getCantidad()+"";
+                    tableData[4]=listDetalles.get(i).getPrecioServ()+"";
+                    tableData[5]=listDetalles.get(i).getSubtotal()+"";
+                    detalles.addRow(tableData);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Factura no encontrada");
+            }
+        }
+    }
+    
+    public void vaciarRecuperarFactura(){
+        int lo =detalles.getRowCount()-1;
+        for(int i=lo; i>=0; i--){
+            detalles.removeRow(i);
+        }
+        emailCancelFac.setText(""); 
+        direccionCancelFAc.setText("");
+        telefonoCancelFac.setText("");
+        nombreCancelFac.setText("");
+        ciCancelFAc.setText("");
+        fechaCancelFac.setText("");
+        subtotalCancelFac.setText("");
+        ivaCancelFac.setText("");
+        totalCancelFac.setText("");
+        idCabCancelFac2.setText("");
+    }
+    
+    public void cargarDetalleEnFactura(){
+        if(con.getConeccion()!=null){
+            String id=(String) productos.getValueAt(ListDetalles.getSelectedRow(), 0);
+            String precioUni=(String) productos.getValueAt(ListDetalles.getSelectedRow(), 2);
+            String cantidad= TFcantidadDetalle.getText();
+            String presioservicio=TFPresioServ.getText();
+            double subtotalD=(Double.parseDouble(precioUni)*Double.parseDouble(cantidad))+Double.parseDouble(presioservicio);
+            String[] tableData=new String [6];
+            ControladorProductos pro=new ControladorProductos();
+            String nombrePro=pro.buscarNombrePro(con, id);
+            tableData[0]=id;
+            tableData[1]=nombrePro;
+            tableData[2]=precioUni;
+            tableData[3]=cantidad;
+            tableData[4]=presioservicio;
+            tableData[5]=subtotalD+"";
+            detalles.addRow(tableData);
+            Precios pre=calcularPrecios();
+            String subtotal=pre.getSubtotal()+"";
+            String iva=pre.getIva()+"";
+            String total=pre.getTotal()+"";
+            subtotalCrearFac.setText(subtotal);
+            ivaCrearFac.setText(iva);
+            totalCrearFac.setText(total);
+        }
+    }
+    
+    public void vaciarCargarDetalleEnFactura(){
+        TFcantidadDetalle.setText("");
+        TFPresioServ.setText("");
+    }
+    
+    public String obtenerFechaSql(){
+        GregorianCalendar c=new GregorianCalendar();
+        String dia = Integer.toString(c.get(Calendar.DATE));
+        String mes = Integer.toString(c.get(Calendar.MONTH)+1);
+        String annio = Integer.toString(c.get(Calendar.YEAR));
+        String fecha=dia+"-"+mes+"-"+annio;
+        return fecha;
+    }
+    
+    public Date StringToDate(String s){
+        java.util.Date result = new java.util.Date();
+        SimpleDateFormat parseador = new SimpleDateFormat("dd/MM/yy");
+        try {
+             result = parseador.parse(obtenerFecha());
+        } catch (ParseException ex) {
+            Logger.getLogger(PrincipalAd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        java.sql.Date sqlDate = new java.sql.Date(result.getTime());
+        System.out.println("fecha: "+sqlDate);
+        return sqlDate;
+    }
+    
+    public boolean crearFacturaCab() throws IOException{
+        if(con.getConeccion()!=null){
+            ControladorCabecera cCabecera=new ControladorCabecera();
+            ControladorCliente cCliente=new ControladorCliente();
+            ControladorUsuario cUsuario=new ControladorUsuario();
+            int idFacCab=cCabecera.idMaxCab(con)+1;
+            String cedulaCli=ciCrearFactura.getText();
+            Cliente cli=cCliente.buscarDatosCli(con, cedulaCli);
+            int idCliente=cli.getClienteId();
+            if(cCliente.estadoAct(con, idCliente)=='I'){
+                JOptionPane.showMessageDialog(null, "El cliente esta inactivo");
+                return false;
+            }
+            else{
+                Usuario us=cUsuario.buscarUsuarioNombre(con, nickName);
+                int idUs=Integer.parseInt(us.getUsuarioId()+"");
+                Date fecha = StringToDate(obtenerFechaSql());
+                double subtotal=Double.parseDouble(subtotalCrearFac.getText());
+                double iva=Double.parseDouble(ivaCrearFac.getText());
+                double total=Double.parseDouble(totalCrearFac.getText());
+                String estado="A";
+                boolean cent=cCabecera.guardarCabeceraEnBD(con,idFacCab,fecha,subtotal,iva, total, estado, idCliente, idUs);
+                return cent;
+            }
+        }
+        return false;
+    }
+    
+    public void vaciarCrearFacturaCab(){
+        ciCrearFactura.setText("");
+        subtotalCrearFac.setText("");
+        ivaCrearFac.setText("");
+        totalCrearFac.setText("");
+    }
+    
+    public boolean crearFacturaDet(){
+        boolean cent=true;
+        if(con.getConeccion()!=null){
+            ControladorCabecera cCabecera=new ControladorCabecera();
+            ControladorDetalle cDetalle=new ControladorDetalle();
+            int idFacCab=cCabecera.idMaxCab(con);
+            int filas=detalles.getRowCount();
+            for(int i=0;i<filas;i++){
+                int idPro=Integer.parseInt((String)detalles.getValueAt(i, 0));
+                int cantidad=Integer.parseInt((String)detalles.getValueAt(i, 3));
+                double precioServ=Integer.parseInt((String)detalles.getValueAt(i, 4));
+                cent=cDetalle.guardarDetalleEnBD(con, idPro, cantidad, precioServ, idFacCab);
+            }
+            return cent;
+        }
+        return cent;
+    }
+    
+    public void vaciarFacturaDet(){
+        int lo=detalles.getRowCount()-1;
+        for(int i=lo; i>=0; i--){
+            detalles.removeRow(i);
+        }
+    }
+    
+    public Precios calcularPrecios(){
+        int filas=detalles.getRowCount();
+        System.out.println("filas: "+filas);
+        Precios pre=new Precios();
+        double subTotal=0;
+        double iva=0.12;
+        double total;
+        for(int i=0;i<filas;i++){
+            double subTotalDetalle=Double.parseDouble((String)detalles.getValueAt(i, 5));
+            subTotal+=subTotalDetalle;
+        }
+        pre.setSubtotal(subTotal);
+        pre.setIva(iva);
+        total=(iva*subTotal)+subTotal;
+        pre.setTotal(total);
+        return pre;
+    }
+    
+    public void cargarCalculosFac(){
+        Precios pre=calcularPrecios();
+        String subtotal=pre.getSubtotal()+"";
+        String iva=pre.getIva()+"";
+        String total=pre.getTotal()+"";
+        subtotalCrearFac.setText(subtotal);
+        ivaCrearFac.setText(iva);
+        totalCrearFac.setText(total);
+    }
+    
+    public void actualizarProds(){
+        int lo =detalles.getRowCount()-1;
+        recuperarProductos();
+        for(int i=lo; i>=0; i--){
+            String idString=detalles.getValueAt(i, 0).toString();
+            int id=Integer.parseInt(idString);
+            String cantidadString=detalles.getValueAt(i, 3).toString();
+            int cantidad=Integer.parseInt(cantidadString);
+            String cantidadAntiguaString=productos.getValueAt(id-1, 4).toString();
+            int cantidadAntigua=Integer.parseInt(cantidadAntiguaString);
+            int nuevaCantidad=cantidadAntigua-cantidad;
+            if(nuevaCantidad<0){
+                detalles.removeRow(i);
+                JOptionPane.showMessageDialog(null, "La cantidad supera al stock");
+            }
+            else{
+                productos.setValueAt(nuevaCantidad, id-1, 4);
+            }
+        }
+    }
+    
+    public String transformarGregorian(GregorianCalendar f){
+        String fecha=f.get(Calendar.DATE)+"/"+f.get(Calendar.MONTH)+"/"+f.get(Calendar.YEAR);
+        return fecha;
+    }
+    
+    public void recuperarProductos(){
+        ArrayList<Producto> listPro=new ArrayList<>();
+        if(this.con.getConeccion()!=null){
+            ControladorProductos cprod=new ControladorProductos();
+            listPro=cprod.recuperarProductos(con);
+            String fecha;
+            ControladorTipos tip=new ControladorTipos();
+            int lo=productos.getRowCount()-1;
+            for(int i=lo; i>=0; i--){
+                productos.removeRow(i);
+            }
+            for(int i=0;i<listPro.size();i++){
+                String[] tableData = new String[11];
+                tableData[0]=listPro.get(i).getProID()+"";
+                fecha=transformarGregorian(listPro.get(i).getProFecha());
+                tableData[1]=fecha;
+                tableData[2]=listPro.get(i).getPrecio()+"";
+                tableData[3]=listPro.get(i).getNombre();
+                tableData[4]=listPro.get(i).getCantidad()+"";
+                tableData[5]=listPro.get(i).getDescripcion();
+                tableData[6]=listPro.get(i).getLugPartida();
+                tableData[7]=listPro.get(i).getLugDestino();
+                tableData[8]=listPro.get(i).getDuracion()+"";
+                int idTipo=listPro.get(i).getTipo();
+                tableData[9]=tip.buscarNombreTipos(con, idTipo+"");
+                tableData[10]=listPro.get(i).getTipoServ()+"";
+                productos.addRow(tableData);
+            }
+        }
+        
+    }
+    
+    public String obtenerFecha(){
+        GregorianCalendar c=new GregorianCalendar();
+        String dia = Integer.toString(c.get(Calendar.DATE));
+        String mes = Integer.toString(c.get(Calendar.MONTH)+1);
+        String annio = Integer.toString(c.get(Calendar.YEAR));
+        String fecha=dia+"/"+mes+"/"+annio;
+        return fecha;
+    }
+    
+    public void buscarClienteFactura() throws IOException{
+        ControladorCliente ccli=new ControladorCliente();
+        String ci=ciCrearFactura.getText();
+        Cliente cli=ccli.buscarDatosCli(con, ci);
+        int id=cli.getClienteId();
+        if(cli.getNombre()!=null){
+            if(ccli.estadoAct(con, id)=='I'){
+                JOptionPane.showMessageDialog(null, "El cliente esta inactivo");
+            }
+            else{
+                nombreCrearFactura.setText(cli.getNombre()+" "+cli.getApellido());
+                telefonoCrearFactura.setText(cli.getTelefono());
+                String fecha=obtenerFecha();
+                fechaCrearFactura.setText(fecha);
+                if(cli.getCalleSecundaria()==null){
+                    direccionCrearFactura.setText(cli.getCallePrincipal());
+                }
+                else{
+                    direccionCrearFactura.setText(cli.getCallePrincipal()+" "+cli.getCalleSecundaria());
+                }
+                emailCrearFactura.setText(cli.getEmial());      
+            }            
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Cliente no encontrado");
+        }
+    }
+    
+    public void vaciarbuscarClienteFactura(){
+        ciCrearFactura.setText("");
+        nombreCrearFactura.setText("");
+        telefonoCrearFactura.setText("");
+        direccionCrearFactura.setText("");
+        emailCrearFactura.setText("");   
+    }
+    
+    public int verifcarCliFac() throws IOException{
+        if(con.getConeccion()!=null){
+            ControladorCliente cCliente=new ControladorCliente();
+            Cliente cli=cCliente.buscarDatosCli(con, TFidentificacionModificarCliente.getText());
+            int id=cli.getClienteId();
+            int cantidadFacturas=cCliente.verificarSiEstaEnFactura(con, id);
+            return cantidadFacturas;
+        }
+        return -1;
+    }
+    public boolean eliminarCliente() throws IOException{
+        if(con.getConeccion()!=null){
+            ControladorCliente cCliente=new ControladorCliente();
+            Cliente cli=cCliente.buscarDatosCli(con, TFidentificacionModificarCliente.getText());
+            int id=cli.getClienteId();
+            return cCliente.eliminarCliente(con, id);
+        }
+        return false;
+    }
+    
+    public boolean cambiarEstadoCli() throws IOException{
+         if(con.getConeccion()!=null){
+             ControladorCliente cCliente=new ControladorCliente();
+             Cliente cli=cCliente.buscarDatosCli(con, TFidentificacionModificarCliente.getText());
+             int id=cli.getClienteId();
+             char estadoAc=cCliente.estadoAct(con, id);
+             return cCliente.cambiarEstado(con, id, estadoAc);
+         }
+         return false;
+    }
+    
+    public void cargarDatosEditarPerfil(){
+        if(con.getConeccion()!=null){
+            ControladorUsuario cUsu=new ControladorUsuario();
+            Usuario usu=cUsu.buscarUsuarioNombre(con, nickName);
+            TFCedulaEditarPerfil.setText(usu.getIdentificacion());
+            TFNombreEditarPerfil.setText(usu.getNombre());
+            TFApellifoEditarPerfil.setText(usu.getApellido());
+            TFCallePrinEditarPerfil.setText(usu.getCallePrincipal());
+            TFCalleSecuEditarPerfil.setText(usu.getCalleSecundaria());
+            TFNickNameEditarPerfil.setText(usu.getNickName());
+            TFPasswordEditarPerfil.setText(usu.getPassword());
+            TFEmailEditarPerfil.setText(usu.getEmial());
+            TFTelefonoEditarPerfil.setText(usu.getTelefono());
+        }
+    }
+    
+    public boolean crearCliente(){
+         if(con.getConeccion()!=null){
+            ControladorCliente cCliente=new ControladorCliente();
+            int id=cCliente.maxID(con)+1;
+            String identificacion=identificacionCrearCliente.getText();
+            String nombre=nombreCrearCliente.getText();
+            String apellido=apellidoCrearCliente.getText();
+            String callePrin=callePrinCrearCliente.getText();
+            String calleSecu=callesecunCrearCliente.getText();
+            if(calleSecu==null){
+                calleSecu=null;
+            }
+            String telefono=telefonoCrearCliente.getText();
+            String email=emailCrearCliente.getText();
+            String estado="A";
+            return cCliente.crearCliente(con, id, identificacion, nombre, apellido, callePrin, calleSecu, telefono, email, estado);
+         }
+         return false;
+    }
+    
+    public void vaciarCrearCliente(){
+        identificacionCrearCliente.setText("");
+        nombreCrearCliente.setText("");
+        apellidoCrearCliente.setText("");
+        callePrinCrearCliente.setText("");
+        callesecunCrearCliente.setText("");
+        telefonoCrearCliente.setText("");
+        emailCrearCliente.setText("");
+    }
+    
+    public boolean modificarCliente() throws IOException{
+        Cliente cli=new Cliente();
+        ControladorCliente cCliente=new ControladorCliente();
+        String identificacion=TFidentificacionModificarCliente.getText();
+        cli=cCliente.buscarDatosCli(con, identificacion);
+        int id=cli.getClienteId();
+        String nombre=TFnombreModificarCliente.getText();
+        String apellido=TFapellidoModificarCliente.getText();
+        String callePrin=TFCallePrinModificarCliente.getText();
+        String calleSecu=TFCalleSecunModificarCliente.getText();
+        if(calleSecu==null){
+            calleSecu=null;
+        }
+        String telefono=TFTelefonoModificarCliente.getText();
+        String email=TFemailModificarCliente.getText();
+        String estado=cli.getEstado();
+        System.out.println(estado);
+        if(con.getConeccion()!=null){
+            if(nombre!=null){
+                if(apellido!=null){
+                    if(callePrin!=null){
+                        if(telefono!=null){
+                            return cCliente.actualizarCliente(con, id, identificacion, nombre, apellido, callePrin, calleSecu, telefono, email, estado);
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Falta Llenar campo telefono");
+                        }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Falta Llenar campo calle Principal");
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Falta Llenar campo apellido");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Falta Llenar campo nombre");
+            }
+        }
+        return false;
+    }
+    
+    public void vaciarModificarCliente(){
+        TFidentificacionModificarCliente.setText("");
+        TFnombreModificarCliente.setText("");
+        TFapellidoModificarCliente.setText("");
+        TFCallePrinModificarCliente.setText("");
+        TFCalleSecunModificarCliente.setText("");
+        TFTelefonoModificarCliente.setText("");
+        TFemailModificarCliente.setText("");
+    }
+    
+    public void crearPdf(){
+        ControladorCabecera cCabecera=new ControladorCabecera();
+        int idFacCab=cCabecera.idMaxCab(con);
+        int lo=detalles.getRowCount();
+        Document document = new Document();
+        
+        try{
+            PdfWriter.getInstance(document, new FileOutputStream("factura"+idFacCab+".pdf"));
+            document.open();
+            Image imagen = Image.getInstance("C:\\Users\\carlo\\Desktop\\java2\\JavaApplication22\\src\\imagenes\\loguitopequeño.png");      
+            //imagen.scaleAbsolute (150f, 150f);
+            imagen.setAbsolutePosition(40f, 740f);
+            document.add(imagen);
+            
+            Paragraph parrafo = new Paragraph("");
+            parrafo.add("Empresa: Agencia de viajes UPS "+"   Telefono: 0991039408");
+            parrafo.setIndentationLeft(160);
+            document.add(parrafo); 
+            
+            Paragraph parraf1 = new Paragraph("");
+            parraf1.add("Direccion: Av Gil Ramires Davaloz"+"  Email:agenciaviajesups@gmail.com");
+            parraf1.setIndentationLeft(160);
+            document.add(parraf1);
+            
+            Paragraph parrafr = new Paragraph("");
+            parrafr.add("RUC: 0159756347621");
+            parrafr.setIndentationLeft(160);
+            document.add(parrafr);
+            
+            Paragraph parrafo1 = new Paragraph("                ");
+            document.add(parrafo1);
+            
+            PdfPCell celdaFinal = new PdfPCell();
+            celdaFinal.addElement(new Paragraph("Nombre: "+nombreCrearFactura.getText()+"   CI: "+ciCrearFactura.getText()+"   Telefono: "+telefonoCrearFactura.getText()));
+            celdaFinal.addElement(new Paragraph("Fecha: "+fechaCrearFactura.getText()+"  Direccion: "+direccionCrearFactura.getText()+"   Email: "+emailCrearFactura.getText()));
+            
+            PdfPTable tableo = new PdfPTable(7);  
+            celdaFinal.setColspan(7);
+            tableo.addCell(celdaFinal);
+            document.add(tableo);
+            
+            Paragraph parrafo2 = new Paragraph("                ");
+            document.add(parrafo2);
+            
+            PdfPTable table = new PdfPTable(6);   
+            table.setWidthPercentage(100);
+            table.addCell("IDPROCTO");
+            table.addCell("PRODUCTO");
+            table.addCell("PRECIOUNI");
+            table.addCell("CANTIDAD");
+            table.addCell("PRESIOSERV");
+            table.addCell("SUBTOTAL");
+            for(int i=0;i<lo;i++){
+                String idPro=(String)detalles.getValueAt(i, 0);
+                String nomPro=(String)detalles.getValueAt(i, 1);
+                String preUnio=(String)detalles.getValueAt(i, 2);
+                String cant=(String)detalles.getValueAt(i, 3);
+                String presioServ=(String)detalles.getValueAt(i, 4);
+                String subtotal=(String)detalles.getValueAt(i, 5);
+                // addCell() agrega una celda a la tabla, el cambio de fila
+                // ocurre automaticamente al llenar la fila
+                table.addCell(idPro);
+                table.addCell(nomPro);
+                table.addCell(preUnio+"$");
+                table.addCell(cant);
+                table.addCell(presioServ+"$");
+                table.addCell(subtotal);
+                // Agregamos la tabla al documento
+            }
+            document.add(table);
+            Paragraph parrafo3 = new Paragraph("                ");
+            document.add(parrafo3);
+            PdfPTable table2 = new PdfPTable(2);   
+            table2.setWidthPercentage(100);
+            table2.addCell("SUBTOTAL:");
+            table2.addCell(subtotalCrearFac.getText());
+            table2.addCell("IVA 12%:");
+            double subtotal=Double.parseDouble(subtotalCrearFac.getText());
+            double iva=subtotal*0.12;
+            table2.addCell(iva+"");
+            table2.addCell("TOTAL:");
+            table2.addCell(totalCrearFac.getText());
+            document.add(table2);
+            document.close();
+        }catch(Exception e)
+        {
+            System.err.println("Ocurrio un error al crear el archivo");
+            System.exit(-1);
+        }
+    }
+    
+    public void enviarCorreo(){
+        ControladorCabecera cCabecera=new ControladorCabecera();
+        int idFacCab=cCabecera.idMaxCab(con);
+        Properties propiedad = new Properties();
+        propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+        propiedad.setProperty("mail.smtp.starttls.enable", "true");
+        propiedad.setProperty("mail.smtp.port", "587");
+        propiedad.setProperty("mail.smtp.auch","true");
+        
+        Session sesion = Session.getDefaultInstance(propiedad);
+        String correoEnvia = "agenciaviajesups@gmail.com";
+        String contrasena = "123abcds";
+        String receptor = emailCrearFactura.getText();
+        
+        MimeMessage mail = new MimeMessage(sesion);
+        try {
+            mail.setFrom(new InternetAddress (correoEnvia));
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress (receptor));
+            
+            BodyPart adjunto = new MimeBodyPart();
+            adjunto.setDataHandler(new DataHandler(new FileDataSource("C:\\Users\\carlo\\Desktop\\java2\\JavaApplication22\\factura"+idFacCab+".pdf")));
+            adjunto.setFileName("factura"+idFacCab+".pdf");
+            
+            MimeMultipart multiParte = new MimeMultipart();
+            multiParte.addBodyPart(adjunto);
+            mail.setContent(multiParte);
+            
+            Transport transportar = sesion.getTransport("smtp");
+            transportar.connect(correoEnvia,contrasena);
+            transportar.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));          
+            transportar.close();
+            
+            JOptionPane.showMessageDialog(null, "Factura enviada");
+            
+            
+        } catch (AddressException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1906,6 +2950,7 @@ public class PrincipalUs extends javax.swing.JFrame {
     private javax.swing.JTextField TFPartidaCrearPro;
     private javax.swing.JPasswordField TFPasswordEditarPerfil;
     private javax.swing.JPasswordField TFPasswordEditarPerfilUs;
+    private javax.swing.JTextField TFPresioServ;
     private javax.swing.JTextField TFTelefonoEditarPerfil;
     private javax.swing.JTextField TFTelefonoEditarPerfilUs;
     private javax.swing.JTextField TFTelefonoModificarCliente;
@@ -2023,6 +3068,7 @@ public class PrincipalUs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel86;
